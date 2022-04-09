@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import { fetchData } from '../../utils/api/index';
+import PlayerHero from '../../components/player/player-hero';
 
 export default function PlayerPage() {
   let params = useParams();
@@ -14,11 +15,10 @@ export default function PlayerPage() {
       setIsLoaded(true);
     });
   }, [params.playerId]);
+  
   if (isLoaded){
     return (
-      <main style={{ padding: '1rem' }}>
-        <h2>{player.PlayerName}</h2>
-      </main>
+      <PlayerHero player={player} />
     );
   } else {
     return 'LOADING'
