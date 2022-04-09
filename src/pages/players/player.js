@@ -10,7 +10,7 @@ export default function PlayerPage() {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    fetchData(`/bbplayer/${params.playerId}/season/13`).then((data) => {
+    fetchData(`bbplayer/${params.playerId}/season/13`).then((data) => {
       setPlayer(data);
       setIsLoaded(true);
     });
