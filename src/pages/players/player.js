@@ -14,7 +14,6 @@ export default function PlayerPage() {
       setIsLoaded(true);
     });
   }, [params.playerId]);
-  console.log(player)
   if (isLoaded){
     return (
       <main style={{ padding: '1rem' }}>
