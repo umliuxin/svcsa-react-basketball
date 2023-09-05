@@ -1,4 +1,1 @@
-self.__RSC_CSS_MANIFEST={
-  "cssImports": {},
-  "cssModules": {}
-}
+self.__RSC_CSS_MANIFEST={"cssImports":{"/Users/xin-macmini/Development/svcsa-react/app/layout.tsx":["/Users/xin-macmini/Development/svcsa-react/app/globals.css"]},"cssModules":{"/Users/xin-macmini/Development/svcsa-react/app/page":["/Users/xin-macmini/Development/svcsa-react/app/globals.css"]}}
