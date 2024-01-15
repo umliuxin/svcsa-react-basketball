@@ -9,10 +9,14 @@ This is a [Next.js](https://nextjs.org/) application for SVCSA website
 npm install
 
 # Start local server
-npm dev
+npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## Prerequisite
+
+[Nest.js](https://nextjs.org/docs)
 
 ## Connect to API
 
