@@ -27,8 +27,10 @@ This application is a **front end** React application. Technically it can work w
 ### Connect to Beta API
 
 This is the default behavior if you don't make any further changes.
-API URL is `http://beta-svcsa-api.westus.azurecontainer.io:3030`
+API URL is `http://svcsa-tf-api.westus.azurecontainer.io:3030/`
 BUT given the unstable nature of Beta, it is expected to be up and down sometimes
+
+To know more about the available APIs, check http://svcsa-tf-api.westus.azurecontainer.io:3030/docs/
 
 ### Connect to your local API
 
