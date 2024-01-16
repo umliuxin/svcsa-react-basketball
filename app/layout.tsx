@@ -19,7 +19,9 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <GlobalNav />
-        <Providers>{children}</Providers>
+        <main className="relative container mx-auto max-w-7xl z-10 px-6 mb-12 flex-grow">
+          <Providers>{children}</Providers>
+        </main>
       </body>
     </html>
   );

@@ -9,12 +9,5 @@ export default function DashboardLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <section>
-      {/* Include shared UI here e.g. a header or sidebar */}
-      <h1> I am basketball layout</h1>
-
-      {children}
-    </section>
-  );
+  return <section>{children}</section>;
 }

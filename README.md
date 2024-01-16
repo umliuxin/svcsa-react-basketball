@@ -47,6 +47,8 @@ To know more about the available APIs, check http://svcsa-tf-api.westus.azurecon
 npm install
 ```
 
+- Write tests
+
 ## Deployment
 
 TBD

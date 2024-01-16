@@ -23,7 +23,7 @@ export default function GlobalNav() {
           height={24}
           priority
         />
-        <p className="font-bold text-inherit pr-3">Official Site</p>
+        {/* <p className="font-bold text-inherit pr-3">Official Site</p> */}
       </NavbarBrand>
       <NavbarContent className="hidden sm:flex gap-4">
         <NavbarItem>
