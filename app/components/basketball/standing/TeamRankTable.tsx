@@ -35,7 +35,7 @@ const TeamRankTable: React.FC<TeamRankTableProps> = ({ teamRank }) => {
           return (
             <TableRow key={index}>
               <TableCell>{index + 1}</TableCell>
-              <TableCell>{row.team.name}</TableCell>
+              <TableCell>{row.team?.name}</TableCell>
               <TableCell>{row.point}</TableCell>
               <TableCell>{row.win}</TableCell>
               <TableCell>{row.lose}</TableCell>
@@ -46,7 +46,6 @@ const TeamRankTable: React.FC<TeamRankTableProps> = ({ teamRank }) => {
             </TableRow>
           );
         })}
-       
       </TableBody>
     </Table>
   );

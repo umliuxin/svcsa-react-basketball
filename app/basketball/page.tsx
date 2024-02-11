@@ -12,7 +12,6 @@ export default async function Page() {
         <h3>Current Season Rank: </h3>
 
         {seasons.map((season: Season) => {
-          console.log(season)
           return (
             <Link
               className="block"

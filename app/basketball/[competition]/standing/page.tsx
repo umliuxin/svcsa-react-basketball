@@ -8,7 +8,6 @@ export default async function Page({ params }: { params: { competition: string }
   const [ season ] = await getRecentSeasons(params.competition);
   // fetch team rank
   const teamRank = await asyncFetch(`/basketball/teamrank?seasonid=${season.id}`);
-  console.log(teamRank);
   return (
     <section>
       <h1>{season.name}</h1>
