@@ -30,7 +30,7 @@ This is the default behavior if you don't make any further changes.
 API URL is `http://svcsa-tf-api.westus.azurecontainer.io:3030/`
 BUT given the unstable nature of Beta, it is expected to be up and down sometimes
 
-To know more about the available APIs, check http://svcsa-tf-api.westus.azurecontainer.io:3030/docs/
+To know more about the available APIs, check <http://svcsa-tf-api.westus.azurecontainer.io:3030/docs/>
 
 ### Connect to your local API
 
@@ -41,13 +41,20 @@ To know more about the available APIs, check http://svcsa-tf-api.westus.azurecon
 
 ## Development
 
-- Ocassionally update dependency
+### JavaScript/TypeScript
 
-```
-npm install
-```
+### CSS
 
-- Write tests
+### Design
+
+[TailWindCss](https://tailwindcss.com/docs/utility-first) is embedded in the Next.js.
+Please use TailWindCss's utilities as much as possible.
+
+For components, Please based on the component UI listed in [NextUI](https://nextui.org/docs/components/button)
+
+## Testing
+
+**Testing is not OPTIONAL**
 
 ## Deployment
 
