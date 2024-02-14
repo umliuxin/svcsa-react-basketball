@@ -9,5 +9,5 @@ concurrency:
 
 jobs:
   run-tests:
-    uses: ./.github/workflows/test.yaml
+    uses: ./.github/workflows/test.yml
     secrets: inherit
