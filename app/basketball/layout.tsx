@@ -9,5 +9,6 @@ export default function DashboardLayout({
 }: {
   children: React.ReactNode;
 }) {
+  // TODO: fetch recent seasons
   return <section>{children}</section>;
 }
