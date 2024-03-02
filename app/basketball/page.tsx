@@ -14,6 +14,7 @@ export default async function Page() {
         {seasons.map((season: Season) => {
           return (
             <Link
+              key={season.name}
               className="block"
               href={`/basketball/${
                 COMPETITIONID_TO_GROUPNAME[season.competitionid]

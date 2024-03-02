@@ -4,8 +4,7 @@ module.exports = {
         "es2021": true
     },
     "extends": [
-        "standard-with-typescript",
-        "plugin:react/recommended"
+        "next/core-web-vitals", "prettier"
     ],
     "overrides": [
         {
@@ -25,7 +24,6 @@ module.exports = {
         "sourceType": "module"
     },
     "plugins": [
-        "react"
     ],
     "rules": {
     }
