@@ -3,15 +3,7 @@ import { asyncFetch } from "@/utils/fetch";
 import TeamRankTable from "@/components/basketball/standing/TeamRankTable";
 
 
-// export function generateStaticParams() {
-//   return [
-//     { competition: "men-open" },
-//     { competition: "women-open" },
-//     { competition: "men-senior" },
-//   ];
-// }
 
-// export const dynamicParams = false // true | false,
 export default async function Page({ params }: { params: { competition: string } }) {
   // fetch current season
   const [ season ] = await getRecentSeasons(params.competition);
@@ -24,3 +16,12 @@ export default async function Page({ params }: { params: { competition: string }
     </section>
   );
 }
+
+export async function generateStaticParams(){
+    return [
+      { competition: "men-open" },
+      { competition: "women-open" },
+      { competition: "men-senior" },
+    ];
+}
+
