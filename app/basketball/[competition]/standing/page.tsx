@@ -1,6 +1,6 @@
-import getRecentSeasons from "../../../utils/get-recent-seasons";
-import { asyncFetch } from "@/app/utils/fetch";
-import TeamRankTable from "@/app/components/basketball/standing/TeamRankTable";
+import getRecentSeasons from "@/utils/get-recent-seasons";
+import { asyncFetch } from "@/utils/fetch";
+import TeamRankTable from "@/components/basketball/standing/TeamRankTable";
 
 
 // export function generateStaticParams() {

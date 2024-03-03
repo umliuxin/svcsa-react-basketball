@@ -1,6 +1,6 @@
-import getRecentSeasons from "../utils/get-recent-seasons";
+import getRecentSeasons from "@/utils/get-recent-seasons";
 import { Link } from "@nextui-org/react";
-import { COMPETITIONID_TO_GROUPNAME } from '@/app/utils/variables';
+import { COMPETITIONID_TO_GROUPNAME } from '@/utils/variables';
 
 export default async function Page() {
   const seasons = await getRecentSeasons();
@@ -11,7 +11,7 @@ export default async function Page() {
       <section>
         <h3>Current Season Rank: </h3>
 
-        {seasons.map((season: Season) => {
+        {seasons.map((season: BbSeason) => {
           return (
             <Link
               key={season.name}

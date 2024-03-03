@@ -1,4 +1,4 @@
-type Season = {
+type BbSeason = {
   name: string;
   id: number;
   competitionid: number;
