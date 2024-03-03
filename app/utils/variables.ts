@@ -6,6 +6,6 @@ export const GROUPNAME_TO_COMPETITIONID: Record<string, number> = {
 
 export const COMPETITIONID_TO_GROUPNAME: Record<number, string> = {
   1: "men-open",
-  2: "men-senior",
-  4: "women-open",
+  4: "men-senior",
+  2: "women-open",
 };
