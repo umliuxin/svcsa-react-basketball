@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home renders the basic page 1`] = `
+<div>
+  <section>
+    <h1>
+      Hello, basketball league page!
+    </h1>
+    <section>
+      <h3>
+        Standings 
+      </h3>
+      <a
+        class="relative items-center tap-highlight-transparent outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 text-medium text-primary no-underline hover:opacity-80 active:opacity-disabled transition-opacity block"
+        data-testid="standing-link"
+        href="/basketball/men-open/standing"
+        role="link"
+        tabindex="0"
+      >
+        男篮公开组第21赛季
+      </a>
+      <a
+        class="relative items-center tap-highlight-transparent outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 text-medium text-primary no-underline hover:opacity-80 active:opacity-disabled transition-opacity block"
+        data-testid="standing-link"
+        href="/basketball/women-open/standing"
+        role="link"
+        tabindex="0"
+      >
+        女篮公开组第7赛季
+      </a>
+      <a
+        class="relative items-center tap-highlight-transparent outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 text-medium text-primary no-underline hover:opacity-80 active:opacity-disabled transition-opacity block"
+        data-testid="standing-link"
+        href="/basketball/men-senior/standing"
+        role="link"
+        tabindex="0"
+      >
+        男篮壮年组第1赛季
+      </a>
+    </section>
+  </section>
+</div>
+`;
