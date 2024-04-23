@@ -1,5 +1,5 @@
 import { asyncFetch } from "@/utils/fetch";
-import { GROUPNAME_TO_COMPETITIONID } from '@/utils/variables';
+import { GROUPNAME_TO_COMPETITIONID} from '@/utils/variables';
 
 /**
  * A function to get recent seasons

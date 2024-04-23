@@ -25,3 +25,10 @@ type BbTeamrank = {
   oppo_score: number;
   score_diff?: number;
 };
+
+type BbSeasonTeam = {
+  team?: BbTeam;
+  season?: BbSeason;
+  seasonid: number;
+  teamid: number;
+}

@@ -1,5 +1,3 @@
-
-
 export default function DashboardLayout({
   children, // will be a page or nested layout
   params,
@@ -24,4 +22,3 @@ export async function generateStaticParams() {
     { competition: "men-senior" },
   ];
 }
-
