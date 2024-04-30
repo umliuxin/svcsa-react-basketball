@@ -8,7 +8,7 @@ export default function DashboardLayout({
   // TODO: dynamic part for competition
   return (
     <section>
-      <h1>{params.competition}</h1>
+      {/* <h1>{params.competition}</h1> */}
       {children}
     </section>
   );

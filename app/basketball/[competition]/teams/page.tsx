@@ -1,14 +1,16 @@
 
-import Custom404 from "@/components/404";
-import SeasonDropDownMenu from "@/components/basketball/teams/TeamDropDowmMenu";
+import Custom404 from "@/components/404";;
 import TeamList from "@/components/basketball/teams/TeamList";
 import { asyncFetch } from "@/utils/fetch";
 import { getRecentSeasonByGroup } from "@/utils/get-recent-seasons";
 import { GROUPNAME_TO_COMPETITIONID } from "@/utils/variables";
+import SeasonSelectMenu from "@/components/basketball/teams/TeamSelectMenu";
 
+//Using 'force-static' to force useSearchParams() to return empty values.
 export const dynamic = 'force-static';
 export default async function Page({ params, searchParams }: any) {
   var teamList;
+  var seasonName;
   if (!searchParams.season) {
     // fetch recent season
     const season = await getRecentSeasonByGroup(params.competition);
@@ -19,11 +21,16 @@ export default async function Page({ params, searchParams }: any) {
     teamList = await asyncFetch(
       `/basketball/seasonteam?seasonid=${season.id}&$limit=1000`
     );
+    seasonName = season.name;
   } else {
     // Fetch the team list based on the user's requested season ID
     teamList = await asyncFetch(
       `/basketball/seasonteam?seasonid=${searchParams.season}&$limit=1000`
     );
+    const season = await asyncFetch(
+      `/basketball/season/${searchParams.season}`
+    );
+    seasonName = season.name;
   }
 
   var seasons = await asyncFetch(
@@ -34,8 +41,10 @@ export default async function Page({ params, searchParams }: any) {
 
   return (
     <section>
-      {/* <h1>{season.name}</h1> */}
-      <SeasonDropDownMenu seasons={seasons.data} />
+      <h1 className="text-center text-2xl mt-8">{seasonName}</h1>
+      <br/>
+      <br/>
+      <SeasonSelectMenu seasons={seasons.data}/>
       <br/>
       <br/>
       <TeamList teams={teamList.data} />

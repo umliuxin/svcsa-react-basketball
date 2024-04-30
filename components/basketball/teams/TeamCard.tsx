@@ -26,7 +26,7 @@ const TeamCard: React.FC<TeamCardProp> = ({ team }) => {
           </p>
         ) : null}
       </CardBody>
-      <CardFooter className="h-15 bg-neutral-300 justify-center">
+      <CardFooter className="h-15 bg-lime-700 justify-center">
         <p className="text-small">{team.shortname}</p>
       </CardFooter>
     </Card>
