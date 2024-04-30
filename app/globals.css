@@ -28,7 +28,7 @@ body {
 
 .match-table-container {
   margin: 20px auto; /* Center the table and add reasonable margin */
-  width: 80%; /* Adjust the width as needed */
+  width: 90%; /* Adjust the width as needed */
 }
 
 /* Style for the table with class "match-list-table" */
@@ -47,9 +47,31 @@ body {
 .match-list-table td {
   padding: 10px;
   border-bottom: 1px solid #bbb; /* Light gray border-bottom */
+  text-align: center;
 }
 
 /* Style for the last row in the table body */
 .match-list-table tbody tr:last-child td {
   border-bottom: none; /* Remove border-bottom for the last row */
 }
+
+
+
+/* Align dropdown to the left with margin */
+.match-dropdown {
+  margin-left: 10%; /* Adjust as needed */
+  display: flex;
+}
+
+/* Apply margin above and below the dropdown */
+.match-dropdown select {
+  margin: 8px; /* Adjust as needed */
+  margin-right: 16px; /* Adjust as needed */
+  width: 100px;
+}
+
+.match-dropdown label {
+  margin: 8px;
+  width: 100px; /* Adjust as needed */
+}
+
