@@ -6,20 +6,25 @@ interface TeamCardProp {
 }
 
 const TeamCard: React.FC<TeamCardProp> = ({ team }) => {
-  const [visibility, setVisibility] = useState("invisible");
+  const [imageLoadingError, setImageLoadingError] = useState(false);
   return (
     <Card key={team.id} className="relative" isPressable>
       <CardBody className="justify-center items-center h-40 hover:opacity-50">
         <Image
+          loading="lazy"
           width={100}
           height={100}
           alt={team.name}
           src={team.logosrc}
           onError={() => {
-            setVisibility("visible");
+            setImageLoadingError(true);
           }}
         />
-        <p className={`${visibility} absolute font-medium text-6xl`}>{team.shortname.substring(0,1).toUpperCase()}</p>
+        {imageLoadingError ? (
+          <p className="absolute font-medium text-6xl">
+            {team.shortname.substring(0, 1).toUpperCase()}
+          </p>
+        ) : null}
       </CardBody>
       <CardFooter className="h-15 bg-neutral-300 justify-center">
         <p className="text-small">{team.shortname}</p>
