@@ -1,5 +1,3 @@
-
-
 export default function DashboardLayout({
   children, // will be a page or nested layout
   params,
@@ -10,7 +8,7 @@ export default function DashboardLayout({
   // TODO: dynamic part for competition
   return (
     <section>
-      <h1>{params.competition}</h1>
+      {/* <h1>{params.competition}</h1> */}
       {children}
     </section>
   );
@@ -24,4 +22,3 @@ export async function generateStaticParams() {
     { competition: "men-senior" },
   ];
 }
-
