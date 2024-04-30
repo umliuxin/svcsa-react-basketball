@@ -71,7 +71,7 @@ const MatchList: React.FC<MatchListProps> = ({ matches, timeOption, teamOption }
               <td>{formatDateTime(match.starttime)}</td>
               <td>{match.court}</td>
               <td>{match.teama.shortname} vs. {match.teamb.shortname}</td>
-              <td>{match.state === 0 ? "未开赛" : match.state === 1 ? `${match.scoreteama} : ${match.scoreteamb}` : "状态异常"}</td>
+              <td>{match.state === 0 ? "未开赛" : match.state === 1 ? `${match.scoreteama} : ${match.scoreteamb}` : "弃权"}</td>
               <td>{match.state === 0 ? "未开赛" : match.state === 1 ? <a href="/link-to-be-determined">技术统计</a> : "无"}</td>
             </tr>
           ))}

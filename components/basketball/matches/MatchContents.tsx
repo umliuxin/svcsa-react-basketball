@@ -32,16 +32,18 @@ const MatchContents: React.FC<MatchContentsProps> = ({ matches, teams}) => {
         <section>
         {/* <h1>{season.name}</h1> */}
         {/* Render the SeasonDropdown component */}
-        <DropdownTime
-            selectedOption={selectedTimeOption}
-            onSelectOption={handleSelectTimeOption}
-        />
-        <DropdownTeam
-            selectedOption={selectedTeamOption}
-            onSelectOption={setSelectedTeamOption}
-            teams={teams}
-        />
-        <MatchList matches={matches} timeOption={selectedTimeOption} teamOption={selectedTeamOption}/>
+            <div className="match-dropdown">
+                <DropdownTime
+                    selectedOption={selectedTimeOption}
+                    onSelectOption={handleSelectTimeOption}
+                />
+                <DropdownTeam
+                    selectedOption={selectedTeamOption}
+                    onSelectOption={setSelectedTeamOption}
+                    teams={teams}
+                />
+            </div>
+            <MatchList matches={matches} timeOption={selectedTimeOption} teamOption={selectedTeamOption}/>
         </section>
     );
 }

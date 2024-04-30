@@ -15,7 +15,7 @@ const DropdownTime: React.FC<DropdownTimeProps> = ({
   };
 
   return (
-    <div className='match-dropdown'>
+    <div>
       <label htmlFor="timeframe">时间:</label>
       <select onChange={handleOptionChange} value={selectedOption}>
         <option value="all">All</option>
