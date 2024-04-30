@@ -26,6 +26,25 @@ export default async function Page() {
           );
         })}
       </section>
+
+      <br />
+      <section>
+        <h3>Teams</h3>
+        {seasons.map((season: BbSeason) => {
+          return (
+            <Link
+              key={season.id}
+              className="block"
+              data-testid="teams-link"
+              href={`/basketball/${
+                COMPETITIONID_TO_GROUPNAME[season.competitionid]
+              }/teams`}
+            >
+              {season.name}
+            </Link>
+          );
+        })}
+      </section>
     </section>
   );
 }
