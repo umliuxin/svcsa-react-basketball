@@ -25,3 +25,31 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+.match-table-container {
+  margin: 20px auto; /* Center the table and add reasonable margin */
+  width: 80%; /* Adjust the width as needed */
+}
+
+/* Style for the table with class "match-list-table" */
+.match-list-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Style for table header cells */
+.match-list-table th {
+  padding: 10px;
+  border-bottom: 2px solid black; /* Black under-border-line */
+}
+
+/* Style for table body cells */
+.match-list-table td {
+  padding: 10px;
+  border-bottom: 1px solid #bbb; /* Light gray border-bottom */
+}
+
+/* Style for the last row in the table body */
+.match-list-table tbody tr:last-child td {
+  border-bottom: none; /* Remove border-bottom for the last row */
+}
