@@ -1,9 +1,12 @@
 import { getRecentSeasons } from "@/utils/get-recent-seasons";
 import { Link } from "@nextui-org/react";
 import { COMPETITIONID_TO_GROUPNAME } from "@/utils/variables";
+import { asyncFetch } from "@/utils/fetch";
+import HomePageNews from "@/components/basketball/news/HomePageNews";
 
 export default async function Page() {
   const seasons = await getRecentSeasons();
+  const news = await asyncFetch(`/basketball/news?$sort[id]=-1&$limit=3`);
 
   return (
     <section>
@@ -44,6 +47,11 @@ export default async function Page() {
             </Link>
           );
         })}
+      </section>
+
+      <br />
+      <section>
+        <HomePageNews News={news.data} />
       </section>
     </section>
   );
