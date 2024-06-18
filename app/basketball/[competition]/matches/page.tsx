@@ -2,10 +2,11 @@ import Custom404 from "@/components/404";
 import { asyncFetch } from "@/utils/fetch";
 import MatchContents from "@/components/basketball/matches/MatchContents";
 import { getRecentSeasonByGroup } from "@/utils/get-recent-seasons";
+import "../../../match.css"
 
 export default async function Page({ params, searchParams }: any) {
   // fetch current season
-  const season = await getRecentSeasonByGroup(params.competition);
+  let season = await getRecentSeasonByGroup(params.competition);
 
   var matchList;
   var teamList;
@@ -15,6 +16,8 @@ export default async function Page({ params, searchParams }: any) {
     }
 
     // fetch match list
+    // 500 is not a number that makes sense
+    // Add pagination for match list
     matchList = await asyncFetch(
       `/basketball/match?seasonid=${season.id}&$limit=500`
     );
