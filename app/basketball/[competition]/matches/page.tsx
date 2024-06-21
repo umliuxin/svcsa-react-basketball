@@ -4,6 +4,8 @@ import MatchContents from "@/components/basketball/matches/MatchContents";
 import { getRecentSeasonByGroup } from "@/utils/get-recent-seasons";
 import "../../../match.css"
 
+//Using 'force-static' to force useSearchParams() to return empty values.
+export const dynamic = 'force-static';
 export default async function Page({ params, searchParams }: any) {
   // fetch current season
   let season = await getRecentSeasonByGroup(params.competition);

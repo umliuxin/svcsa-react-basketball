@@ -3,6 +3,8 @@ import { asyncFetch } from "@/utils/fetch";
 import TeamRankTable from "@/components/basketball/standing/TeamRankTable";
 import Custom404 from "@/components/404";
 
+//Using 'force-static' to force useSearchParams() to return empty values.
+export const dynamic = 'force-static';
 export default async function Page({
   params,
 }: {
