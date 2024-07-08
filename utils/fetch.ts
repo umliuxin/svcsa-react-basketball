@@ -3,9 +3,7 @@
  * @returns Promise<any>
  */
 export const asyncFetch = async function (path: string) {
-  console.log("API request", `${process.env.REACT_APP_API_DOMAIN}${path}`);
   const res = await fetch(`${process.env.REACT_APP_API_DOMAIN}${path}` as string).catch(e => {
-    console.log('what is the error', e)
     throw e;
   });
   // The return value is *not* serialized

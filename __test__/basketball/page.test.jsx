@@ -12,7 +12,7 @@ describe("Home", () => {
   });
 
   it("renders the basic page", async () => {
-    const mockData = {
+    const seasonMock = {
       total: 12,
       limit: 3,
       skip: 0,
@@ -86,10 +86,40 @@ describe("Home", () => {
       ],
     };
 
-    // Mock the fetch response
-    fetchMock.mockResponseOnce(JSON.stringify(mockData));
+    const newsMock = {
+      total: 12,
+      limit: 3,
+      skip: 0,
+      data: [
+        {
+          id: 30,
+          seasonid: 18,
+          matchid: null,
+          playerid: null,
+          category: "bb_result",
+          title: "Game Result",
+          content:
+            "男篮公开组第21赛季[常规赛]: in the game on 2024-06-22 at 13:00:00, team 67ers beat team 西南联队 with a score of 42:33.",
+          image:
+            "http://svcsa.org/uploads/20220820/3594e9ca97e6b16d64f058b0c53fcbdf.pdf",
+        },
+      ],
+    };
+    fetchMock.mockIf(/basketball\/news/, (req) => {
+      return Promise.resolve({
+        body: JSON.stringify(newsMock),
+        headers: { "content-type": "application/json" },
+      });
+    });
+
+    fetchMock.mockIf(/basketball\/season/, (req) => {
+      return Promise.resolve({
+        body: JSON.stringify(seasonMock),
+        headers: { "content-type": "application/json" },
+      });
+    });
     const serverComponent = await Page();
-    const {container} = render(serverComponent);
+    const { container } = render(serverComponent);
 
     const heading = screen.getByText("Hello, basketball league page!");
 
@@ -98,7 +128,6 @@ describe("Home", () => {
     const standingLinks = screen.getAllByTestId("standing-link");
 
     expect(standingLinks.length).toBe(3);
-
     expect(container).toMatchSnapshot();
   });
 });
