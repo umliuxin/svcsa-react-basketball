@@ -2,6 +2,7 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import { Providers } from "./providers";
 import GlobalNav from "../components/global-nav";
+import GlobalFooter from "../components/shared/global-footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,6 +23,7 @@ export default function RootLayout({
         <main className="relative container mx-auto max-w-7xl z-10 px-6 mb-12 flex-grow">
           <Providers>{children}</Providers>
         </main>
+        <GlobalFooter />
       </body>
     </html>
   );
