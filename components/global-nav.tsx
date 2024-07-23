@@ -115,7 +115,7 @@ export default function GlobalNav() {
                   router.push(group.subMenu[idx].link);
                 }}
               >
-                {group.subMenu.map((sub: any, idx: index) => {
+                {group.subMenu.map((sub: any, idx: number) => {
                   return (
                     <DropdownItem
                       key={idx}
