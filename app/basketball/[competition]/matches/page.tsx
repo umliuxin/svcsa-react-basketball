@@ -21,17 +21,17 @@ export default async function Page({ params, searchParams }: any) {
     // 500 is not a number that makes sense
     // Add pagination for match list
     matchList = await asyncFetch(
-      `/basketball/match?seasonid=${season.id}&$limit=500`
+      `/basketball/match?seasonid=${season.id}&$limit=20`
     );
     teamList = await asyncFetch(
-      `/basketball/seasonteam?seasonid=${season.id}&$limit=500`
+      `/basketball/seasonteam?seasonid=${season.id}&$limit=20`
     );
   } else {
-   matchList = await asyncFetch(
-      `/basketball/match?seasonid=${searchParams.season}&$limit=500`
+    matchList = await asyncFetch(
+      `/basketball/match?seasonid=${searchParams.season}&$limit=20`
     );
     teamList = await asyncFetch(
-      `/basketball/seasonteam?seasonid=${searchParams.season}&$limit=500`
+      `/basketball/seasonteam?seasonid=${searchParams.season}&$limit=20`
     );
   }
 

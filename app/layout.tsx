@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import { Providers } from "./providers";
 import GlobalNav from "../components/global-nav";
 import SiteBreadcrumb from "@/components/shared/site-breadcrumb";
+import GlobalFooter from "../components/shared/global-footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,6 +25,7 @@ export default function RootLayout({
           <SiteBreadcrumb />
           <Providers>{children}</Providers>
         </main>
+        <GlobalFooter />
       </body>
     </html>
   );

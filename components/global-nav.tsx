@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import {
   Navbar,
@@ -11,25 +11,26 @@ import {
   DropdownTrigger,
   Dropdown,
   DropdownMenu,
-} from "@nextui-org/react";
+} from '@nextui-org/react';
+import { useRouter } from 'next/navigation';
 
+import { BasketballScoreIcon } from './shared/icons';
 
-import { BasketballScoreIcon } from "./shared/icons";
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCalendar,  } from "@fortawesome/free-regular-svg-icons";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCalendar } from '@fortawesome/free-regular-svg-icons';
 import {
   faRankingStar,
   faChevronDown,
   faPeopleGroup,
   faDatabase,
   faBasketball,
-} from "@fortawesome/free-solid-svg-icons";
+} from '@fortawesome/free-solid-svg-icons';
+import { ALL_COMPETITION_GROUPS } from '@/utils/variables';
 
-
-import Image from "next/image";
+import Image from 'next/image';
 
 export default function GlobalNav() {
+  const router = useRouter();
 
   const icons = {
     score: <BasketballScoreIcon fill="currentColor" size={36} />,
@@ -41,6 +42,39 @@ export default function GlobalNav() {
     team: <FontAwesomeIcon fixedWidth icon={faBasketball} size="xl" />,
     stat: <FontAwesomeIcon fixedWidth icon={faDatabase} size="xl" />,
   };
+
+  const globalNavData: any[] = ALL_COMPETITION_GROUPS.map((competition) => {
+    return {
+      title: competition,
+      subMenu: [
+        {
+          icon: icons.schedule,
+          text: 'Schedule',
+          link: `/basketball/${competition}/matches`,
+        },
+        {
+          icon: icons.score,
+          text: 'Results',
+          link: `/basketball/${competition}/matches`,
+        },
+        {
+          icon: icons.standing,
+          text: 'Standing',
+          link: `/basketball/${competition}/standing`,
+        },
+        {
+          icon: icons.player,
+          text: 'Players',
+          link: `/basketball/${competition}/player`,
+        },
+        {
+          icon: icons.player,
+          text: 'Teams',
+          link: `/basketball/${competition}/teams`,
+        },
+      ],
+    };
+  });
 
   return (
     <Navbar maxWidth="xl" isBordered>
@@ -55,76 +89,55 @@ export default function GlobalNav() {
         />
       </NavbarBrand>
       <NavbarContent className="hidden sm:flex gap-4">
-        <Dropdown>
-          <NavbarItem>
-            <DropdownTrigger>
-              <Button
-                disableRipple
-                className="p-0 bg-transparent data-[hover=true]:bg-transparent"
-                endContent={icons.chevron}
-                radius="sm"
-                variant="light"
+        {globalNavData.map((group, index) => {
+          return (
+            <Dropdown key={index} className="pr-4">
+              <NavbarItem>
+                <DropdownTrigger>
+                  <Button
+                    disableRipple
+                    className="p-0 bg-transparent data-[hover=true]:bg-transparent text-medium"
+                    endContent={icons.chevron}
+                    radius="sm"
+                    variant="light"
+                  >
+                    {group.title}
+                  </Button>
+                </DropdownTrigger>
+              </NavbarItem>
+              <DropdownMenu
+                aria-label="Competition submenu"
+                className="w-[340px]"
+                itemClasses={{
+                  base: 'gap-4',
+                }}
+                onAction={(idx) => {
+                  router.push(group.subMenu[idx].link);
+                }}
               >
-                Basketball Men
-              </Button>
-            </DropdownTrigger>
-          </NavbarItem>
-          <DropdownMenu
-            aria-label="Competition submenu"
-            className="w-[340px]"
-            itemClasses={{
-              base: "gap-4",
-            }}
-          >
-            <DropdownItem
-              key="autoscaling"
-              description="Checkout match schedule"
-              startContent={icons.schedule}
-            >
-              Schedule
-            </DropdownItem>
-            <DropdownItem
-              key="usage_metrics"
-              description="Checkout match result"
-              startContent={icons.score}
-            >
-              Results
-            </DropdownItem>
-            <DropdownItem
-              key="production_ready"
-              description="Checkout seaon standing"
-              startContent={icons.standing}
-            >
-              Standing
-            </DropdownItem>
-            <DropdownItem
-              key="99_uptime"
-              description="Checkout Teams"
-              startContent={icons.team}
-            >
-              Teams
-            </DropdownItem>
-            <DropdownItem
-              key="supreme_support"
-              description="Checkout players"
-              startContent={icons.player}
-            >
-              Players
-            </DropdownItem>
-            <DropdownItem
-              key="supreme_support"
-              description="Overcome any challenge with a supporting team ready to respond."
-              startContent={icons.stat}
-            >
-              Statastics
-            </DropdownItem>
-          </DropdownMenu>
-        </Dropdown>
-      </NavbarContent>
-      <NavbarContent justify="end">
-        <NavbarItem className="hidden lg:flex">
-          <Link href="#">田径网站</Link>
+                {group.subMenu.map((sub: any, idx: index) => {
+                  return (
+                    <DropdownItem
+                      key={idx}
+                      description="Checkout match schedule"
+                      startContent={sub.icon}
+                    >
+                      {sub.text}
+                    </DropdownItem>
+                  );
+                })}
+              </DropdownMenu>
+            </Dropdown>
+          );
+        })}
+        <NavbarItem>
+          <Link href="svcsa.org/ctfc" className="no-underline text-current">
+            Track Field
+          </Link>
         </NavbarItem>
+      </NavbarContent>
+
+      <NavbarContent justify="end">
         <NavbarItem>
           <Button as={Link} color="primary" href="#" variant="flat">
             Join the league
