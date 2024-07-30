@@ -1,46 +1,35 @@
 {
   "name": "sv-next",
   "version": "0.1.0",
-  "private": true,
+  "type": "module",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
-    "test": "jest",
-    "test:watch": "jest --watch"
+    "start": "webpack serve --mode development",
+    "build": "webpack --mode production",
+    "server": "ts-node --loader ts-node/esm server.mts"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^6.5.2",
-    "@fortawesome/free-brands-svg-icons": "^6.5.2",
-    "@fortawesome/free-regular-svg-icons": "^6.5.2",
-    "@fortawesome/free-solid-svg-icons": "^6.5.2",
-    "@fortawesome/react-fontawesome": "^0.2.2",
-    "@nextui-org/react": "^2.2.9",
-    "@types/node": "20.2.5",
-    "@types/react": "^18.2.9",
-    "@types/react-dom": "18.2.4",
-    "autoprefixer": "10.4.14",
-    "framer-motion": "^10.16.1",
-    "next": "^14.0.4",
-    "postcss": "^8.4.35",
-    "react": "^18.3.1",
-    "react-dom": "^18.2.0",
-    "tailwindcss": "^3.3.3",
-    "typescript": "5.1.3"
-  },
-  "engines": {
-    "node": ">=18.17.0"
+    "axios": "^0.21.1",
+    "express": "^4.17.1",
+    "node-fetch": "^2.6.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "typescript": "^4.3.5"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^6.4.2",
-    "@testing-library/react": "^14.2.2",
-    "eslint": "^8.57.0",
-    "eslint-config-next": "^14.0.4",
-    "eslint-config-prettier": "^9.1.0",
-    "jest": "^29.7.0",
-    "jest-environment-jsdom": "^29.7.0",
-    "jest-fetch-mock": "^3.0.3",
-    "ts-node": "^10.9.2"
+    "@babel/core": "^7.14.6",
+    "@babel/preset-env": "^7.14.7",
+    "@babel/preset-react": "^7.14.5",
+    "@babel/preset-typescript": "^7.14.5",
+    "@types/axios": "^0.14.0",
+    "@types/express": "^4.17.11",
+    "@types/node-fetch": "^2.5.10",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "babel-loader": "^8.2.2",
+    "ts-loader": "^9.2.3",
+    "ts-node": "^10.9.2",
+    "webpack": "^5.38.1",
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^3.11.2"
   }
 }
