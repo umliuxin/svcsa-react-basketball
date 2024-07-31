@@ -12,7 +12,7 @@ export const getRecentSeasons = async function (groupName?: string): Promise<BbS
   } else {
     baseUrl += `&$limit=3`;
   }
-  console.log('season', baseUrl)
+  // console.log('season', baseUrl)
   const { data: seasons } = await asyncFetch(baseUrl);
 
   return seasons;
