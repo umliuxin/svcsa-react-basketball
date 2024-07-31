@@ -11,7 +11,7 @@ export const GROUPNAME_TO_COMPETITIONID: Record<string, number> = {
 };
 
 export const COMPETITIONID_TO_GROUPNAME: Record<number, string> = {
-  1: MEN_SENIOR,
+  1: MEN_OPEN,
   4: MEN_SENIOR,
   2: WOMEN_OPEN,
 };
