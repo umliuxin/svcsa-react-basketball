@@ -1,6 +1,6 @@
 # This workflow will build a container and deploy it to an Azure Functions App on Linux when a commit is pushed to your default branch.
 #
-name: Deploy container to Azure Container
+name: Beta Deployment by Docker 
 
 on:
   push:

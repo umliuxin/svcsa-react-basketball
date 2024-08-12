@@ -13,7 +13,7 @@ exports[`Home renders the basic page 1`] = `
       <a
         class="relative items-center tap-highlight-transparent outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 text-medium text-primary no-underline hover:opacity-80 active:opacity-disabled transition-opacity block"
         data-testid="standing-link"
-        href="/basketball/men-senior/standing"
+        href="/basketball/men-open/standing"
         role="link"
         tabindex="0"
       >
@@ -37,7 +37,7 @@ exports[`Home renders the basic page 1`] = `
       <a
         class="relative items-center tap-highlight-transparent outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 text-medium text-primary no-underline hover:opacity-80 active:opacity-disabled transition-opacity block"
         data-testid="teams-link"
-        href="/basketball/men-senior/teams"
+        href="/basketball/men-open/teams"
         role="link"
         tabindex="0"
       >
