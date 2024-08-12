@@ -4,8 +4,7 @@ import { COMPETITIONID_TO_GROUPNAME } from "@/utils/variables";
 import { asyncFetch } from "@/utils/fetch";
 import HomePageNews from "@/components/basketball/news/HomePageNews";
 
-//Using 'force-static' to force useSearchParams() to return empty values.
-export const dynamic = 'force-static';
+
 export default async function Page() {
   const seasons = await getRecentSeasons();
   const news = await asyncFetch(`/basketball/news?$sort[id]=-1&$limit=3`);

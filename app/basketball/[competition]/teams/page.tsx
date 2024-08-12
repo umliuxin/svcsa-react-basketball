@@ -6,8 +6,6 @@ import { getRecentSeasonByGroup } from "@/utils/get-recent-seasons";
 import { GROUPNAME_TO_COMPETITIONID } from "@/utils/variables";
 import SeasonSelectMenu from "@/components/basketball/teams/TeamSelectMenu";
 
-//Using 'force-static' to force useSearchParams() to return empty values.
-export const dynamic = 'force-static';
 export default async function Page({ params, searchParams }: any) {
   var teamList;
   var seasonName;
@@ -53,10 +51,10 @@ export default async function Page({ params, searchParams }: any) {
 }
 
 // Return a list of `params` to populate the [slug] dynamic segment
-export async function generateStaticParams() {
-  return [
-    { competition: "men-open" },
-    { competition: "women-open" },
-    { competition: "men-senior" },
-  ];
-}
+// export async function generateStaticParams() {
+//   return [
+//     { competition: "men-open" },
+//     { competition: "women-open" },
+//     { competition: "men-senior" },
+//   ];
+// }

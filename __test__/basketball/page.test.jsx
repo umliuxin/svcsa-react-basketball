@@ -61,33 +61,11 @@ describe("Home", () => {
               "http://svcsa.org/uploads/20220415/a0be11abe00633a950a7a9c8d651df5e.jpg",
           },
         },
-        {
-          id: 20,
-          name: "男篮壮年组第1赛季",
-          starttime: "2022-09-18T00:00:00.000Z",
-          teamnumber: 4,
-          groupnumber: 1,
-          playoffgroupnumber: 1,
-          rules: 2,
-          competitionid: 4,
-          startdate: {
-            month: 9,
-            day: 18,
-            year: 2022,
-          },
-          competition: {
-            id: 4,
-            name: "AlphaX杯SVCBA男篮壮年组",
-            description: "硅谷华人篮球联赛男篮壮年组",
-            picture:
-              "http://svcsa.org/uploads/20220816/829ecc8922c42936100e634e71716684.jpg",
-          },
-        },
       ],
     };
 
     const newsMock = {
-      total: 12,
+      total: 1,
       limit: 3,
       skip: 0,
       data: [
@@ -113,6 +91,7 @@ describe("Home", () => {
     });
 
     fetchMock.mockIf(/basketball\/season/, (req) => {
+
       return Promise.resolve({
         body: JSON.stringify(seasonMock),
         headers: { "content-type": "application/json" },
@@ -127,7 +106,7 @@ describe("Home", () => {
 
     const standingLinks = screen.getAllByTestId("standing-link");
 
-    expect(standingLinks.length).toBe(3);
+    expect(standingLinks.length).toBe(2);
     expect(container).toMatchSnapshot();
   });
 });

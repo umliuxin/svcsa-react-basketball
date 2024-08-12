@@ -28,15 +28,6 @@ exports[`Home renders the basic page 1`] = `
       >
         女篮公开组第7赛季
       </a>
-      <a
-        class="relative items-center tap-highlight-transparent outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 text-medium text-primary no-underline hover:opacity-80 active:opacity-disabled transition-opacity block"
-        data-testid="standing-link"
-        href="/basketball/men-senior/standing"
-        role="link"
-        tabindex="0"
-      >
-        男篮壮年组第1赛季
-      </a>
     </section>
     <br />
     <section>
@@ -60,15 +51,6 @@ exports[`Home renders the basic page 1`] = `
         tabindex="0"
       >
         女篮公开组第7赛季
-      </a>
-      <a
-        class="relative items-center tap-highlight-transparent outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 text-medium text-primary no-underline hover:opacity-80 active:opacity-disabled transition-opacity block"
-        data-testid="teams-link"
-        href="/basketball/men-senior/teams"
-        role="link"
-        tabindex="0"
-      >
-        男篮壮年组第1赛季
       </a>
     </section>
     <br />
@@ -98,128 +80,7 @@ exports[`Home renders the basic page 1`] = `
         </div>
         <div
           class="flex gap-5 col-span-3 self-center"
-        >
-          <div
-            class="flex flex-col relative overflow-hidden height-auto box-border outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 shadow-medium rounded-large transition-transform-background motion-reduce:transition-none bg-black text-white"
-            tabindex="-1"
-          >
-            <div
-              class="relative w-full p-3 flex-auto flex-col place-content-inherit align-items-inherit h-auto break-words text-left overflow-y-auto subpixel-antialiased grid justify-items-center content-center"
-            >
-              <div
-                class="shadow-black/5 shadow-none group relative overflow-hidden bg-content3 dark:bg-content2 before:opacity-100 before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-content4/30 before:bg-gradient-to-r before:from-transparent before:via-content4 dark:before:via-default-700/10 before:to-transparent after:opacity-100 after:absolute after:inset-0 after:-z-10 after:bg-content3 dark:after:bg-content2 rounded-large"
-                style="max-width: 60px;"
-              >
-                 
-                <img
-                  class="relative z-10 shadow-black/5 data-[loaded=true]:opacity-100 shadow-none opacity-0 transition-transform-opacity motion-reduce:transition-none !duration-300 rounded-large"
-                  height="60"
-                  src="http://svcsa.org/uploads/20220820/3594e9ca97e6b16d64f058b0c53fcbdf.pdf"
-                  width="60"
-                />
-              </div>
-            </div>
-            <div
-              class="p-3 items-center overflow-hidden color-inherit subpixel-antialiased rounded-b-large flex flex-col text-xs w-48 h-40"
-            >
-              <h3
-                class="text-center font-bold leading-6"
-              >
-                Game Result
-              </h3>
-              <p
-                class="text-center font-extralight"
-              >
-                男篮公开组第21赛季[常规赛]: in the game on 2024-06-22 at 13:00:00, team 67ers beat team 西南联队 with a score of 42:33.
-              </p>
-              <a
-                class="text-orange-700 underline cursor-pointer"
-              >
-                learn more
-              </a>
-            </div>
-          </div>
-          <div
-            class="flex flex-col relative overflow-hidden height-auto box-border outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 shadow-medium rounded-large transition-transform-background motion-reduce:transition-none bg-black text-white"
-            tabindex="-1"
-          >
-            <div
-              class="relative w-full p-3 flex-auto flex-col place-content-inherit align-items-inherit h-auto break-words text-left overflow-y-auto subpixel-antialiased grid justify-items-center content-center"
-            >
-              <div
-                class="shadow-black/5 shadow-none group relative overflow-hidden bg-content3 dark:bg-content2 before:opacity-100 before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-content4/30 before:bg-gradient-to-r before:from-transparent before:via-content4 dark:before:via-default-700/10 before:to-transparent after:opacity-100 after:absolute after:inset-0 after:-z-10 after:bg-content3 dark:after:bg-content2 rounded-large"
-                style="max-width: 60px;"
-              >
-                 
-                <img
-                  class="relative z-10 shadow-black/5 data-[loaded=true]:opacity-100 shadow-none opacity-0 transition-transform-opacity motion-reduce:transition-none !duration-300 rounded-large"
-                  height="60"
-                  src="http://svcsa.org/uploads/20220822/cdf4309e4bd8d492729cb06db92c8c0e.png"
-                  width="60"
-                />
-              </div>
-            </div>
-            <div
-              class="p-3 items-center overflow-hidden color-inherit subpixel-antialiased rounded-b-large flex flex-col text-xs w-48 h-40"
-            >
-              <h3
-                class="text-center font-bold leading-6"
-              >
-                Game Result
-              </h3>
-              <p
-                class="text-center font-extralight"
-              >
-                男篮公开组第21赛季[常规赛]: in the game on 2024-06-22 at 13:00:00, team 西南联队 beat team 67ers with a score of 42:33.
-              </p>
-              <a
-                class="text-orange-700 underline cursor-pointer"
-              >
-                learn more
-              </a>
-            </div>
-          </div>
-          <div
-            class="flex flex-col relative overflow-hidden height-auto box-border outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 shadow-medium rounded-large transition-transform-background motion-reduce:transition-none bg-black text-white"
-            tabindex="-1"
-          >
-            <div
-              class="relative w-full p-3 flex-auto flex-col place-content-inherit align-items-inherit h-auto break-words text-left overflow-y-auto subpixel-antialiased grid justify-items-center content-center"
-            >
-              <div
-                class="shadow-black/5 shadow-none group relative overflow-hidden bg-content3 dark:bg-content2 before:opacity-100 before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-content4/30 before:bg-gradient-to-r before:from-transparent before:via-content4 dark:before:via-default-700/10 before:to-transparent after:opacity-100 after:absolute after:inset-0 after:-z-10 after:bg-content3 dark:after:bg-content2 rounded-large"
-                style="max-width: 60px;"
-              >
-                 
-                <img
-                  class="relative z-10 shadow-black/5 data-[loaded=true]:opacity-100 shadow-none opacity-0 transition-transform-opacity motion-reduce:transition-none !duration-300 rounded-large"
-                  height="60"
-                  src="http://svcsa.org/uploads/20220822/cdf4309e4bd8d492729cb06db92c8c0e.png"
-                  width="60"
-                />
-              </div>
-            </div>
-            <div
-              class="p-3 items-center overflow-hidden color-inherit subpixel-antialiased rounded-b-large flex flex-col text-xs w-48 h-40"
-            >
-              <h3
-                class="text-center font-bold leading-6"
-              >
-                Game Result
-              </h3>
-              <p
-                class="text-center font-extralight"
-              >
-                男篮公开组第21赛季[常规赛]: in the game on 2024-06-22 at 13:00:00, team 西南联队 beat team 67ers with a score of 44:33.
-              </p>
-              <a
-                class="text-orange-700 underline cursor-pointer"
-              >
-                learn more
-              </a>
-            </div>
-          </div>
-        </div>
+        />
       </div>
     </section>
   </section>
