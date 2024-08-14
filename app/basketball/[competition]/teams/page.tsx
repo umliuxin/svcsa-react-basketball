@@ -1,11 +1,12 @@
-
-import Custom404 from "@/components/404";;
+import Custom404 from "@/components/404";
 import TeamList from "@/components/basketball/teams/TeamList";
 import { asyncFetch } from "@/utils/fetch";
 import { getRecentSeasonByGroup } from "@/utils/get-recent-seasons";
 import { GROUPNAME_TO_COMPETITIONID } from "@/utils/variables";
-import SeasonSelectMenu from "@/components/basketball/teams/TeamSelectMenu";
+import TeamSeasonSelectMenu from "@/components/basketball/teams/TeamSeasonSelectMenu";
 
+//Using 'force-static' to force useSearchParams() to return empty values.
+export const dynamic = "force-static";
 export default async function Page({ params, searchParams }: any) {
   var teamList;
   var seasonName;
@@ -40,11 +41,11 @@ export default async function Page({ params, searchParams }: any) {
   return (
     <section>
       <h1 className="text-center text-2xl mt-8">{seasonName}</h1>
-      <br/>
-      <br/>
-      <SeasonSelectMenu seasons={seasons.data}/>
-      <br/>
-      <br/>
+      <br />
+      <br />
+      <TeamSeasonSelectMenu seasons={seasons.data} />
+      <br />
+      <br />
       <TeamList teams={teamList.data} />
     </section>
   );

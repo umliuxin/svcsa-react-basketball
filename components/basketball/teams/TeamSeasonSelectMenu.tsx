@@ -6,12 +6,11 @@ import {
   SelectItem,
 } from "@nextui-org/react";
 
-
-interface SeasonSelectMenuProps {
+interface TeamSeasonSelectMenuProps {
   seasons: BbSeason[];
 }
 
-const SeasonSelectMenu: React.FC<SeasonSelectMenuProps> = ({ seasons }) => {
+const TeamSeasonSelectMenu: React.FC<TeamSeasonSelectMenuProps> = ({ seasons }) => {
   return (
     <Select
       placeholder="-----Select a season-----"
@@ -34,4 +33,4 @@ const SeasonSelectMenu: React.FC<SeasonSelectMenuProps> = ({ seasons }) => {
   );
 };
 
-export default SeasonSelectMenu;
+export default TeamSeasonSelectMenu;
