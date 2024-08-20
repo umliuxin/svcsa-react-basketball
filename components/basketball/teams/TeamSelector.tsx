@@ -4,8 +4,6 @@ import React from "react";
 import { Listbox, ListboxItem, cn } from "@nextui-org/react";
 import TeamImage from "./TeamImage";
 import {
-  faRankingStar,
-  faChevronDown,
   faPeopleGroup,
   faDatabase,
   faBasketball,
@@ -17,9 +15,7 @@ interface TeamSelectorProp {
   seasonTeams: BbSeasonTeam[];
 }
 
-export const TeamSelector: React.FC<TeamSelectorProp> = ({
-  seasonTeams,
-}) => {
+export const TeamSelector: React.FC<TeamSelectorProp> = ({ seasonTeams }) => {
   const filteredTeam = seasonTeams.filter((t) => !!t);
 
   const router = useRouter();

@@ -6,7 +6,7 @@ import { GROUPNAME_TO_COMPETITIONID } from "@/utils/variables";
 import TeamSeasonSelectMenu from "@/components/basketball/teams/TeamSeasonSelectMenu";
 
 //Using 'force-static' to force useSearchParams() to return empty values.
-export const dynamic = "force-static";
+export const dynamic = "";
 export default async function Page({ params, searchParams }: any) {
   var teamList;
   var seasonName;
