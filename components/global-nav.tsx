@@ -65,7 +65,7 @@ export default function GlobalNav() {
         {
           icon: icons.player,
           text: 'Players',
-          link: `/basketball/${competition}/player`,
+          link: `/basketball/${competition}/players`,
         },
         {
           icon: icons.player,

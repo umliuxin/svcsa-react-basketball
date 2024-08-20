@@ -41,7 +41,7 @@ jobs:
         registry-username: ${{ secrets.AZURE_USERNAME }}
         registry-password: ${{ secrets.AZURE_PWD }}
         name: 'svcsa-web-prod-container'
-        ports: 80
+        ports: 3000
         location: 'west us'
         
     - name: Azure logout

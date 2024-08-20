@@ -3,7 +3,11 @@
  * @returns Promise<any>
  */
 export const asyncFetch = async function (path: string) {
-  const res = await fetch(`${process.env.REACT_APP_API_DOMAIN}${path}` as string).catch(e => {
+  // TODO: figure out how to manage api url in client codes
+  const baseURL =
+    process.env.REACT_APP_API_DOMAIN ??
+    "http://beta-svcsa-api.westus.azurecontainer.io:3030";
+  const res = await fetch(`${baseURL}${path}` as string).catch((e) => {
     throw e;
   });
   // The return value is *not* serialized
