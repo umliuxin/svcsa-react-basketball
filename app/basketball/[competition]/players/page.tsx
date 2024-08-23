@@ -3,7 +3,7 @@ import TeamList from "@/components/basketball/teams/TeamList";
 import { asyncFetch } from "@/utils/fetch";
 import { getRecentSeasonByGroup } from "@/utils/get-recent-seasons";
 import { GROUPNAME_TO_COMPETITIONID } from "@/utils/variables";
-import SeasonSelectMenu from "@/components/basketball/teams/TeamSelectMenu";
+import SeasonSelectMenu from "@/components/basketball/teams/TeamSeasonSelectMenu";
 import { TeamSelector } from "@/components/basketball/teams/TeamSelector";
 import PlayerCard from "@/components/basketball/players/PlayerCard";
 import { Pagination } from "@nextui-org/react";
