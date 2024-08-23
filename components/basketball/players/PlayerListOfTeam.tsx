@@ -21,7 +21,7 @@ const PlayerListOfTeam: React.FC<PlayerListOfTeamProp> = ({
             return;
           }
           return (
-            <div className="flex h-12 items-center cursor-pointer">
+            <div className="flex h-12 items-center cursor-pointer" key={index}>
               <Link
                 href={`/basketball/${params.competition}/players/:playerid=${seasonteamplayer.player.id}`}
               >

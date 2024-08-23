@@ -7,18 +7,18 @@ import PlayerListOfTeam from "@/components/basketball/players/PlayerListOfTeam";
 import PlayerPage from "@/components/basketball/players/PlayerPage";
 
 //Using 'force-static' to force useSearchParams() to return empty values.
-export const dynamic = "force-static";
+//export const dynamic = "force-static";
 
 // Return a list of `params` to populate the [slug] dynamic segment
-export function generateStaticParams() {
-  return [
-    { competition: "men-open", playerid: "189" },
-    { competition: "women-open", playerid: "189" },
-    { competition: "men-senior", playerid: "189" },
-  ];
-}
+// export function generateStaticParams() {
+//   return [
+//     { competition: "men-open", playerid: "189" },
+//     { competition: "women-open", playerid: "189" },
+//     { competition: "men-senior", playerid: "189" },
+//   ];
+// }
 
-export default async function Page({ params, searchParams }: any) {
+export default async function Page({ params }: any) {
   // fetch current season
   const season = await getRecentSeasonByGroup(params.competition);
 
