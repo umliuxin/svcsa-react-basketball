@@ -1,4 +1,4 @@
-type News = {
+type BbNews = {
     id: number;
     seasonid: number;
     matchid: number;
@@ -6,5 +6,5 @@ type News = {
     image: string;
     category: string;
     title: string;
-    content: string
+    content: string;
 };

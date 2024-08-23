@@ -3,10 +3,10 @@ import { Card, CardBody, CardFooter, Image } from "@nextui-org/react";
 import { useState } from "react";
 
 interface NewsCardProp {
-  newsObject: News;
+  newsObject: BbNews;
 }
-const NULL = "http://svcsa.org/uploads/null";
 
+const NULL = "http://svcsa.org/uploads/null";
 const NewsCard: React.FC<NewsCardProp> = ({ newsObject }) => {
   const [imageLoadingError, setImageLoadingError] = useState(false);
   const indexOfTeamName = newsObject.content.indexOf("team") + 5;
@@ -23,7 +23,10 @@ const NewsCard: React.FC<NewsCardProp> = ({ newsObject }) => {
         />
         {imageLoadingError ? (
           <p className="absolute font-medium text-6xl">
-            {newsObject.content.substring(indexOfTeamName, indexOfTeamName+1).toUpperCase()}
+            {newsObject.content.substring(
+              indexOfTeamName,
+              indexOfTeamName + 1
+            ).toUpperCase()}
           </p>
         ) : null}
       </CardBody>
