@@ -10,9 +10,10 @@ const DEFAULT_PAGINATION = 20;
 
 interface PlayersListProp {
   seasonId: number;
+  params: any
 }
 
-const PlayersList: React.FC<PlayersListProp> = ({seasonId}) => {
+const PlayersList: React.FC<PlayersListProp> = ({seasonId, params}) => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const pathName = usePathname();
@@ -66,7 +67,7 @@ const PlayersList: React.FC<PlayersListProp> = ({seasonId}) => {
                   key={seasonPlayer.player.id}
                   className="relative w-3/12 p-2"
                 >
-                  <PlayerCard player={seasonPlayer.player} />
+                  <PlayerCard player={seasonPlayer.player} params={params}/>
                 </div>
               );
             })}

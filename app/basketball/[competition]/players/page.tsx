@@ -33,7 +33,7 @@ export default async function Page({ params, searchParams }: any) {
           <TeamSelector seasonTeams={seasonTeams} />
         </div>
         <div className="w-full md:w-9/12 pl-4">
-          <PlayersList seasonId={seasonId} />
+          <PlayersList seasonId={seasonId} params={params}/>
         </div>
       </div>
     </div>
