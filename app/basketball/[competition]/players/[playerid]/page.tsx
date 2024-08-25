@@ -1,3 +1,4 @@
+
 import Custom404 from "@/components/404";
 import { asyncFetch } from "@/utils/fetch";
 import { getRecentSeasonByGroup } from "@/utils/get-recent-seasons";
@@ -5,6 +6,7 @@ import TeamImage from "@/components/basketball/teams/TeamImage";
 import PlayerSeasonAverage from "@/components/basketball/players/PlayerSeasonAverage";
 import PlayerListOfTeam from "@/components/basketball/players/PlayerListOfTeam";
 import PlayerPage from "@/components/basketball/players/PlayerPage";
+
 
 //Using 'force-static' to force useSearchParams() to return empty values.
 //export const dynamic = "force-static";
