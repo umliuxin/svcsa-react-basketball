@@ -15,9 +15,8 @@ export const asyncFetch = async function (path: string) {
 
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary
-    console.error(path)
-    throw new Error("Failed to fetch data");
+    throw new Error(`Failed to fetch data: ${path}`);
   }
 
   return res.json();
-}
+};

@@ -6,8 +6,20 @@ import Page from "@/app/basketball/page";
 import { beforeEach } from "node:test";
 import fetchMock from "jest-fetch-mock";
 
+// Mock useRouter:
+jest.mock("next/navigation", () => ({
+  useRouter() {
+    return {
+      prefetch: () => null
+    };
+  }
+}));
+
 describe("Home", () => {
   beforeEach(() => {
+    jest.mock("next/navigation", () => ({
+      useRouter: jest.fn(),
+    }));
     fetchMock.resetMocks();
   });
 
