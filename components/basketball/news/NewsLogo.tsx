@@ -12,6 +12,7 @@ const NewsLogo: React.FC<NewsPageProps> = ({ news }) => {
     <div className="col-span-2 font-bold justify-self-center self-center">
       <Image
         src={news.image === NULL ? "/logo2.png" : news.image}
+        alt="news logo"
         width={80}
         onError={() => {
           setImageLoadingError(true);

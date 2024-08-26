@@ -15,13 +15,11 @@ export default async function Page({ params, searchParams }: any) {
   // fetch current season
   const season = await getRecentSeasonByGroup(params.competition);
 
-
   if (!season) {
     return <Custom404 />;
   }
 
   const seasonId = parseInt(searchParams?.seasonid, 10) || season?.id;
-
 
   // fetch team list of the recent season
   const { data: seasonTeams } = await asyncFetch(
@@ -32,12 +30,10 @@ export default async function Page({ params, searchParams }: any) {
     <div className="container">
       <div className="flex flex-wrap">
         <div className="w-full md:w-3/12">
-          <TeamSelector
-            seasonTeams={seasonTeams}
-          />
+          <TeamSelector seasonTeams={seasonTeams} />
         </div>
         <div className="w-full md:w-9/12 pl-4">
-          <PlayersList seasonId={seasonId} />
+          <PlayersList seasonId={seasonId} params={params}/>
         </div>
       </div>
     </div>

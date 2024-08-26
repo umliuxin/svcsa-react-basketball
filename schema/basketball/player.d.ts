@@ -17,3 +17,15 @@ type BbSeasonTeamPlayer = {
   teamid: number;
   playerid: number;
 }
+
+type BbPlayerSeasonAverage = {
+  foul: number;
+  points: number;
+  assist: number;
+  steal: number;
+  block: number;
+  rebound: number;
+  fgp: number;
+  ["3gp"]: number;
+  ftp: number;
+}
