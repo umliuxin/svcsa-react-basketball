@@ -3,30 +3,43 @@
 import React from "react";
 import { Listbox, ListboxItem, cn } from "@nextui-org/react";
 import TeamImage from "./TeamImage";
-import {
-  faPeopleGroup,
-  faDatabase,
-  faBasketball,
-} from "@fortawesome/free-solid-svg-icons";
+import { faPeopleGroup } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
 
 interface TeamSelectorProp {
   seasonTeams: BbSeasonTeam[];
+  allBtnText?: string;
+  allBtnIcon?: IconDefinition;
 }
 
-export const TeamSelector: React.FC<TeamSelectorProp> = ({ seasonTeams }) => {
+export const TeamSelector: React.FC<TeamSelectorProp> = ({
+  seasonTeams,
+  allBtnText = "All Players",
+  allBtnIcon = (
+    <FontAwesomeIcon
+      fixedWidth
+      className="w-8 h-8"
+      icon={faPeopleGroup}
+      size="xl"
+    />
+  ),
+}) => {
   const filteredTeam = seasonTeams.filter((t) => !!t);
 
   const router = useRouter();
   const pathName = usePathname();
   const searchParams = useSearchParams();
 
-  const handleTeamSelect = (newTeamId: number): void => {
+  const handleTeamSelect = (newTeamId?: number): void => {
     const currentParams = new URLSearchParams(searchParams?.toString());
 
-    currentParams.set("teamid", newTeamId.toString());
-    currentParams.set("page", "1");
+    if (!newTeamId) {
+      currentParams.delete("teamid");
+    } else {
+      currentParams.set("teamid", newTeamId.toString());
+    }
+    currentParams.delete("page");
 
     router.push(`${pathName}?${currentParams.toString()}`);
   };
@@ -37,15 +50,13 @@ export const TeamSelector: React.FC<TeamSelectorProp> = ({ seasonTeams }) => {
         variant="faded"
         aria-label="Listbox menu with icons"
         topContent={
-          <div className="flex gap-2 items-center px-2">
-            <FontAwesomeIcon
-              fixedWidth
-              className="w-8 h-8"
-              icon={faPeopleGroup}
-              size="xl"
-            />
-            <div>All Players</div>
-          </div>
+          <button
+            className="flex gap-2 items-center px-2"
+            onClick={() => handleTeamSelect()}
+          >
+            {allBtnIcon}
+            <div>{allBtnText}</div>
+          </button>
         }
       >
         {filteredTeam.map((seasonTeam) => {

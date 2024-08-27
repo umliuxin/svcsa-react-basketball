@@ -4,8 +4,8 @@ import { formatDateTime } from '@/utils/formatDateTime';
 // Define props interface
 interface MatchListProps {
   matches: BbSeasonMatch[];
-  timeOption: string;
-  teamOption: string;
+  timeOption?: string;
+  teamOption?: string;
 }
 
 const MatchList: React.FC<MatchListProps> = ({
@@ -16,7 +16,7 @@ const MatchList: React.FC<MatchListProps> = ({
   const filterMatches = (
     matches: any[],
     timeOption: string,
-    teamOption: string
+    teamOption: string = 'all'
   ) => {
     // Get the current date
     const currentDate = new Date();

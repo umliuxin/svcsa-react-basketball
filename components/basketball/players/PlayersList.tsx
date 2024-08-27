@@ -21,13 +21,13 @@ const PlayersList: React.FC<PlayersListProp> = ({seasonId, params}) => {
   const teamId = parseInt(searchParams?.get("teamid") ?? "", 10);
 
   const [seasonPlayers, setSeasonPlayers] = useState([]);
-  const [totalPage, setTotalPage] = useState(10);
+  const [totalPage, setTotalPage] = useState(1);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function fetchItems() {
       setLoading(true);
-      let fetchUrl = `/basketball/seasonteamplayer?seasonid=${seasonId}&$limit=20&$skip=${
+      let fetchUrl = `/basketball/seasonteamplayer?seasonid=${seasonId}&$limit=${DEFAULT_PAGINATION}&$skip=${
         DEFAULT_PAGINATION * (page - 1)
       }`;
       if (teamId) {
@@ -72,14 +72,15 @@ const PlayersList: React.FC<PlayersListProp> = ({seasonId, params}) => {
               );
             })}
           </div>
-
-          <Pagination
-            total={totalPage}
-            initialPage={page}
-            size={"lg"}
-            className="flex justify-center"
-            onChange={handlePageChange}
-          />
+          {totalPage > 1 && (
+            <Pagination
+              total={totalPage}
+              initialPage={page}
+              size={"lg"}
+              className="flex justify-center"
+              onChange={handlePageChange}
+            />
+          )}
         </div>
       )}
     </div>
