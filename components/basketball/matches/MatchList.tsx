@@ -15,7 +15,7 @@ const MatchList: React.FC<MatchListProps> = ({
 }) => {
   const filterMatches = (
     matches: any[],
-    timeOption: string,
+    timeOption: string = 'all',
     teamOption: string = 'all'
   ) => {
     // Get the current date

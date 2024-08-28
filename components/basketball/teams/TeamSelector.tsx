@@ -1,7 +1,7 @@
 "use client";
 
-import React from "react";
-import { Listbox, ListboxItem, cn } from "@nextui-org/react";
+import React, { ReactNode } from "react";
+import { Listbox, ListboxItem } from "@nextui-org/react";
 import TeamImage from "./TeamImage";
 import { faPeopleGroup } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -10,7 +10,7 @@ import { useSearchParams, useRouter, usePathname } from "next/navigation";
 interface TeamSelectorProp {
   seasonTeams: BbSeasonTeam[];
   allBtnText?: string;
-  allBtnIcon?: IconDefinition;
+  allBtnIcon?: ReactNode; // ReactNode for JSX elements
 }
 
 export const TeamSelector: React.FC<TeamSelectorProp> = ({
