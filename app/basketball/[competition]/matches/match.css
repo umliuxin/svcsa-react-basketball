@@ -47,4 +47,60 @@
     width: 100px; /* Adjust as needed */
   }
   
+  /* Style for the matchStat table */
+  .matchStat {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+  }
+  
+  .statTeamTitle {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-top: 40px;
+    margin-bottom: 10px;
+  }
+  
+  .statTable {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .statTable th,
+  .statTable td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  .statTable th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+  
+  .statTable td {
+    background-color: #fff;
+  }
+  
+  .statTable tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+
+/* First column */
+th:nth-child(1), td:nth-child(1) { 
+  width: 150px;
+  text-align: left;
+}
+
+/* Remaining columns */
+th:not(:first-child), td:not(:first-child) {
+  width: 50px;
+  text-align: center;
+}
+
+  /* Bold text for the last row */
+  .statTable tr:last-child td {
+    font-weight: bold;
+  }  
   
