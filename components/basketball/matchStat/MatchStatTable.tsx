@@ -1,4 +1,6 @@
 import React from 'react';
+import { Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from '@nextui-org/react';
+
 
 interface MatchStatTableProps {
     playerStats:BbStat[];
@@ -6,48 +8,46 @@ interface MatchStatTableProps {
 
 const MatchStatTable: React.FC<MatchStatTableProps> = ({playerStats}) => {
     return (
-        <div>
-            <table className='statTable'>
-                <thead>
-                    <tr>
-                        <th>球员</th>
-                        <th>得分</th>
-                        <th>两分球</th>
-                        <th>三分球</th>
-                        <th>罚球</th>
-                        <th>前场</th>
-                        <th>后场</th>
-                        <th>篮板</th>
-                        <th>助攻</th>
-                        <th>抢断</th>
-                        <th>盖帽</th>
-                        <th>失误</th>
-                        <th>犯规</th>
-                        <th>效率</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {playerStats.map((p, index) => (
-                        <tr key={index}>
-                            <td>{p.player.name}</td>
-                            <td>{p.points}</td>
-                            <td>{p['2pointshit']} - {p['2pointsshot']}</td>
-                            <td>{p['3pointshit']} - {p['3pointsshot']}</td>
-                            <td>{p['1pointshit']} - {p['1pointsshot']}</td>
-                            <td>{p.offensiverebound}</td>
-                            <td>{p.rebound - p.offensiverebound}</td>
-                            <td>{p.rebound}</td>
-                            <td>{p.assist}</td>
-                            <td>{p.steal}</td>
-                            <td>{p.block}</td>
-                            <td>{p.turnover? p.turnover : 0}</td>
-                            <td>{p.foul}</td>
-                            <td>{p.points + p.offensiverebound + p.rebound + p.assist + p.steal + p.block - p.turnover - p['3pointsshot'] - p['2pointsshot'] - p['1pointsshot']}</td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-        </div>
+        <Table aria-label="Player statistics table">
+          <TableHeader>
+            <TableColumn>球员</TableColumn>
+            <TableColumn>得分</TableColumn>
+            <TableColumn>两分球</TableColumn>
+            <TableColumn>三分球</TableColumn>
+            <TableColumn>罚球</TableColumn>
+            <TableColumn>前场</TableColumn>
+            <TableColumn>后场</TableColumn>
+            <TableColumn>篮板</TableColumn>
+            <TableColumn>助攻</TableColumn>
+            <TableColumn>抢断</TableColumn>
+            <TableColumn>盖帽</TableColumn>
+            <TableColumn>失误</TableColumn>
+            <TableColumn>犯规</TableColumn>
+            <TableColumn>效率</TableColumn>
+          </TableHeader>
+          <TableBody>
+            {playerStats.map((p, index) => (
+              <TableRow key={index}>
+                <TableCell>{p.player.name}</TableCell>
+                <TableCell>{p.points}</TableCell>
+                <TableCell>{p['2pointshit']} - {p['2pointsshot']}</TableCell>
+                <TableCell>{p['3pointshit']} - {p['3pointsshot']}</TableCell>
+                <TableCell>{p['1pointshit']} - {p['1pointsshot']}</TableCell>
+                <TableCell>{p.offensiverebound}</TableCell>
+                <TableCell>{p.rebound - p.offensiverebound}</TableCell>
+                <TableCell>{p.rebound}</TableCell>
+                <TableCell>{p.assist}</TableCell>
+                <TableCell>{p.steal}</TableCell>
+                <TableCell>{p.block}</TableCell>
+                <TableCell>{p.turnover || 0}</TableCell>
+                <TableCell>{p.foul}</TableCell>
+                <TableCell>
+                  {p.points + p.offensiverebound + p.rebound + p.assist + p.steal + p.block - p.turnover - p['3pointsshot'] - p['2pointsshot'] - p['1pointsshot']}
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
     );
 }
 

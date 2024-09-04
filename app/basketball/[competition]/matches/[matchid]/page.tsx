@@ -1,7 +1,7 @@
 import Custom404 from '@/components/404';
 import { asyncFetch } from '@/utils/fetch';
 import MatchStatContents from '@/components/basketball/matchStat/MatchStatContents';
-import "../../../../match.css"
+import "../match.css"
 
 export default async function Page({ params, searchParams }: any) {
     // fetch current match data
@@ -94,7 +94,6 @@ export default async function Page({ params, searchParams }: any) {
         const response = await asyncFetch(`/basketball/seasonteamplayer?seasonid=${seasonid}&playerid=${s.playerid}`);
 
         const playerInfo = response.data[0];  // Get the default player info
-        console.log(playerInfo);
 
         // Sort player data into appropriate teams
         if (playerInfo.teamid === teamAid) {
