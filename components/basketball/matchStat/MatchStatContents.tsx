@@ -12,10 +12,10 @@ interface MatchStatProps {
 
 const MatchStatContents: React.FC<MatchStatProps> = ({ match, teamAdata, teamBdata }) => {
     return (
-        <div>
-            <h2 className='statTeamTitle'> {match.teama.name} </h2>
+        <div className="p-5 bg-gray-50 rounded-lg">
+            <h2 className="text-2xl font-bold text-gray-800 mt-10 mb-2"> {match.teama.name} </h2>
             <MatchStatTable playerStats={teamAdata}/>
-            <h1 className='statTeamTitle'> {match.teamb.name} </h1>
+            <h2 className="text-2xl font-bold text-gray-800 mt-10 mb-2"> {match.teamb.name} </h2>
             <MatchStatTable playerStats={teamBdata}/>
         </div>
     );

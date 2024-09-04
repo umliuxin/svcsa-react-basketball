@@ -89,14 +89,21 @@ export default async function Page({ params, searchParams }: any) {
         }
     };
 
-    for (const s of stat) {
-        // Fetch player information
-        const response = await asyncFetch(`/basketball/seasonteamplayer?seasonid=${seasonid}&playerid=${s.playerid}`);
+    var response = await asyncFetch(`/basketball/seasonteamplayer?seasonid=${seasonid}&teamid=${teamAid}&$limit=30`);
+    var teamAplayers = response.data;
 
-        const playerInfo = response.data[0];  // Get the default player info
+    for (const s of stat) {
+        var inTeamA = false;
+
+        for (const p of teamAplayers) {
+            if (p.playerid == s.playerid) {
+                inTeamA = true;
+                break;
+            }
+        }
 
         // Sort player data into appropriate teams
-        if (playerInfo.teamid === teamAid) {
+        if (inTeamA) {
             teamAdata.push(s);
             teamAtotal['1pointshit'] += s['1pointshit'];
             teamAtotal['1pointsshot'] += s['1pointsshot'];
@@ -112,7 +119,7 @@ export default async function Page({ params, searchParams }: any) {
             teamAtotal.offensiverebound += s.offensiverebound;
             teamAtotal.rebound += s.rebound;
             teamAtotal.foul += s.foul;
-        } else if (playerInfo.teamid === teamBid) {
+        } else {
             teamBdata.push(s);
             teamBtotal['1pointshit'] += s['1pointshit'];
             teamBtotal['1pointsshot'] += s['1pointsshot'];
