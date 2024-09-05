@@ -8,6 +8,17 @@ interface MatchListProps {
   teamOption?: string;
 }
 
+const competitionMapping: { [key: number]: string } = {
+  1: 'men-open',
+  2: 'women-open',
+  4: 'men-senior',
+  // Add more mappings as needed
+};
+
+const getCompetitionName = (id: number) => {
+  return competitionMapping[id] || 'unknown-competition';
+};
+
 const MatchList: React.FC<MatchListProps> = ({
   matches,
   timeOption,
@@ -123,7 +134,7 @@ const MatchList: React.FC<MatchListProps> = ({
                 {match.state === 0 ? (
                   '未开赛'
                 ) : match.state === 1 ? (
-                  <a href="/link-to-be-determined">技术统计</a>
+                  <a href={`/basketball/${getCompetitionName(match.season.competitionid)}/matches/${match.id}`}>技术统计</a>
                 ) : (
                   '无'
                 )}

@@ -9,4 +9,5 @@ type BbSeasonMatch = {
     court: string;
     teama: BbTeam;
     teamb: BbTeam;
+    season: BbSeason;
 }
