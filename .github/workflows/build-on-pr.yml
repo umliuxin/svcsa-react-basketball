@@ -3,8 +3,7 @@ name: Build on Pull Request
 # Trigger the workflow on pull request events
 on:
   pull_request:
-    branches:
-      - main  # You can specify which branch should trigger the workflow
+
 
 jobs:
   build:
