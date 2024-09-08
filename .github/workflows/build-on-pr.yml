@@ -3,8 +3,9 @@ name: Build on Pull Request
 # Trigger the workflow on pull request events
 on:
   pull_request:
-
-
+    branches:
+      - '*'  # This ensures it runs on pull requests to any branch
+      
 jobs:
   build:
     runs-on: ubuntu-latest
