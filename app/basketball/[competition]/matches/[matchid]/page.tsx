@@ -206,8 +206,6 @@ export default async function Page({ params, searchParams }: any) {
         }
     }
 
-    console.log(section, teamAscores, teamBscores);
-
     return (
         <div className='matchStat'>
             <MatchSumTable sections={section} teamAname={teamAname} teamBname={teamBname} teamAscores={teamAscores} teamBscores={teamBscores}></MatchSumTable>
