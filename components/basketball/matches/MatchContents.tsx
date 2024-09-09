@@ -25,12 +25,16 @@ const MatchContents: React.FC<MatchContentsProps> = ({ seasonId }) => {
   const teamId = parseInt(searchParams?.get("teamid") ?? "", 10);
   const [totalPage, setTotalPage] = useState(1);
 
+  const endOfToday = new Date();
+  endOfToday.setHours(23, 59, 59, 999); // Set time to 23:59:59.999
+  const endOfTodayISO = endOfToday.toISOString();
+
   useEffect(() => {
     async function fetchMatches() {
-      let matchFetchUrl = `/basketball/match?seasonid=${seasonId}&$limit=${DEFAULT_PAGINATION}&$sort[starttime]=-1`;
+      let matchFetchUrl = `/basketball/match?seasonid=${seasonId}&$limit=${DEFAULT_PAGINATION}&starttime[$lte]=${endOfTodayISO}&$sort[starttime]=-1`;
       let teamFetchUrl = `/basketball/seasonteam?seasonid=${seasonId}&$limit=20`;
 
-      if(page > 1) {
+      if (page > 1) {
         matchFetchUrl += `&$skip=${DEFAULT_PAGINATION * (page - 1)}`;
       }
       if (teamId) {
@@ -49,7 +53,7 @@ const MatchContents: React.FC<MatchContentsProps> = ({ seasonId }) => {
       );
     }
     fetchMatches();
-  }, [seasonId, page, teamId]);
+  }, [seasonId, page, teamId, endOfTodayISO]);
 
   const handlePageChange = (newPage: number): void => {
     const currentParams = new URLSearchParams(searchParams?.toString());

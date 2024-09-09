@@ -58,7 +58,9 @@ For components, Please based on the component UI listed in [NextUI](https://next
 
 ## Deployment
 
-TBD
+Deployment is automatic after PullRequest merged to `master` branch
+The change will be deployed to `beta` environment.
+
 
 ## How to contribute and collaborate
 
