@@ -1,4 +1,3 @@
-
 import Custom404 from "@/components/404";
 import { asyncFetch } from "@/utils/fetch";
 import { getRecentSeasonByGroup } from "@/utils/get-recent-seasons";
@@ -7,19 +6,6 @@ import PlayerSeasonAverage from "@/components/basketball/players/PlayerSeasonAve
 import PlayerListOfTeam from "@/components/basketball/players/PlayerListOfTeam";
 import PlayerPage from "@/components/basketball/players/PlayerPage";
 
-
-//Using 'force-static' to force useSearchParams() to return empty values.
-//export const dynamic = "force-static";
-
-// Return a list of `params` to populate the [slug] dynamic segment
-// export function generateStaticParams() {
-//   return [
-//     { competition: "men-open", playerid: "189" },
-//     { competition: "women-open", playerid: "189" },
-//     { competition: "men-senior", playerid: "189" },
-//   ];
-// }
-
 export default async function Page({ params }: any) {
   // fetch current season
   const season = await getRecentSeasonByGroup(params.competition);
@@ -27,8 +13,7 @@ export default async function Page({ params }: any) {
   if (!season) {
     return <Custom404 />;
   }
-  const decodedPlayerId = decodeURIComponent(params.playerid);
-  const playerId = decodedPlayerId.split("=")[1];
+  const { playerid: playerId } = params;
   const seasonTeamPlayer = await asyncFetch(
     `/basketball/seasonteamplayer?seasonid=${season.id}&playerid=${playerId}`
   );
@@ -41,6 +26,7 @@ export default async function Page({ params }: any) {
   );
   return (
     <div className="container">
+
       <div className="flex flex-wrap">
         <div className="w-full md:w-3/12">
           <div className="bg-gray-100 p-4 rounded shadow">

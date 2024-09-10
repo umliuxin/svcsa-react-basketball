@@ -21,6 +21,7 @@ export default async function Page({ params, searchParams }: any) {
 
   return (
     <section>
+      <h1 className="text-2xl py-4">{season?.name}</h1>
       <MatchContents seasonId={seasonId} />
     </section>
   );

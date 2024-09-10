@@ -18,6 +18,8 @@ export default async function Page({ params, searchParams }: any) {
 
   return (
     <section>
+      <h1 className="text-2xl py-4">{season?.name} 未来赛程</h1>
+
       <ScheduleList seasonId={seasonId} />
     </section>
   );

@@ -44,7 +44,7 @@ const TeamImage: React.FC<TeamImageProp> = ({
   return (
     <div className={imageClass + ' relative flex items-center justify-center'}>
       <p className={textClass}>
-        {team.shortname.substring(0, 3).toUpperCase()}
+        {team.shortname.substring(0, 2).toUpperCase()}
       </p>
     </div>
   );
