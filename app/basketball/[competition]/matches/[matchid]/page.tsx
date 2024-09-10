@@ -2,6 +2,44 @@ import Custom404 from '@/components/404';
 import { asyncFetch } from '@/utils/fetch';
 import MatchStatContents from '@/components/basketball/matchStat/MatchStatContents';
 import "../match.css"
+import MatchSumTable from '@/components/basketball/matchStat/MatchSumTable';
+
+function updateSection(record: string | null): number {
+    if (record && record.includes('节 start')) {
+        return 1;
+    }
+    return 0;
+}
+
+function isScore(record: string | null): boolean {
+    return record ? record.includes('Made') : false;
+}
+
+function getScore(record: string | null): number {
+    if (record) {
+        if (record.includes('Two Point Made')) {
+            return 2;
+        } else if (record.includes('Three Point Made')) {
+            return 3;
+        } else if (record.includes('Free Throw Made')) {
+            return 1;
+        }
+    }
+    return 0;
+}
+
+function getTeamName(record: string | null): string {
+    if (!record) return '';
+    
+    const start = record.indexOf('[');
+    const end = record.indexOf(']');
+    
+    if (start !== -1 && end !== -1) {
+        return record.substring(start + 1, end);
+    }
+    
+    return '';
+}
 
 export default async function Page({ params, searchParams }: any) {
     // fetch current match data
@@ -25,6 +63,8 @@ export default async function Page({ params, searchParams }: any) {
     var seasonid = match.season.id;
     var teamAid = match.teama.id;
     var teamBid = match.teamb.id;
+    var teamAname = match.teama.name;
+    var teamBname = match.teamb.name;
 
     var teamAdata : BbStat[] = [];
     var teamBdata : BbStat[] = [];
@@ -142,8 +182,33 @@ export default async function Page({ params, searchParams }: any) {
     teamAdata.push(teamAtotal);
     teamBdata.push(teamBtotal);
 
+    var matchLogResponse = await asyncFetch(`/basketball/matchlog?matchid=${params.matchid}&$limit=200`);
+    if (!matchLogResponse) {
+        return (
+            <Custom404 />
+        )
+    }
+
+    var matchLogs:BbMatchLog[] = matchLogResponse.data;
+    var section = -1;
+
+    const teamAscores = [0,0,0,0,0,0];
+    const teamBscores = [0,0,0,0,0,0];
+    for (var log of matchLogs) {
+        section += updateSection(log.event);
+        if (isScore(log.event)) {
+            var teamName = getTeamName(log.event);
+            if (teamName == teamAname) {
+                teamAscores[section] += getScore(log.event);
+            } else if (teamName == teamBname) {
+                teamBscores[section] += getScore(log.event);
+            }
+        }
+    }
+
     return (
         <div className='matchStat'>
+            <MatchSumTable sections={section} teamAname={teamAname} teamBname={teamBname} teamAscores={teamAscores} teamBscores={teamBscores}></MatchSumTable>
             <MatchStatContents match={match} teamAdata={teamAdata} teamBdata={teamBdata}></MatchStatContents>
         </div>
     );

@@ -1,6 +1,5 @@
 "use client";
 
-import { asyncFetch } from '@/utils/fetch';
 import MatchStatTable from "@/components/basketball/matchStat/MatchStatTable";
 import React from 'react';
 

@@ -21,3 +21,11 @@ type BbStat = {
     shot: number;
     player: BbPlayer;
 }
+
+type BbMatchLog = {
+    logid: number;
+    matchid: number;
+    playerid: number;
+    event: string;
+    teamid: number;
+}
