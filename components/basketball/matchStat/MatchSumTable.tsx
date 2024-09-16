@@ -64,8 +64,8 @@ const MatchSumTable: React.FC<MatchSumTableProps> = ({
     teamBscores
   );
   return (
-    <div className="p-5 bg-gray-50 rounded-lg overflow-x-auto">
-      <h1 className="text-2xl font-bold text-gray-800 mt-10 mb-2">Summary</h1>
+    <div className="py-5 overflow-x-auto">
+      <h2 className="text-2xl font-bold text-gray-800 mb-2">Quarter by quarter</h2>
 
       <Table className="w-full border-collapse">
         <TableHeader>

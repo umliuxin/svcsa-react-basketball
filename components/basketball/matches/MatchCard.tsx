@@ -25,11 +25,13 @@ const ScheduleList: React.FC<MatchContentsProps> = ({ match }) => {
         </div>
 
         {/* Match Info Section */}
-        <div className="flex-1 text-center">
-          {/* Time */}
-          <h3 color="gray">{formatDateTime(starttime)}</h3>
-          {/* Court */}
-          <h3 color="gray">{court}</h3>
+        <div className="flex flex-col flex-1 items-center justify-center gap-1">
+          <h3 className="text-gray-500 text-sm">{formatDateTime(starttime)}</h3>
+          <div className="flex gap-2 text-4xl">
+            <h2>{match.scoreteama}</h2>
+            <h2>:</h2>
+            <h2>{match.scoreteamb}</h2>
+          </div>
         </div>
 
         {/* Team B Section */}

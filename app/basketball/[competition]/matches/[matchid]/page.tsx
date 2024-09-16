@@ -3,6 +3,7 @@ import { asyncFetch } from '@/utils/fetch';
 import MatchStatContents from '@/components/basketball/matchStat/MatchStatContents';
 import "../match.css"
 import MatchSumTable from '@/components/basketball/matchStat/MatchSumTable';
+import MatchCard from '@/components/basketball/matches/MatchCard';
 
 function updateSection(record: string | null): number {
     if (record && record.includes('节 start')) {
@@ -208,6 +209,7 @@ export default async function Page({ params, searchParams }: any) {
 
     return (
         <div className='matchStat'>
+            <MatchCard match={match} />
             <MatchSumTable sections={section} teamAname={teamAname} teamBname={teamBname} teamAscores={teamAscores} teamBscores={teamBscores}></MatchSumTable>
             <MatchStatContents match={match} teamAdata={teamAdata} teamBdata={teamBdata}></MatchStatContents>
         </div>

@@ -50,7 +50,7 @@ export default function GlobalNav() {
         {
           icon: icons.schedule,
           text: 'Schedule',
-          link: `/basketball/${competition}/matches`,
+          link: `/basketball/${competition}/schedules`,
         },
         {
           icon: icons.score,

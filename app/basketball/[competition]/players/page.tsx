@@ -28,12 +28,14 @@ export default async function Page({ params, searchParams }: any) {
 
   return (
     <div className="container">
+      <h1 className="text-2xl py-4">{season?.name} 球员</h1>
+
       <div className="flex flex-wrap">
         <div className="w-full md:w-3/12">
           <TeamSelector seasonTeams={seasonTeams} />
         </div>
         <div className="w-full md:w-9/12 pl-4">
-          <PlayersList seasonId={seasonId} params={params}/>
+          <PlayersList seasonId={seasonId} params={params} />
         </div>
       </div>
     </div>

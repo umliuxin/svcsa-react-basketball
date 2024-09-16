@@ -20,15 +20,15 @@ const TeamRankTable: React.FC<TeamRankTableProps> = ({ teamRank }) => {
   return (
     <Table aria-label="Example static collection table">
       <TableHeader>
-        <TableColumn>排名</TableColumn>
-        <TableColumn>球队</TableColumn>
-        <TableColumn>积分</TableColumn>
-        <TableColumn>胜</TableColumn>
-        <TableColumn>负</TableColumn>
-        <TableColumn>弃权</TableColumn>
-        <TableColumn>得分</TableColumn>
-        <TableColumn>失分</TableColumn>
-        <TableColumn>净胜分</TableColumn>
+        <TableColumn className="text-white bg-lime-600">排名</TableColumn>
+        <TableColumn className="text-white bg-lime-600">球队</TableColumn>
+        <TableColumn className="text-white bg-lime-600">积分</TableColumn>
+        <TableColumn className="text-white bg-lime-600">胜</TableColumn>
+        <TableColumn className="text-white bg-lime-600">负</TableColumn>
+        <TableColumn className="text-white bg-lime-600">弃权</TableColumn>
+        <TableColumn className="text-white bg-lime-600">得分</TableColumn>
+        <TableColumn className="text-white bg-lime-600">失分</TableColumn>
+        <TableColumn className="text-white bg-lime-600">净胜分</TableColumn>
       </TableHeader>
       <TableBody>
         {teamRank.map((row, index) => {

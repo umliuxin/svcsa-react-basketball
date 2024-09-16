@@ -22,16 +22,9 @@ export default async function Page({
   );
   return (
     <section>
-      <h1>{season.name}</h1>
+      <h1 className="text-2xl py-4">{season.name}</h1>
       <TeamRankTable teamRank={teamRank} />
     </section>
   );
 }
 
-// export async function generateStaticParams() {
-//   return [
-//     { competition: "men-open" },
-//     { competition: "women-open" },
-//     { competition: "men-senior" },
-//   ];
-// }

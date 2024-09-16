@@ -13,7 +13,7 @@ const PlayerCard: React.FC<PlayerCardProp> = ({player, params}) => {
   if(!player) return;
 
   return (
-    <Link key ={player.id} href={`/basketball/${params.competition}/players/:playerid=${player.id}`}>
+    <Link key ={player.id} href={`/basketball/${params.competition}/players/${player.id}`}>
     <Card className="relative" isPressable>
       <CardBody className="justify-center items-center overflow-hidden w-full h-40 hover:opacity-50">
         <PlayerImage player={player} imageClass="w-full" />

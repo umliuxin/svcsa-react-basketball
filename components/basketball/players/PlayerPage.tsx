@@ -9,7 +9,7 @@ const PlayerPage: React.FC<PlayerPageProp> = ({ seasonTeamPlayer }) => {
   return(
     <div className="flex flex-wrap">
               <section className="md:w-9/12">
-                <h1 className="text-4xl font-bold my-5 ms-3 bg-lime-600 inline-block p-2">
+                <h1 className="text-4xl font-bold my-5 ms-3 inline-block p-2">
                   {seasonTeamPlayer.player?.name}
                 </h1>
                 <div className="my-5 ms-3 font-semibold text-2xl border-l-4 border-lime-600 ps-2">
