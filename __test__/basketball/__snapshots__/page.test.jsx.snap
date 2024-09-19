@@ -78,9 +78,9 @@ exports[`Home renders the basic page 1`] = `
             More news
           </button>
         </div>
-        <div
-          class="flex gap-5 col-span-3 self-center"
-        />
+        <p>
+          Loading...
+        </p>
       </div>
     </section>
   </section>
