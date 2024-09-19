@@ -30,10 +30,10 @@ export const TeamSelector: React.FC<TeamSelectorProp> = ({
   const router = useRouter();
   const pathName = usePathname();
   const searchParams = useSearchParams();
-  const teamId = Number(searchParams.get('teamid'));
+  const teamId = Number(searchParams?.get("teamid"));
 
-  const[activedId, setActivedId] = useState(!teamId? -1: teamId);
-  
+  const [activedId, setActivedId] = useState(!teamId ? -1 : teamId);
+
   const handleTeamSelect = (newTeamId?: number): void => {
     const currentParams = new URLSearchParams(searchParams?.toString());
 
@@ -56,7 +56,11 @@ export const TeamSelector: React.FC<TeamSelectorProp> = ({
         aria-label="Listbox menu with icons"
         topContent={
           <button
-            className={`flex gap-2 items-center px-2 ${activedId === -1 ? "bg-neutral-100 border-1 border-slate-300 rounded-md" : ""}`}
+            className={`flex gap-2 items-center px-2 ${
+              activedId === -1
+                ? "bg-neutral-100 border-1 border-slate-300 rounded-md"
+                : ""
+            }`}
             onClick={() => handleTeamSelect()}
           >
             {allBtnIcon}
@@ -66,7 +70,15 @@ export const TeamSelector: React.FC<TeamSelectorProp> = ({
       >
         {filteredTeam.map((seasonTeam) => {
           return (
-            <ListboxItem key={seasonTeam.teamid} textValue="team" className={seasonTeam.teamid === teamId? "bg-neutral-100 border-1 border-slate-300" : ""}>
+            <ListboxItem
+              key={seasonTeam.teamid}
+              textValue="team"
+              className={
+                seasonTeam.teamid === teamId
+                  ? "bg-neutral-100 border-1 border-slate-300"
+                  : ""
+              }
+            >
               <div
                 className="flex gap-2 items-center"
                 onClick={() => handleTeamSelect(seasonTeam.teamid)}
