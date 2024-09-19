@@ -9,11 +9,11 @@ import PlayerPage from "@/components/basketball/players/PlayerPage";
 export default async function Page({ params }: any) {
   // fetch current season
   const season = await getRecentSeasonByGroup(params.competition);
-
   if (!season) {
     return <Custom404 />;
   }
-  const { playerid: playerId } = params;
+  const decodedPlayerId = decodeURIComponent(params.playerid);
+  const playerId = Number(decodedPlayerId);
   const seasonTeamPlayer = await asyncFetch(
     `/basketball/seasonteamplayer?seasonid=${season.id}&playerid=${playerId}`
   );
@@ -26,7 +26,6 @@ export default async function Page({ params }: any) {
   );
   return (
     <div className="container">
-
       <div className="flex flex-wrap">
         <div className="w-full md:w-3/12">
           <div className="bg-gray-100 p-4 rounded shadow">
@@ -42,6 +41,7 @@ export default async function Page({ params }: any) {
             <PlayerListOfTeam
               seasonTeamPlayers={seasonTeamPlayers.data}
               params={params}
+              playerId={playerId}
             />
           </div>
         </div>

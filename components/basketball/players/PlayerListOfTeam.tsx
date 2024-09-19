@@ -4,15 +4,18 @@ import { Link, Image } from "@nextui-org/react";
 interface PlayerListOfTeamProp {
   seasonTeamPlayers: BbSeasonTeamPlayer[];
   params: any;
+  playerId: Number;
 }
 
 const PlayerListOfTeam: React.FC<PlayerListOfTeamProp> = ({
   seasonTeamPlayers,
   params,
+  playerId,
 }) => {
   if (!seasonTeamPlayers) {
     return;
   }
+
   return (
     <div className="mt-5">
       {seasonTeamPlayers.map(
@@ -21,9 +24,16 @@ const PlayerListOfTeam: React.FC<PlayerListOfTeamProp> = ({
             return;
           }
           return (
-            <div className="flex h-12 items-center cursor-pointer" key={index}>
+            <div
+              className={`flex h-12 items-center cursor-pointer ${
+                seasonteamplayer.player.id === playerId
+                  ? "bg-slate-200 rounded-md"
+                  : ""
+              }`}
+              key={index}
+            >
               <Link
-                href={`/basketball/${params.competition}/players/:playerid=${seasonteamplayer.player.id}`}
+                href={`/basketball/${params.competition}/players/${seasonteamplayer.player.id}`}
               >
                 <Image
                   src={seasonteamplayer.player.photosrc}

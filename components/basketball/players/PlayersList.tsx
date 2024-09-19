@@ -57,6 +57,7 @@ const PlayersList: React.FC<PlayersListProp> = ({seasonId, params}) => {
         <p>Loading...</p>
       ) : (
         <div className="bg-gray-100 p-4 rounded shadow">
+          
           <div className="flex flex-wrap">
             {seasonPlayers.map((seasonPlayer: BbSeasonTeamPlayer) => {
               if (!seasonPlayer.player) {
