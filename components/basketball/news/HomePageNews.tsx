@@ -24,7 +24,7 @@ const HomePageNews: React.FC<HomePageNewsProp> = () => {
     router.push("/basketball/news");
   };
   return (
-    <div className="grid grid-cols-5 bg-slate-950 h-72">
+    <div className="grid grid-cols-5 bg-slate-950 h-72 rounded-md">
       <div className=" col-span-2 text-white self-center items-center grid justify-items-center mt-7">
         <h3 className="font-semibold text-3xl ">
           News At <span className="text-orange-700">SVCSA</span>

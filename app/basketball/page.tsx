@@ -1,14 +1,17 @@
 import { getRecentSeasons } from "@/utils/get-recent-seasons";
-import { Link } from "@nextui-org/react";
-import { COMPETITIONID_TO_GROUPNAME } from "@/utils/variables";
 import HomePageNews from "@/components/basketball/news/HomePageNews";
+import QuickLinks from "@/components/basketball/homePage/QuickLinks";
 
 export default async function Page() {
   const seasons = await getRecentSeasons();
   return (
     <section>
-      <h1>Hello, basketball league page!</h1>
+      <h1>Welcome to SVCSA</h1>
+      <section>Carousel</section>
       <section>
+        <QuickLinks />
+      </section>
+      {/* <section>
         <h3>Standings </h3>
 
         {seasons.map((season: BbSeason) => {
@@ -25,10 +28,10 @@ export default async function Page() {
             </Link>
           );
         })}
-      </section>
+      </section> */}
 
-      <br />
-      <section>
+    
+      {/* <section>
         <h3>Teams</h3>
         {seasons.map((season: BbSeason) => {
           return (
@@ -44,8 +47,8 @@ export default async function Page() {
             </Link>
           );
         })}
-      </section>
-      <br />
+      </section> */}
+  
       <section>
         <HomePageNews />
       </section>
