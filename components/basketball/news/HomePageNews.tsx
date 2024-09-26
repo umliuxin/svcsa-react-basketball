@@ -24,27 +24,30 @@ const HomePageNews: React.FC<HomePageNewsProp> = () => {
     router.push("/basketball/news");
   };
   return (
-    <div className="grid grid-cols-5 bg-slate-950 h-72 rounded-md">
-      <div className=" col-span-2 text-white self-center items-center grid justify-items-center mt-7">
-        <h3 className="font-semibold text-3xl ">
-          News At <span className="text-orange-700">SVCSA</span>
-        </h3>
-        <Button
-          className="bg-orange-700 text-white mt-3 cursor-pointer"
-          onClick={handleRedirect}
-        >
-          More news
-        </Button>
-      </div>
-      {loading ? (
-        <p>Loading...</p>
-      ) : (
-        <div className="flex gap-5 col-span-3 self-center">
-          {news.map((newsObject, index) => {
-            return <NewsCard newsObject={newsObject} key={index} />;
-          })}
+    <div>
+      <div className="text-center text-3xl font-bold mt-28 mb-10">SVCSA Announcements 🗓️</div>
+      <div className="grid grid-cols-5 h-72 rounded-md shadow-large shadow-orange-500">
+        <div className=" col-span-2 text-white self-center items-center grid justify-items-center mt-7">
+          <h3 className="font-semibold text-3xl text-slate-900">
+            News At <span className="text-orange-700">SVCSA</span>
+          </h3>
+          <Button
+            className="bg-orange-700 text-white mt-3 cursor-pointer"
+            onClick={handleRedirect}
+          >
+            More news
+          </Button>
         </div>
-      )}
+        {loading ? (
+          <p>Loading...</p>
+        ) : (
+          <div className="flex gap-5 col-span-3 self-center">
+            {news.map((newsObject, index) => {
+              return <NewsCard newsObject={newsObject} key={index} />;
+            })}
+          </div>
+        )}
+      </div>
     </div>
   );
 };
