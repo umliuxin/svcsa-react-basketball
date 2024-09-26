@@ -77,16 +77,17 @@ export default function GlobalNav() {
   });
 
   return (
-    <Navbar maxWidth="xl" isBordered>
+    <Navbar maxWidth="xl" isBordered className="h-32 bg-[url('/nav-bg.jpg')] bg-cover">
       <NavbarBrand className="max-w-fit">
         <Image
           src="/logo2.png"
           alt="SVCSA Logo"
           className="dark:invert"
-          width={48}
-          height={48}
+          width={80}
+          height={80}
           priority
         />
+        <span className='text-white ms-3 me-4 text-4xl font-bold'>SVCSA</span>
       </NavbarBrand>
       <NavbarContent className="hidden sm:flex gap-4">
         {globalNavData.map((group, index) => {
@@ -96,7 +97,7 @@ export default function GlobalNav() {
                 <DropdownTrigger>
                   <Button
                     disableRipple
-                    className="p-0 bg-transparent data-[hover=true]:bg-transparent text-medium"
+                    className="p-0 bg-transparent data-[hover=true]:bg-transparent text-medium text-white"
                     endContent={icons.chevron}
                     radius="sm"
                     variant="light"
@@ -131,15 +132,16 @@ export default function GlobalNav() {
           );
         })}
         <NavbarItem>
-          <Link href="svcsa.org/ctfc" className="no-underline text-current">
+          <Link href="svcsa.org/ctfc" className="no-underline text-current text-white">
             Track Field
           </Link>
         </NavbarItem>
       </NavbarContent>
+      
 
       <NavbarContent justify="end">
         <NavbarItem>
-          <Button as={Link} color="primary" href="#" variant="flat">
+          <Button as={Link} color="primary" href="#" variant="flat" className='bg-sky-100 bg-opacity-80'>
             Join the league
           </Button>
         </NavbarItem>
