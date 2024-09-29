@@ -12,7 +12,7 @@ const QuickLinks: React.FC<QuickLinksProps> = () => {
       </div>
       <div className="flex">
         {competitions.map((competition, index) => (
-          <div className="m-auto relative w-36 h-36 md:w-56 md:h-56 lg:w-80 lg:h-80 group cursor-pointer">
+          <div className="m-auto relative w-36 h-36 md:w-56 md:h-56 lg:w-80 lg:h-80 group cursor-pointer" key={index}>
             <img
               className="w-full h-full object-cover aspect-square rounded-md group-hover:opacity-50"
               src={`${competition}.jpg`}
