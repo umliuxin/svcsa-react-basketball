@@ -79,6 +79,7 @@ export default function GlobalNav() {
   return (
     <Navbar maxWidth="xl" isBordered className="h-32 bg-[url('/nav-bg.jpg')] bg-cover">
       <NavbarBrand className="max-w-fit">
+        <Link href='/basketball'>
         <Image
           src="/logo2.png"
           alt="SVCSA Logo"
@@ -88,6 +89,7 @@ export default function GlobalNav() {
           priority
         />
         <span className='text-white ms-3 me-4 text-4xl font-bold'>SVCSA</span>
+        </Link>
       </NavbarBrand>
       <NavbarContent className="hidden sm:flex gap-4">
         {globalNavData.map((group, index) => {
