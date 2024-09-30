@@ -3,7 +3,6 @@ import TeamList from "@/components/basketball/teams/TeamList";
 import { asyncFetch } from "@/utils/fetch";
 import { getRecentSeasonByGroup } from "@/utils/get-recent-seasons";
 
-
 export default async function Page({ params, searchParams }: any) {
   var teamList;
   var seasonName;
@@ -37,4 +36,3 @@ export default async function Page({ params, searchParams }: any) {
     </section>
   );
 }
-
