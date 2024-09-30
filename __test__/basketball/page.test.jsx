@@ -112,13 +112,16 @@ describe("Home", () => {
     const serverComponent = await Page();
     const { container } = render(serverComponent);
 
-    // const heading = screen.getByText("Hello, basketball league page!");
+    const heading = screen.getByText("Explore SVCSA 🏀");
 
-    // expect(heading).toBeInTheDocument();
+    expect(heading).toBeInTheDocument();
 
-    // const standingLinks = screen.getAllByTestId("standing-link");
+    const quickLinks = screen.getAllByTestId("quick-links");
 
-    // expect(standingLinks.length).toBe(2);
-    // expect(container).toMatchSnapshot();
+    expect(quickLinks.length).toBe(1);
+    const competitionLinks = screen.getAllByTestId("competition-links");
+
+    expect(competitionLinks.length).toBe(3);
+    expect(container).toMatchSnapshot();
   });
 });
