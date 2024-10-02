@@ -28,7 +28,6 @@ import {
 import {
   COMPETITIONID_TO_GROUPNAME,
   MEN_OPEN,
-  MEN_SENIOR,
   WOMEN_OPEN,
 } from "@/utils/variables";
 
@@ -85,7 +84,7 @@ const GlobalNav: React.FC<GlobalNavProps> = ({seasons}) => {
           link: `/basketball/${competition}/schedules`,
         },
         {
-          icon: icons.player,
+          icon: icons.team,
           text: "Teams",
           link: `/basketball/${competition}/teams`,
         },
@@ -99,18 +98,20 @@ const GlobalNav: React.FC<GlobalNavProps> = ({seasons}) => {
   });
 
   return (
-    <Navbar maxWidth="xl" isBordered className="h-32 bg-[url('/nav-bg.jpg')] bg-cover">
+    <Navbar maxWidth="xl" isBordered className="h-32 bg-gray-300">
       <NavbarBrand className="max-w-fit">
-        <Link href='/basketball'>
-        <Image
-          src="/logo2.png"
-          alt="SVCSA Logo"
-          className="dark:invert"
-          width={80}
-          height={80}
-          priority
-        />
-        <span className='text-white ms-3 me-4 text-4xl font-bold'>SVCSA</span>
+        <Link href="/basketball">
+          <Image
+            src="/logo.png"
+            alt="SVCSA Logo"
+            className="dark:invert"
+            width={80}
+            height={80}
+            priority
+          />
+          <span className="text-gray-800 ms-3 me-4 text-4xl font-bold">
+            SVCSA
+          </span>
         </Link>
       </NavbarBrand>
       <NavbarContent className="hidden sm:flex gap-4">
@@ -121,7 +122,7 @@ const GlobalNav: React.FC<GlobalNavProps> = ({seasons}) => {
                 <DropdownTrigger>
                   <Button
                     disableRipple
-                    className="p-0 bg-transparent data-[hover=true]:bg-transparent text-medium text-white"
+                    className="p-0 bg-transparent data-[hover=true]:bg-transparent text-medium text-gray-800"
                     endContent={icons.chevron}
                     radius="sm"
                     variant="light"
@@ -134,7 +135,7 @@ const GlobalNav: React.FC<GlobalNavProps> = ({seasons}) => {
                 aria-label="Competition submenu"
                 className="w-[340px]"
                 itemClasses={{
-                  base: 'gap-4',
+                  base: "gap-4",
                 }}
                 onAction={(idx) => {
                   router.push(group.subMenu[idx].link);
@@ -156,18 +157,23 @@ const GlobalNav: React.FC<GlobalNavProps> = ({seasons}) => {
           );
         })}
         <NavbarItem>
-          <Link href="svcsa.org/ctfc" className="no-underline text-current text-white">
-            Track Field
+          <Link
+            href="svcsa.org/ctfc"
+            className="no-underline text-current text-gray-800"
+          >
+            历史赛季
           </Link>
         </NavbarItem>
       </NavbarContent>
-      
 
       <NavbarContent justify="end">
         <NavbarItem>
-          <Button as={Link} color="primary" href="#" variant="flat" className='bg-sky-100 bg-opacity-80'>
-            Join the league
-          </Button>
+          <Link
+            href="svcsa.org/ctfc"
+            className="no-underline text-current text-gray-800"
+          >
+            田径锦标赛
+          </Link>
         </NavbarItem>
       </NavbarContent>
     </Navbar>

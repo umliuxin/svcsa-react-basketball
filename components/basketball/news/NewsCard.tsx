@@ -14,7 +14,7 @@ const NewsCard: React.FC<NewsCardProp> = ({ newsObject }) => {
     <Card className="text-white">
       <CardBody className="grid justify-items-center content-center">
         <Image
-          src={newsObject.image === NULL ? "/logo2.png" : newsObject.image}
+          src={newsObject.image === NULL ? "/logo.png" : newsObject.image}
           alt="news picture"
           width={60}
           height={60}
