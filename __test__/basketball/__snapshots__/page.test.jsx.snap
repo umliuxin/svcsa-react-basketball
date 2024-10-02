@@ -17,7 +17,7 @@ exports[`Home renders the basic page 1`] = `
         role="link"
         tabindex="0"
       >
-        男篮公开组第21赛季
+        男篮2024-2025赛季
       </a>
       <a
         class="relative items-center tap-highlight-transparent outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 text-medium text-primary no-underline hover:opacity-80 active:opacity-disabled transition-opacity block"
@@ -26,7 +26,7 @@ exports[`Home renders the basic page 1`] = `
         role="link"
         tabindex="0"
       >
-        女篮公开组第7赛季
+        女篮2024-2025赛季
       </a>
     </section>
     <br />
@@ -41,7 +41,7 @@ exports[`Home renders the basic page 1`] = `
         role="link"
         tabindex="0"
       >
-        男篮公开组第21赛季
+        男篮2024-2025赛季
       </a>
       <a
         class="relative items-center tap-highlight-transparent outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 text-medium text-primary no-underline hover:opacity-80 active:opacity-disabled transition-opacity block"
@@ -50,7 +50,7 @@ exports[`Home renders the basic page 1`] = `
         role="link"
         tabindex="0"
       >
-        女篮公开组第7赛季
+        女篮2024-2025赛季
       </a>
     </section>
     <br />

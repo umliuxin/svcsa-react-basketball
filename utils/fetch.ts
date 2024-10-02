@@ -6,7 +6,7 @@
 export const asyncFetch = async function (path: string, isInApp = false) {
   let res;
   if (isInApp) {
-    res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/${path}`).catch(
+    res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}${path}`).catch(
       (e) => {
         throw e;
       }
