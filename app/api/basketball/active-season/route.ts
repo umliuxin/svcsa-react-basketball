@@ -1,3 +1,5 @@
+import { NextResponse } from "next/server";
+
 export async function GET() {
   const data = [
     {
@@ -45,6 +47,5 @@ export async function GET() {
       },
     },
   ];
-  return Response.json({ data })
-
+  return NextResponse.json({ data });
 }
