@@ -20,16 +20,12 @@ export default async function Page({
     if (!season) {
       return <Custom404 />;
     }
-    console.log("aaa", `/basketball/teamrank?seasonid=${season.id}`);
     // fetch team list of the recent season
     teamRanks = await asyncFetch(
       `/basketball/teamrank?seasonid=${season.id}`
     );
   } else {
-    console.log(
-      "bbb",
-      `/basketball/teamrank?seasonid=${searchParams.seasonid}`
-    );
+
     // Fetch the team list based on the user's requested season ID
     teamRanks = await asyncFetch(
       `/basketball/teamrank?seasonid=${searchParams.seasonid}`
@@ -38,8 +34,6 @@ export default async function Page({
       `/basketball/season/${searchParams.seasonid}`
     ).then((res) => res.data);
   }
-
-  console.log("xlxlxl", teamRanks);
 
   if (!season) {
     return <Custom404 />;
