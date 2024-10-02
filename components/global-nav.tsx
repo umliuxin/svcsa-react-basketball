@@ -25,11 +25,16 @@ import {
   faDatabase,
   faBasketball,
 } from '@fortawesome/free-solid-svg-icons';
-import { ALL_COMPETITION_GROUPS } from '@/utils/variables';
+import { COMPETITIONID_TO_GROUPNAME } from '@/utils/variables';
 
 import Image from 'next/image';
+interface GlobalNavProps {
 
-export default function GlobalNav() {
+  seasons: BbSeason[]
+}
+
+
+const GlobalNav: React.FC<GlobalNavProps> = ({seasons}) => {
   const router = useRouter();
 
   const icons = {
@@ -43,33 +48,35 @@ export default function GlobalNav() {
     stat: <FontAwesomeIcon fixedWidth icon={faDatabase} size="xl" />,
   };
 
-  const globalNavData: any[] = ALL_COMPETITION_GROUPS.map((competition) => {
+
+  const globalNavData: any[] = seasons.map((season) => {
+    const competition = COMPETITIONID_TO_GROUPNAME[season.competitionid];
     return {
       title: competition,
       subMenu: [
         {
           icon: icons.schedule,
-          text: 'Schedule',
+          text: "Schedule",
           link: `/basketball/${competition}/schedules`,
         },
         {
           icon: icons.score,
-          text: 'Results',
+          text: "Results",
           link: `/basketball/${competition}/matches`,
         },
         {
           icon: icons.standing,
-          text: 'Standing',
+          text: "Standing",
           link: `/basketball/${competition}/standing`,
         },
         {
           icon: icons.player,
-          text: 'Players',
+          text: "Players",
           link: `/basketball/${competition}/players`,
         },
         {
           icon: icons.player,
-          text: 'Teams',
+          text: "Teams",
           link: `/basketball/${competition}/teams`,
         },
       ],
@@ -151,3 +158,5 @@ export default function GlobalNav() {
     </Navbar>
   );
 }
+
+export default GlobalNav;
