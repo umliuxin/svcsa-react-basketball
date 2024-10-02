@@ -3,84 +3,290 @@
 exports[`Home renders the basic page 1`] = `
 <div>
   <section>
-    <h1>
-      Hello, basketball league page!
-    </h1>
-    <section>
-      <h3>
-        Standings 
-      </h3>
-      <a
-        class="relative items-center tap-highlight-transparent outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 text-medium text-primary no-underline hover:opacity-80 active:opacity-disabled transition-opacity block"
-        data-testid="standing-link"
-        href="/basketball/men-open/standing"
-        role="link"
-        tabindex="0"
-      >
-        男篮公开组第21赛季
-      </a>
-      <a
-        class="relative items-center tap-highlight-transparent outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 text-medium text-primary no-underline hover:opacity-80 active:opacity-disabled transition-opacity block"
-        data-testid="standing-link"
-        href="/basketball/women-open/standing"
-        role="link"
-        tabindex="0"
-      >
-        女篮公开组第7赛季
-      </a>
-    </section>
-    <br />
-    <section>
-      <h3>
-        Teams
-      </h3>
-      <a
-        class="relative items-center tap-highlight-transparent outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 text-medium text-primary no-underline hover:opacity-80 active:opacity-disabled transition-opacity block"
-        data-testid="teams-link"
-        href="/basketball/men-open/teams"
-        role="link"
-        tabindex="0"
-      >
-        男篮公开组第21赛季
-      </a>
-      <a
-        class="relative items-center tap-highlight-transparent outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 text-medium text-primary no-underline hover:opacity-80 active:opacity-disabled transition-opacity block"
-        data-testid="teams-link"
-        href="/basketball/women-open/teams"
-        role="link"
-        tabindex="0"
-      >
-        女篮公开组第7赛季
-      </a>
-    </section>
-    <br />
     <section>
       <div
-        class="grid grid-cols-5 bg-slate-950 h-72"
+        class="mt-10"
       >
         <div
-          class=" col-span-2 text-white self-center items-center grid justify-items-center mt-7"
+          class="carousel-root"
         >
-          <h3
-            class="font-semibold text-3xl "
+          <div
+            class="carousel carousel-slider"
+            style="width: 100%;"
           >
-            News At 
-            <span
-              class="text-orange-700"
+            <ul
+              class="control-dots"
             >
-              SVCSA
-            </span>
-          </h3>
-          <button
-            class="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-unit-4 min-w-unit-20 h-unit-10 text-small gap-unit-2 rounded-medium [&>svg]:max-w-[theme(spacing.unit-8)] data-[pressed=true]:scale-[0.97] transition-transform-colors-opacity motion-reduce:transition-none data-[hover=true]:opacity-hover bg-orange-700 text-white mt-3 cursor-pointer"
-            type="button"
-          >
-            More news
-          </button>
+              <li
+                aria-label="slide item 1"
+                class="dot selected"
+                role="button"
+                tabindex="0"
+                value="0"
+              />
+              <li
+                aria-label="slide item 2"
+                class="dot"
+                role="button"
+                tabindex="0"
+                value="1"
+              />
+              <li
+                aria-label="slide item 3"
+                class="dot"
+                role="button"
+                tabindex="0"
+                value="2"
+              />
+            </ul>
+            <button
+              aria-label="previous slide / item"
+              class="control-arrow control-prev"
+              type="button"
+            />
+            <div
+              class="slider-wrapper axis-horizontal"
+            >
+              <ul
+                class="slider animated"
+                style="transform: translate3d(-100%,0,0); transition-duration: 350ms;"
+              >
+                <li
+                  class="slide"
+                >
+                  <div>
+                    <img
+                      alt="carouselPicture"
+                      class="w-full h-[36rem] object-cover rounded-md"
+                      src="23-24women-openchampion.jpg"
+                    />
+                    <p
+                      class="legend"
+                    >
+                      SMG - Women-open Championship for SVCSA Season 23-24
+                       
+                    </p>
+                  </div>
+                </li>
+                <li
+                  class="slide selected previous"
+                >
+                  <div>
+                    <img
+                      alt="carouselPicture"
+                      class="w-full h-[36rem] object-cover rounded-md"
+                      src="23-24menchampion.jpg"
+                    />
+                    <p
+                      class="legend"
+                    >
+                      NBA Golden State Warriors player Moses Moody attended the SVCSA Season 23-24 Finals in person, pictured with the champion team, NK.
+                    </p>
+                  </div>
+                </li>
+                <li
+                  class="slide"
+                >
+                  <div>
+                    <img
+                      alt="carouselPicture"
+                      class="w-full h-[36rem] object-cover rounded-md"
+                      src="23-24men-opensecondplace.jpg"
+                    />
+                    <p
+                      class="legend"
+                    >
+                      NBA Golden State Warriors player Moses Moody attended the SVCSA Season 23-24 Finals in person, pictured with True team.
+                    </p>
+                  </div>
+                </li>
+                <li
+                  class="slide"
+                >
+                  <div>
+                    <img
+                      alt="carouselPicture"
+                      class="w-full h-[36rem] object-cover rounded-md"
+                      src="23-24women-openchampion.jpg"
+                    />
+                    <p
+                      class="legend"
+                    >
+                      SMG - Women-open Championship for SVCSA Season 23-24
+                       
+                    </p>
+                  </div>
+                </li>
+                <li
+                  class="slide selected previous"
+                >
+                  <div>
+                    <img
+                      alt="carouselPicture"
+                      class="w-full h-[36rem] object-cover rounded-md"
+                      src="23-24menchampion.jpg"
+                    />
+                    <p
+                      class="legend"
+                    >
+                      NBA Golden State Warriors player Moses Moody attended the SVCSA Season 23-24 Finals in person, pictured with the champion team, NK.
+                    </p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <button
+              aria-label="next slide / item"
+              class="control-arrow control-next"
+              type="button"
+            />
+            <p
+              class="carousel-status"
+            >
+              1 of 3
+            </p>
+          </div>
         </div>
-        <p>
-          Loading...
-        </p>
+      </div>
+    </section>
+    <section>
+      <div
+        class="my-20"
+        data-testid="quick-links"
+      >
+        <div
+          class="text-center text-3xl font-bold mt-28 mb-10"
+        >
+          Explore SVCSA 🏀
+        </div>
+        <div
+          class="flex"
+        >
+          <div
+            class="m-auto relative w-36 h-36 md:w-56 md:h-56 lg:w-80 lg:h-80 group cursor-pointer"
+            data-testid="competition-links"
+          >
+            <img
+              alt="男篮公开组第21赛季"
+              class="w-full h-full object-cover aspect-square rounded-md group-hover:opacity-50"
+              src="men-open.jpg"
+            />
+            <div
+              class="absolute bottom-0 left-0 w-full text-center bg-black bg-opacity-30 py-1 text-white font-bold rounded-b-md"
+            >
+              男篮公开组第21赛季
+            </div>
+            <div
+              class="flex flex-col justify-center items-center text-center absolute top-0 left-0 w-full h-full md:gap-y-1 lg:gap-y-2 text-black font-semibold text-sm md:text-base lg:text-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            >
+              <a
+                href="/basketball/men-open/schedules"
+              >
+                Schedules
+              </a>
+              <a
+                href="/basketball/men-open/matches"
+              >
+                Results
+              </a>
+              <a
+                href="/basketball/men-open/standing"
+              >
+                Standing
+              </a>
+              <a
+                href="/basketball/men-open/players"
+              >
+                Players
+              </a>
+              <a
+                href="/basketball/men-open/teams"
+              >
+                Teams
+              </a>
+            </div>
+          </div>
+          <div
+            class="m-auto relative w-36 h-36 md:w-56 md:h-56 lg:w-80 lg:h-80 group cursor-pointer"
+            data-testid="competition-links"
+          >
+            <img
+              alt="女篮公开组第7赛季"
+              class="w-full h-full object-cover aspect-square rounded-md group-hover:opacity-50"
+              src="women-open.jpg"
+            />
+            <div
+              class="absolute bottom-0 left-0 w-full text-center bg-black bg-opacity-30 py-1 text-white font-bold rounded-b-md"
+            >
+              女篮公开组第7赛季
+            </div>
+            <div
+              class="flex flex-col justify-center items-center text-center absolute top-0 left-0 w-full h-full md:gap-y-1 lg:gap-y-2 text-black font-semibold text-sm md:text-base lg:text-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            >
+              <a
+                href="/basketball/women-open/schedules"
+              >
+                Schedules
+              </a>
+              <a
+                href="/basketball/women-open/matches"
+              >
+                Results
+              </a>
+              <a
+                href="/basketball/women-open/standing"
+              >
+                Standing
+              </a>
+              <a
+                href="/basketball/women-open/players"
+              >
+                Players
+              </a>
+              <a
+                href="/basketball/women-open/teams"
+              >
+                Teams
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div>
+        <div
+          class="text-center text-3xl font-bold mt-28 mb-10"
+        >
+          SVCSA Announcements 🗓️
+        </div>
+        <div
+          class="grid grid-cols-5 h-72 rounded-md shadow-large shadow-orange-500"
+        >
+          <div
+            class=" col-span-2 text-white self-center items-center grid justify-items-center mt-7"
+          >
+            <h3
+              class="font-semibold text-3xl text-slate-900"
+            >
+              News At 
+              <span
+                class="text-orange-700"
+              >
+                SVCSA
+              </span>
+            </h3>
+            <button
+              class="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal subpixel-antialiased overflow-hidden tap-highlight-transparent outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-unit-4 min-w-unit-20 h-unit-10 text-small gap-unit-2 rounded-medium [&>svg]:max-w-[theme(spacing.unit-8)] data-[pressed=true]:scale-[0.97] transition-transform-colors-opacity motion-reduce:transition-none data-[hover=true]:opacity-hover bg-orange-700 text-white mt-3 cursor-pointer"
+              type="button"
+            >
+              More news
+            </button>
+          </div>
+          <p>
+            Loading...
+          </p>
+        </div>
       </div>
     </section>
   </section>
