@@ -64,7 +64,7 @@ export default async function Page({
   return (
     <section>
       <h1 className="text-2xl py-4">{season.name}</h1>
-      <TeamRankTable teamRank={teamRank} />
+      <TeamRankTable teamRank={teamRanks} />
     </section>
   );
 }
