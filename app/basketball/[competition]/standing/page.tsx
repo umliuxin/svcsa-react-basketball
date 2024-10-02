@@ -12,7 +12,7 @@ export default async function Page({
   searchParams: {seasonid: string};
 }) {
 
-  let teamRanks: BbTeamrankm[];
+  let teamRanks: BbTeamrank[];
   let season: BbSeason | undefined;
   if (!searchParams.seasonid) {
     // fetch recent season
