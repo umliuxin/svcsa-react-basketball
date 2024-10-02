@@ -119,7 +119,7 @@ describe("Home", () => {
     expect(quickLinks.length).toBe(1);
     const competitionLinks = screen.getAllByTestId("competition-links");
 
-    expect(competitionLinks.length).toBe(3);
+    expect(competitionLinks.length).toBe(2);
     expect(container).toMatchSnapshot();
   });
 });
