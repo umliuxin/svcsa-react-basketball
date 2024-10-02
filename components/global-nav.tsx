@@ -25,7 +25,12 @@ import {
   faDatabase,
   faBasketball,
 } from '@fortawesome/free-solid-svg-icons';
-import { COMPETITIONID_TO_GROUPNAME } from '@/utils/variables';
+import {
+  COMPETITIONID_TO_GROUPNAME,
+  MEN_OPEN,
+  MEN_SENIOR,
+  WOMEN_OPEN,
+} from "@/utils/variables";
 
 import Image from 'next/image';
 interface GlobalNavProps {
@@ -48,17 +53,22 @@ const GlobalNav: React.FC<GlobalNavProps> = ({seasons}) => {
     stat: <FontAwesomeIcon fixedWidth icon={faDatabase} size="xl" />,
   };
 
-
+  const getCompetitionTitle = (competition: string) => {
+    switch (competition) {
+      case MEN_OPEN:
+        return "Men's league";
+      case WOMEN_OPEN:
+        return "Women's league";
+      default:
+        break;
+    }
+    return '';
+  }
   const globalNavData: any[] = seasons.map((season) => {
     const competition = COMPETITIONID_TO_GROUPNAME[season.competitionid];
     return {
-      title: competition,
+      title: getCompetitionTitle(competition),
       subMenu: [
-        {
-          icon: icons.schedule,
-          text: "Schedule",
-          link: `/basketball/${competition}/schedules`,
-        },
         {
           icon: icons.score,
           text: "Results",
@@ -70,14 +80,19 @@ const GlobalNav: React.FC<GlobalNavProps> = ({seasons}) => {
           link: `/basketball/${competition}/standing`,
         },
         {
-          icon: icons.player,
-          text: "Players",
-          link: `/basketball/${competition}/players`,
+          icon: icons.schedule,
+          text: "Schedule",
+          link: `/basketball/${competition}/schedules`,
         },
         {
           icon: icons.player,
           text: "Teams",
           link: `/basketball/${competition}/teams`,
+        },
+        {
+          icon: icons.player,
+          text: "Players",
+          link: `/basketball/${competition}/players`,
         },
       ],
     };
