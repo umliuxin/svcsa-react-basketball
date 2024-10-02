@@ -11,7 +11,7 @@ export default async function Page() {
         <Carousel />
       </section>
       <section>
-        <QuickLinks />
+        <QuickLinks seasons={seasons} />
       </section>
       <section>
         <HomePageNews />

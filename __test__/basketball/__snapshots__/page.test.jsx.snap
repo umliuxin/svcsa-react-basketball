@@ -167,14 +167,14 @@ exports[`Home renders the basic page 1`] = `
             data-testid="competition-links"
           >
             <img
-              alt="men-open"
+              alt="男篮公开组第21赛季"
               class="w-full h-full object-cover aspect-square rounded-md group-hover:opacity-50"
               src="men-open.jpg"
             />
             <div
               class="absolute bottom-0 left-0 w-full text-center bg-black bg-opacity-30 py-1 text-white font-bold rounded-b-md"
             >
-              men-open
+              男篮公开组第21赛季
             </div>
             <div
               class="flex flex-col justify-center items-center text-center absolute top-0 left-0 w-full h-full md:gap-y-1 lg:gap-y-2 text-black font-semibold text-sm md:text-base lg:text-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
@@ -211,14 +211,14 @@ exports[`Home renders the basic page 1`] = `
             data-testid="competition-links"
           >
             <img
-              alt="women-open"
+              alt="女篮公开组第7赛季"
               class="w-full h-full object-cover aspect-square rounded-md group-hover:opacity-50"
               src="women-open.jpg"
             />
             <div
               class="absolute bottom-0 left-0 w-full text-center bg-black bg-opacity-30 py-1 text-white font-bold rounded-b-md"
             >
-              women-open
+              女篮公开组第7赛季
             </div>
             <div
               class="flex flex-col justify-center items-center text-center absolute top-0 left-0 w-full h-full md:gap-y-1 lg:gap-y-2 text-black font-semibold text-sm md:text-base lg:text-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
@@ -245,50 +245,6 @@ exports[`Home renders the basic page 1`] = `
               </a>
               <a
                 href="/basketball/women-open/teams"
-              >
-                Teams
-              </a>
-            </div>
-          </div>
-          <div
-            class="m-auto relative w-36 h-36 md:w-56 md:h-56 lg:w-80 lg:h-80 group cursor-pointer"
-            data-testid="competition-links"
-          >
-            <img
-              alt="men-senior"
-              class="w-full h-full object-cover aspect-square rounded-md group-hover:opacity-50"
-              src="men-senior.jpg"
-            />
-            <div
-              class="absolute bottom-0 left-0 w-full text-center bg-black bg-opacity-30 py-1 text-white font-bold rounded-b-md"
-            >
-              men-senior
-            </div>
-            <div
-              class="flex flex-col justify-center items-center text-center absolute top-0 left-0 w-full h-full md:gap-y-1 lg:gap-y-2 text-black font-semibold text-sm md:text-base lg:text-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-            >
-              <a
-                href="/basketball/men-senior/schedules"
-              >
-                Schedules
-              </a>
-              <a
-                href="/basketball/men-senior/matches"
-              >
-                Results
-              </a>
-              <a
-                href="/basketball/men-senior/standing"
-              >
-                Standing
-              </a>
-              <a
-                href="/basketball/men-senior/players"
-              >
-                Players
-              </a>
-              <a
-                href="/basketball/men-senior/teams"
               >
                 Teams
               </a>

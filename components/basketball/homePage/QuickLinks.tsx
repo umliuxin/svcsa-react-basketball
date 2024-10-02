@@ -1,12 +1,12 @@
-import { getRecentSeasons } from "@/utils/get-recent-seasons";
 import { COMPETITIONID_TO_GROUPNAME } from "@/utils/variables";
 import Link from "next/link";
 import React from "react";
 
-interface QuickLinksProps {}
+interface QuickLinksProps {
+  seasons: BbSeason[];
+}
 
-const QuickLinks: React.FC<QuickLinksProps> = async () => {
-  const seasons = await getRecentSeasons();
+const QuickLinks: React.FC<QuickLinksProps> = ({ seasons }) => {
   return (
     <div className="my-20" data-testid="quick-links">
       <div className="text-center text-3xl font-bold mt-28 mb-10">
