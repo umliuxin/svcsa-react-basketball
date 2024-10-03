@@ -1,17 +1,38 @@
+"use client";
+
 import React from "react";
 import { Card } from "@nextui-org/react";
 import TeamImage from "../teams/TeamImage";
 import { formatDateTime } from "@/utils/formatDateTime";
+import { getGroupName } from "@/utils/get-group-name";
+import { useRouter } from "next/navigation";
+import { COMPETITIONID_TO_GROUPNAME } from "@/utils/variables";
 
 interface MatchContentsProps {
   match: BbSeasonMatch;
+  withLink?: boolean;
 }
 
-const ScheduleList: React.FC<MatchContentsProps> = ({ match }) => {
-  const { teama, teamb, court, starttime } = match;
+const ScheduleList: React.FC<MatchContentsProps> = ({ match, withLink }) => {
+  const { teama, teamb, court, starttime, groupid } = match;
+  const router = useRouter();
+
+  const clickHandler = (): void => {
+    if (!withLink) return;
+    router.push(
+      `/basketball/${
+        COMPETITIONID_TO_GROUPNAME[match.season.competitionid]
+      }/matches/${match.id}`
+    );
+  };
   return (
-    <Card className="shadow-lg mb-4" radius="lg">
-      <div className="flex items-center justify-between">
+    <Card
+      className="shadow-lg mb-5 w-full"
+      radius="lg"
+      isPressable={withLink}
+      onPress={clickHandler}
+    >
+      <div className="flex items-center justify-between w-full">
         {/* Team A Section */}
         <div className="flex-1 flex items-center justify-start space-x-4">
           {/* Team A Logo */}
@@ -31,6 +52,12 @@ const ScheduleList: React.FC<MatchContentsProps> = ({ match }) => {
             <h2>{match.scoreteama}</h2>
             <h2>:</h2>
             <h2>{match.scoreteamb}</h2>
+          </div>
+          <div className="text-gray-500 text-sm">
+            {groupid !== undefined && (
+              <span className="mr-3">{getGroupName(groupid)}</span>
+            )}
+            <span>{court}</span>
           </div>
         </div>
 
