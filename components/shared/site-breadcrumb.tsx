@@ -1,11 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import { Breadcrumbs, BreadcrumbItem } from "@nextui-org/breadcrumbs";
 
 const SiteBreadcrumb = () => {
   const pathname = usePathname();
+  const searchParams = useSearchParams();
   if (!pathname) return;
 
   const segments = pathname.split("/").filter((item) => item !== "");
@@ -23,7 +24,9 @@ const SiteBreadcrumb = () => {
           <BreadcrumbItem key={index}>
             <Link
               key={item}
-              href={`/${segments.slice(0, index).join("/")}`}
+              href={`/${segments
+                .slice(0, index)
+                .join("/")}?${new URLSearchParams(searchParams?.toString())}`}
               aria-label={`Go to ${item}`}
             >
               {item}

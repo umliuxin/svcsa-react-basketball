@@ -208,7 +208,7 @@ const GlobalNav: React.FC<GlobalNavProps> = ({seasons}) => {
         })}
         <NavbarItem>
           <Link
-            href="svcsa.org/ctfc"
+            href="/basketball/history"
             className="no-underline text-current text-gray-800"
           >
             历史赛季
@@ -219,7 +219,7 @@ const GlobalNav: React.FC<GlobalNavProps> = ({seasons}) => {
       <NavbarContent justify="end">
         <NavbarItem>
           <Link
-            href="svcsa.org/ctfc"
+            href="http://svcsa.org/ctfc"
             className="no-underline text-current text-gray-800"
           >
             田径锦标赛
