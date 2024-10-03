@@ -4,10 +4,16 @@ import { asyncFetch } from "@/utils/fetch";
 import { getRecentSeasonByGroup } from "@/utils/get-recent-seasons";
 import { getGroupName } from "@/utils/get-group-name";
 
-export default async function Page({ params, searchParams }: any) {
+export default async function Page({
+  params,
+  searchParams,
+}: {
+  params: { competition: string };
+  searchParams: { season: string };
+}) {
   let teamList: BbSeasonTeam[];
   let season: BbSeason | undefined;
-  if (!searchParams.seasonid) {
+  if (!searchParams.season) {
     // fetch recent season
     season = await getRecentSeasonByGroup(params.competition);
     if (!season) {
@@ -20,10 +26,10 @@ export default async function Page({ params, searchParams }: any) {
   } else {
     // Fetch the team list based on the user's requested season ID
     teamList = await asyncFetch(
-      `/basketball/seasonteam?seasonid=${searchParams.seasonid}&$limit=100`
+      `/basketball/seasonteam?seasonid=${searchParams.season}&$limit=100`
     ).then((res) => res.data);
     season = await asyncFetch(
-      `/basketball/season/${searchParams.seasonid}`
+      `/basketball/season/${searchParams.season}`
     ).then((res) => res.data);
   }
   if (season?.groupnumber && season.groupnumber > 1) {

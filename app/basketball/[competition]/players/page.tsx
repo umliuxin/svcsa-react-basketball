@@ -11,7 +11,13 @@ import PlayersList from "@/components/basketball/players/PlayersList";
 
 //Using 'force-static' to force useSearchParams() to return empty values.
 export const dynamic = "force-static";
-export default async function Page({ params, searchParams }: any) {
+export default async function Page({
+  params,
+  searchParams,
+}: {
+  params: { competition: string };
+  searchParams: { season: string };
+}) {
   // fetch current season
   const season = await getRecentSeasonByGroup(params.competition);
 
@@ -19,7 +25,7 @@ export default async function Page({ params, searchParams }: any) {
     return <Custom404 />;
   }
 
-  const seasonId = parseInt(searchParams?.seasonid, 10) || season?.id;
+  const seasonId = parseInt(searchParams?.season, 10) || season?.id;
 
   // fetch team list of the recent season
   const { data: seasonTeams } = await asyncFetch(

@@ -9,12 +9,12 @@ export default async function Page({
   searchParams,
 }: {
   params: { competition: string };
-  searchParams: {seasonid: string};
+  searchParams: {season: string};
 }) {
 
   let teamRanks: BbTeamrank[];
   let season: BbSeason | undefined;
-  if (!searchParams.seasonid) {
+  if (!searchParams.season) {
     // fetch recent season
     season = await getRecentSeasonByGroup(params.competition);
     if (!season) {
@@ -28,10 +28,10 @@ export default async function Page({
 
     // Fetch the team list based on the user's requested season ID
     teamRanks = await asyncFetch(
-      `/basketball/teamrank?seasonid=${searchParams.seasonid}`
+      `/basketball/teamrank?seasonid=${searchParams.season}`
     );
     season = await asyncFetch(
-      `/basketball/season/${searchParams.seasonid}`
+      `/basketball/season/${searchParams.season}`
     ).then((res) => res.data);
   }
 

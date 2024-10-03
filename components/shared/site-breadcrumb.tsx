@@ -23,7 +23,7 @@ const SiteBreadcrumb = () => {
           <BreadcrumbItem key={index}>
             <Link
               key={item}
-              href={`/${segments.slice(0, index + 1).join("/")}`}
+              href={`/${segments.slice(0, index).join("/")}`}
               aria-label={`Go to ${item}`}
             >
               {item}

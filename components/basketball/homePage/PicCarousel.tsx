@@ -1,6 +1,8 @@
 "use client";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
+import Image from "next/image";
+
 
 interface PicCarouselProps {}
 const PicCarousel: React.FC<PicCarouselProps> = () => {
@@ -8,9 +10,11 @@ const PicCarousel: React.FC<PicCarouselProps> = () => {
     <div className="mt-10">
       <Carousel autoPlay infiniteLoop showThumbs={false}>
         <div>
-          <img
-            src="23-24menchampion.jpg"
+          <Image
+            src="/23-24menchampion.jpg"
             alt="carouselPicture"
+            width={500}
+            height={300}
             className="w-full h-[36rem] object-cover rounded-md"
           />
           <p className="legend">
@@ -19,9 +23,11 @@ const PicCarousel: React.FC<PicCarouselProps> = () => {
           </p>
         </div>
         <div>
-          <img
-            src="23-24men-opensecondplace.jpg"
+          <Image
+            src="/23-24men-opensecondplace.jpg"
             alt="carouselPicture"
+            width={500}
+            height={300}
             className="w-full h-[36rem] object-cover rounded-md"
           />
           <p className="legend">
@@ -30,9 +36,11 @@ const PicCarousel: React.FC<PicCarouselProps> = () => {
           </p>
         </div>
         <div>
-          <img
-            src="23-24women-openchampion.jpg"
+          <Image
+            src="/23-24women-openchampion.jpg"
             alt="carouselPicture"
+            width={500}
+            height={300}
             className="w-full h-[36rem] object-cover rounded-md"
           />
           <p className="legend">

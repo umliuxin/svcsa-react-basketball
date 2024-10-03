@@ -1,7 +1,6 @@
-import Custom404 from "@/components/404";
-import MatchContents from "@/components/basketball/matches/MatchContents";
 import { getRecentSeasonByGroup } from "@/utils/get-recent-seasons";
-import "./match.css";
+import Custom404 from "@/components/404";
+
 
 export default async function Page({
   params,
@@ -16,17 +15,18 @@ export default async function Page({
   let seasonId = season?.id;
 
   if (searchParams.season) {
-    seasonId = searchParams.season;
+    seasonId = parseInt(searchParams.season, 10);
   }
 
   if (!seasonId) {
     return <Custom404 />;
   }
-
   return (
-    <section>
-      <h1 className="text-2xl py-4">{season?.name}</h1>
-      <MatchContents seasonId={seasonId} />
-    </section>
+    <article>
+      <h1>Season Name</h1>
+      <h3>Some Meta</h3>
+      <p>season summary</p>
+      Links
+    </article>
   );
 }

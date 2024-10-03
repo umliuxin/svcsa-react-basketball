@@ -2,14 +2,20 @@ import Custom404 from "@/components/404";
 import ScheduleList from "@/components/basketball/schedules/ScheduleList";
 import { getRecentSeasonByGroup } from "@/utils/get-recent-seasons";
 
-export default async function Page({ params, searchParams }: any) {
+export default async function Page({
+  params,
+  searchParams,
+}: {
+  params: { competition: string };
+  searchParams: { season: string };
+}) {
   // fetch current season
   let season = await getRecentSeasonByGroup(params.competition);
 
   let seasonId = season?.id;
 
   if (searchParams.season) {
-    seasonId = searchParams.season;
+    seasonId = parseInt(searchParams.season, 10);
   }
 
   if (!seasonId) {

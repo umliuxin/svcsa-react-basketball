@@ -42,7 +42,7 @@ function getTeamName(record: string | null): string {
     return '';
 }
 
-export default async function Page({ params, searchParams }: any) {
+export default async function Page({ params }: any) {
     // fetch current match data
     var match = await asyncFetch(
         `/basketball/match/${params.matchid}`

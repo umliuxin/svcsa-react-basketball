@@ -24,14 +24,15 @@ import {
   faPeopleGroup,
   faDatabase,
   faBasketball,
+  faList
 } from '@fortawesome/free-solid-svg-icons';
 import {
   COMPETITIONID_TO_GROUPNAME,
   MEN_OPEN,
   WOMEN_OPEN,
 } from "@/utils/variables";
-
 import Image from 'next/image';
+
 interface GlobalNavProps {
 
   seasons: BbSeason[]
@@ -42,14 +43,58 @@ const GlobalNav: React.FC<GlobalNavProps> = ({seasons}) => {
   const router = useRouter();
 
   const icons = {
-    score: <BasketballScoreIcon fill="currentColor" size={36} />,
-
-    chevron: <FontAwesomeIcon fixedWidth icon={faChevronDown} size="sm" />,
-    schedule: <FontAwesomeIcon fixedWidth icon={faCalendar} size="xl" />,
-    standing: <FontAwesomeIcon fixedWidth icon={faRankingStar} size="xl" />,
-    player: <FontAwesomeIcon fixedWidth icon={faPeopleGroup} size="xl" />,
-    team: <FontAwesomeIcon fixedWidth icon={faBasketball} size="xl" />,
-    stat: <FontAwesomeIcon fixedWidth icon={faDatabase} size="xl" />,
+    score: (
+      <BasketballScoreIcon fill="currentColor" size={32} />
+    ),
+    chevron: (
+      <FontAwesomeIcon
+        fixedWidth
+        icon={faChevronDown}
+        size="sm"
+      />
+    ),
+    schedule: (
+      <FontAwesomeIcon
+        fixedWidth
+        icon={faCalendar}
+        size="xl"
+      />
+    ),
+    standing: (
+      <FontAwesomeIcon
+        fixedWidth
+        icon={faRankingStar}
+        size="xl"
+      />
+    ),
+    player: (
+      <FontAwesomeIcon
+        fixedWidth
+        icon={faPeopleGroup}
+        size="xl"
+      />
+    ),
+    team: (
+      <FontAwesomeIcon
+        fixedWidth
+        icon={faBasketball}
+        size="xl"
+      />
+    ),
+    stat: (
+      <FontAwesomeIcon
+        fixedWidth
+        icon={faDatabase}
+        size="xl"
+      />
+    ),
+    list: (
+      <FontAwesomeIcon
+        fixedWidth
+        icon={faList}
+        size="xl"
+      />
+    ),
   };
 
   const getCompetitionTitle = (competition: string) => {
@@ -68,6 +113,11 @@ const GlobalNav: React.FC<GlobalNavProps> = ({seasons}) => {
     return {
       title: getCompetitionTitle(competition),
       subMenu: [
+        {
+          icon: icons.list,
+          text: "Home",
+          link: `/basketball/${competition}/`,
+        },
         {
           icon: icons.score,
           text: "Results",

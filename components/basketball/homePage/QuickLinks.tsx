@@ -1,6 +1,7 @@
 import { COMPETITIONID_TO_GROUPNAME } from "@/utils/variables";
 import Link from "next/link";
 import React from "react";
+import Image from "next/image";
 
 interface QuickLinksProps {
   seasons: BbSeason[];
@@ -19,10 +20,12 @@ const QuickLinks: React.FC<QuickLinksProps> = ({ seasons }) => {
             key={index}
             data-testid="competition-links"
           >
-            <img
+            <Image
               className="w-full h-full object-cover aspect-square rounded-md group-hover:opacity-50"
-              src={`${COMPETITIONID_TO_GROUPNAME[season.competitionid]}.jpg`}
+              src={`/${COMPETITIONID_TO_GROUPNAME[season.competitionid]}.jpg`}
               alt={season.name}
+              width={500}
+              height={300}
             />
             <div className="absolute bottom-0 left-0 w-full text-center bg-black bg-opacity-30 py-1 text-white font-bold rounded-b-md">
               {season.name}
