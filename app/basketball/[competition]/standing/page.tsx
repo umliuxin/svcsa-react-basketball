@@ -32,7 +32,7 @@ export default async function Page({
     );
     season = await asyncFetch(
       `/basketball/season/${searchParams.season}`
-    ).then((res) => res.data);
+    );
   }
 
   if (!season) {

@@ -30,7 +30,7 @@ export default async function Page({
     ).then((res) => res.data);
     season = await asyncFetch(
       `/basketball/season/${searchParams.season}`
-    ).then((res) => res.data);
+    );
   }
   if (season?.groupnumber && season.groupnumber > 1) {
     const teamListByGroup: BbSeasonTeam[][] = new Array(season.groupnumber)

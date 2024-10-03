@@ -1,3 +1,4 @@
+import { asyncFetch } from "@/utils/fetch";
 import Custom404 from "@/components/404";
 import MatchContents from "@/components/basketball/matches/MatchContents";
 import { getRecentSeasonByGroup } from "@/utils/get-recent-seasons";
@@ -11,22 +12,23 @@ export default async function Page({
   searchParams: { season: string };
 }) {
   // fetch current season
-  let season = await getRecentSeasonByGroup(params.competition);
-
-  let seasonId = season?.id;
-
-  if (searchParams.season) {
-    seasonId = parseInt(searchParams.season, 10);
+  let season: BbSeason | undefined;
+  if (!searchParams.season) {
+    // fetch recent season
+    season = await getRecentSeasonByGroup(params.competition);
+  } else {
+    season = await asyncFetch(`/basketball/season/${searchParams.season}`);
   }
 
-  if (!seasonId) {
+  if (!season) {
     return <Custom404 />;
   }
+
 
   return (
     <section>
       <h1 className="text-2xl py-4">{season?.name}</h1>
-      <MatchContents seasonId={seasonId} />
+      <MatchContents seasonId={season?.id} />
     </section>
   );
 }

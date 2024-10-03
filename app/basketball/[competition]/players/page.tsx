@@ -9,8 +9,6 @@ import PlayerCard from "@/components/basketball/players/PlayerCard";
 import { Pagination } from "@nextui-org/react";
 import PlayersList from "@/components/basketball/players/PlayersList";
 
-//Using 'force-static' to force useSearchParams() to return empty values.
-export const dynamic = "force-static";
 export default async function Page({
   params,
   searchParams,
@@ -19,17 +17,21 @@ export default async function Page({
   searchParams: { season: string };
 }) {
   // fetch current season
-  const season = await getRecentSeasonByGroup(params.competition);
-
+  let season: BbSeason | undefined;
+  if (!searchParams.season) {
+    // fetch recent season
+    season = await getRecentSeasonByGroup(params.competition);
+  } else {
+    season = await asyncFetch(`/basketball/season/${searchParams.season}`);
+  }
+  
   if (!season) {
     return <Custom404 />;
   }
 
-  const seasonId = parseInt(searchParams?.season, 10) || season?.id;
-
   // fetch team list of the recent season
   const { data: seasonTeams } = await asyncFetch(
-    `/basketball/seasonteam?seasonid=${seasonId}&$limit=50`
+    `/basketball/seasonteam?seasonid=${season?.id}&$limit=50`
   );
 
   return (
@@ -41,7 +43,7 @@ export default async function Page({
           <TeamSelector seasonTeams={seasonTeams} />
         </div>
         <div className="w-full md:w-9/12 pl-4">
-          <PlayersList seasonId={seasonId} params={params} />
+          <PlayersList seasonId={season.id} params={params} />
         </div>
       </div>
     </div>

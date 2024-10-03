@@ -17,9 +17,7 @@ export default async function Page({
     // fetch recent season
     season = await getRecentSeasonByGroup(params.competition);
   } else {
-    season = await asyncFetch(`/basketball/season/${searchParams.season}`).then(
-      (res) => res.data
-    );
+    season = await asyncFetch(`/basketball/season/${searchParams.season}`);
   }
 
   if (!season) {
@@ -36,7 +34,7 @@ export default async function Page({
         <h3>{formatDate(season.starttime)}</h3>
         <h4>{isRecentSeason ? "进行中" : "已结束"}</h4>
       </section>
-      <SeasonMenu season={season} />
+      <SeasonMenu season={season} isRecentSeason={isRecentSeason} />
     </article>
   );
 }

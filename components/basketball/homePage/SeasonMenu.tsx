@@ -18,9 +18,10 @@ import { useSearchParams, useRouter } from "next/navigation";
 
 interface SeasonMenuProps {
   season: BbSeason;
+  isRecentSeason: boolean;
 }
 
-const SeasonMenu: React.FC<SeasonMenuProps> = ({ season }) => {
+const SeasonMenu: React.FC<SeasonMenuProps> = ({ season, isRecentSeason }) => {
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -74,24 +75,26 @@ const SeasonMenu: React.FC<SeasonMenuProps> = ({ season }) => {
         </CardFooter>
       </Card>
 
-      <Card
-        className="relative"
-        isPressable
-        onPress={() => {
-          router.push(
-            `/basketball/${
-              COMPETITIONID_TO_GROUPNAME[season.competitionid]
-            }/schedules?${new URLSearchParams(searchParams?.toString())}`
-          );
-        }}
-      >
-        <CardBody className="justify-center items-center h-60 hover:opacity-50 overflow-hidden">
-          {icons.schedule}
-        </CardBody>
-        <CardFooter className="h-10 justify-center bg-slate-100">
-          <p className="text-small">Schedule</p>
-        </CardFooter>
-      </Card>
+      {isRecentSeason && (
+        <Card
+          className="relative"
+          isPressable
+          onPress={() => {
+            router.push(
+              `/basketball/${
+                COMPETITIONID_TO_GROUPNAME[season.competitionid]
+              }/schedules?${new URLSearchParams(searchParams?.toString())}`
+            );
+          }}
+        >
+          <CardBody className="justify-center items-center h-60 hover:opacity-50 overflow-hidden">
+            {icons.schedule}
+          </CardBody>
+          <CardFooter className="h-10 justify-center bg-slate-100">
+            <p className="text-small">Schedule</p>
+          </CardFooter>
+        </Card>
+      )}
 
       <Card
         className="relative"
@@ -130,7 +133,6 @@ const SeasonMenu: React.FC<SeasonMenuProps> = ({ season }) => {
           <p className="text-small">Players</p>
         </CardFooter>
       </Card>
-
     </section>
   );
 };
