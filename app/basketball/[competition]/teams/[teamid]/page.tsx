@@ -189,13 +189,16 @@ export default async function Page({ params, searchParams }: any) {
                 </div>
 
                 {/* 队长信息部分 */}
-                <div className="bg-white p-4 rounded-lg shadow mt-4">
-                  <div className="flex items-center space-x-1">
-                    <span>队长:</span>
-                    <span>{teamInfo.captain}</span>
-                  </div>
+                <div
+                  className="bg-white p-4 rounded-lg shadow mt-4"
+                  style={{ textAlign: "center" }}
+                >
                   <p>
-                    邮箱:{" "}
+                    <span className="font-bold">队长: </span>
+                    {teamInfo.captain}
+                  </p>
+                  <p>
+                    <span className="font-bold">邮箱: </span>
                     <a
                       href={`mailto:${teamInfo.email}`}
                       className="text-blue-600 underline"
@@ -203,15 +206,29 @@ export default async function Page({ params, searchParams }: any) {
                       {teamInfo.email}
                     </a>
                   </p>
-                  <p>电话: {teamInfo.tel}</p>
-                  <p>微信: {teamInfo.wechat}</p>
-                  <p>球队编号: {teamInfo.id}</p>
-                  <p>球队队员总人数: {seasonTeamPlayers.length}</p>
+                  <p>
+                    <span className="font-bold">电话: </span>
+                    {teamInfo.tel}
+                  </p>
+                  <p>
+                    <span className="font-bold">微信: </span>
+                    {teamInfo.wechat}
+                  </p>
+                  <p>
+                    <span className="font-bold">球队编号: </span>
+                    {teamInfo.id}
+                  </p>
+                  <p>
+                    <span className="font-bold">球队队员总数: </span>
+                    {seasonTeamPlayers.length}
+                  </p>
                 </div>
 
                 {/* 显示球队的赛季表现 (Team Rank Table) */}
                 <div className="bg-gray-100 p-4 rounded shadow mt-4">
-                  <h2 className="text-lg font-bold mb-2">球队赛季表现</h2>
+                  <h2 className="text-lg font-bold mb-2 border-l-4 border-lime-600 ps-2">
+                    球队赛季表现
+                  </h2>
 
                   {/* 判断如果没有数据，则显示提示信息 */}
                   {teamRank.length > 0 ? (
@@ -219,35 +236,81 @@ export default async function Page({ params, searchParams }: any) {
                       <thead>
                         <tr>
                           {/* 删除排名列 */}
-                          <th className="py-2 px-4 border-b">球队</th>
-                          <th className="py-2 px-4 border-b">积分</th>
-                          <th className="py-2 px-4 border-b">胜</th>
-                          <th className="py-2 px-4 border-b">负</th>
-                          <th className="py-2 px-4 border-b">弃权</th>
-                          <th className="py-2 px-4 border-b">得分</th>
-                          <th className="py-2 px-4 border-b">失分</th>
-                          <th className="py-2 px-4 border-b">净胜分</th>
+                          <th className="py-2 px-4 border-b text-white bg-lime-600">
+                            球队
+                          </th>
+                          <th className="py-2 px-4 border-b text-white bg-lime-600">
+                            积分
+                          </th>
+                          <th className="py-2 px-4 border-b text-white bg-lime-600">
+                            胜
+                          </th>
+                          <th className="py-2 px-4 border-b text-white bg-lime-600">
+                            负
+                          </th>
+                          <th className="py-2 px-4 border-b text-white bg-lime-600">
+                            弃权
+                          </th>
+                          <th className="py-2 px-4 border-b text-white bg-lime-600">
+                            得分
+                          </th>
+                          <th className="py-2 px-4 border-b text-white bg-lime-600">
+                            失分
+                          </th>
+                          <th className="py-2 px-4 border-b text-white bg-lime-600">
+                            净胜分
+                          </th>
                         </tr>
                       </thead>
                       <tbody>
                         {teamRank.map((team) => (
                           <tr key={team.teamid}>
-                            <td className="py-2 px-4 border-b">
+                            <td
+                              className="py-2 px-4 border-b"
+                              style={{ textAlign: "center" }}
+                            >
                               {team.team?.name}
                             </td>
-                            <td className="py-2 px-4 border-b">{team.point}</td>
-                            <td className="py-2 px-4 border-b">{team.win}</td>
-                            <td className="py-2 px-4 border-b">{team.lose}</td>
-                            <td className="py-2 px-4 border-b">
+                            <td
+                              className="py-2 px-4 border-b"
+                              style={{ textAlign: "center" }}
+                            >
+                              {team.point}
+                            </td>
+                            <td
+                              className="py-2 px-4 border-b"
+                              style={{ textAlign: "center" }}
+                            >
+                              {team.win}
+                            </td>
+                            <td
+                              className="py-2 px-4 border-b"
+                              style={{ textAlign: "center" }}
+                            >
+                              {team.lose}
+                            </td>
+                            <td
+                              className="py-2 px-4 border-b"
+                              style={{ textAlign: "center" }}
+                            >
                               {team.forfeit}
                             </td>
-                            <td className="py-2 px-4 border-b">
+                            <td
+                              className="py-2 px-4 border-b"
+                              style={{ textAlign: "center" }}
+                            >
                               {team.total_score}
                             </td>
-                            <td className="py-2 px-4 border-b">
+                            <td
+                              className="py-2 px-4 border-b"
+                              style={{ textAlign: "center" }}
+                            >
                               {team.oppo_score}
                             </td>
-                            <td className="py-2 px-4 border-b">
+                            <td
+                              className="py-2 px-4 border-b"
+                              style={{ textAlign: "center" }}
+                            >
                               {team.score_diff}
                             </td>
                           </tr>
@@ -261,7 +324,9 @@ export default async function Page({ params, searchParams }: any) {
 
                 {/* 显示球队队员赛季数据 */}
                 <div className="bg-gray-100 p-4 rounded shadow mt-4">
-                  <h2 className="text-lg font-bold mb-2">球队队员赛季数据</h2>
+                  <h2 className="text-lg font-bold mb-2 border-l-4 border-lime-600 ps-2">
+                    球队队员赛季数据
+                  </h2>
 
                   {/* 表格外部增加滚动容器 */}
                   <div style={{ maxHeight: "150px", overflowY: "auto" }}>
@@ -270,61 +335,91 @@ export default async function Page({ params, searchParams }: any) {
                         <tr>
                           <th
                             className="py-2 px-4 border-b bg-white sticky top-0 z-10"
-                            style={{ background: "#fff" }}
+                            style={{
+                              backgroundColor: "#65a30d",
+                              color: "white",
+                            }}
                           >
                             球员
                           </th>
                           <th
                             className="py-2 px-4 border-b bg-white sticky top-0 z-10"
-                            style={{ background: "#fff" }}
+                            style={{
+                              backgroundColor: "#65a30d",
+                              color: "white",
+                            }}
                           >
                             得分
                           </th>
                           <th
                             className="py-2 px-4 border-b bg-white sticky top-0 z-10"
-                            style={{ background: "#fff" }}
+                            style={{
+                              backgroundColor: "#65a30d",
+                              color: "white",
+                            }}
                           >
                             篮板
                           </th>
                           <th
                             className="py-2 px-4 border-b bg-white sticky top-0 z-10"
-                            style={{ background: "#fff" }}
+                            style={{
+                              backgroundColor: "#65a30d",
+                              color: "white",
+                            }}
                           >
                             助攻
                           </th>
                           <th
                             className="py-2 px-4 border-b bg-white sticky top-0 z-10"
-                            style={{ background: "#fff" }}
+                            style={{
+                              backgroundColor: "#65a30d",
+                              color: "white",
+                            }}
                           >
                             抢断
                           </th>
                           <th
                             className="py-2 px-4 border-b bg-white sticky top-0 z-10"
-                            style={{ background: "#fff" }}
+                            style={{
+                              backgroundColor: "#65a30d",
+                              color: "white",
+                            }}
                           >
                             盖帽
                           </th>
                           <th
                             className="py-2 px-4 border-b bg-white sticky top-0 z-10"
-                            style={{ background: "#fff" }}
+                            style={{
+                              backgroundColor: "#65a30d",
+                              color: "white",
+                            }}
                           >
                             投篮%
                           </th>
                           <th
                             className="py-2 px-4 border-b bg-white sticky top-0 z-10"
-                            style={{ background: "#fff" }}
+                            style={{
+                              backgroundColor: "#65a30d",
+                              color: "white",
+                            }}
                           >
                             三分%
                           </th>
                           <th
                             className="py-2 px-4 border-b bg-white sticky top-0 z-10"
-                            style={{ background: "#fff" }}
+                            style={{
+                              backgroundColor: "#65a30d",
+                              color: "white",
+                            }}
                           >
                             罚球%
                           </th>
                           <th
                             className="py-2 px-4 border-b bg-white sticky top-0 z-10"
-                            style={{ background: "#fff" }}
+                            style={{
+                              backgroundColor: "#65a30d",
+                              color: "white",
+                            }}
                           >
                             犯规
                           </th>
@@ -337,7 +432,10 @@ export default async function Page({ params, searchParams }: any) {
                           );
                           return (
                             <tr key={player.player.id}>
-                              <td className="py-2 px-4 border-b">
+                              <td
+                                className="py-2 px-4 border-b"
+                                style={{ textAlign: "center" }}
+                              >
                                 <Link
                                   href={`/basketball/${competition}/players/${player.player.id}`}
                                   className="text-blue-600"
@@ -345,47 +443,74 @@ export default async function Page({ params, searchParams }: any) {
                                   {player.player.name}
                                 </Link>
                               </td>
-                              <td className="py-2 px-4 border-b">
+                              <td
+                                className="py-2 px-4 border-b"
+                                style={{ textAlign: "center" }}
+                              >
                                 {avg?.points !== undefined
                                   ? avg.points.toFixed(1)
                                   : "N/A"}
                               </td>
-                              <td className="py-2 px-4 border-b">
+                              <td
+                                className="py-2 px-4 border-b"
+                                style={{ textAlign: "center" }}
+                              >
                                 {avg?.rebound !== undefined
                                   ? avg.rebound.toFixed(1)
                                   : "N/A"}
                               </td>
-                              <td className="py-2 px-4 border-b">
+                              <td
+                                className="py-2 px-4 border-b"
+                                style={{ textAlign: "center" }}
+                              >
                                 {avg?.assist !== undefined
                                   ? avg.assist.toFixed(1)
                                   : "N/A"}
                               </td>
-                              <td className="py-2 px-4 border-b">
+                              <td
+                                className="py-2 px-4 border-b"
+                                style={{ textAlign: "center" }}
+                              >
                                 {avg?.steal !== undefined
                                   ? avg.steal.toFixed(1)
                                   : "N/A"}
                               </td>
-                              <td className="py-2 px-4 border-b">
+                              <td
+                                className="py-2 px-4 border-b"
+                                style={{ textAlign: "center" }}
+                              >
                                 {avg?.block !== undefined
                                   ? avg.block.toFixed(1)
                                   : "N/A"}
                               </td>
-                              <td className="py-2 px-4 border-b">
+                              <td
+                                className="py-2 px-4 border-b"
+                                style={{ textAlign: "center" }}
+                              >
                                 {avg?.fgp !== undefined
                                   ? `${(avg.fgp * 100).toFixed(1)}%`
                                   : "N/A"}
                               </td>
-                              <td className="py-2 px-4 border-b">
+                              <td
+                                className="py-2 px-4 border-b"
+                                style={{ textAlign: "center" }}
+                              >
                                 {avg?.["3gp"] !== undefined
                                   ? `${(avg["3gp"] * 100).toFixed(1)}%`
                                   : "N/A"}
                               </td>
-                              <td className="py-2 px-4 border-b">
+                              <td
+                                className="py-2 px-4 border-b"
+                                style={{ textAlign: "center" }}
+                              >
                                 {avg?.ftp !== undefined
                                   ? `${(avg.ftp * 100).toFixed(1)}%`
                                   : "N/A"}
                               </td>
-                              <td className="py-2 px-4 border-b">
+                              <td
+                                className="py-2 px-4 border-b"
+                                style={{ textAlign: "center" }}
+                              >
                                 {avg?.foul !== undefined
                                   ? avg.foul.toFixed(1)
                                   : "N/A"}
