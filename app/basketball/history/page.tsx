@@ -34,11 +34,11 @@ export default async function Page() {
       <h1 className="text-2xl py-4">历史赛季</h1>
       {Object.values(competitionMap).map((data) => {
         return (
-          <div className="py-2">
+          <div key={data.id} className="py-2">
             <h3 className="text-xl py-2">{data.name}</h3>
             {data.seasons.map((season: BbSeason) => {
               return (
-                <div>
+                <div key={season.id}>
                   <Link
                     href={`/basketball/${
                       COMPETITIONID_TO_GROUPNAME[season.competitionid]

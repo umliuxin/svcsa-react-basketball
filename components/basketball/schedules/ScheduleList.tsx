@@ -5,9 +5,9 @@ import React, { useEffect, useState } from "react";
 import { asyncFetch } from "@/utils/fetch";
 import ScheduleCard from "@/components/basketball/schedules/ScheduleCard";
 import { Pagination } from "@nextui-org/react";
-
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import EmptyState from "@/components/shared/empty-state";
+
 const DEFAULT_PAGINATION = 25;
 
 interface MatchContentsProps {

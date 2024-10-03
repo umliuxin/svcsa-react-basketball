@@ -6,13 +6,12 @@ import { asyncFetch } from "@/utils/fetch";
 import { TeamSelector } from "@/components/basketball/teams/TeamSelector";
 import { BasketballScoreIcon } from "@/components/shared/icons";
 import { Pagination } from "@nextui-org/react";
-
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
+
 const DEFAULT_PAGINATION = 25;
 
 interface MatchContentsProps {
   seasonId: number;
-
 }
 
 const MatchContents: React.FC<MatchContentsProps> = ({ seasonId }) => {
