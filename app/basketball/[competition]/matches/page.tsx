@@ -16,7 +16,7 @@ export default async function Page({
   let seasonId = season?.id;
 
   if (searchParams.season) {
-    seasonId = searchParams.season;
+    seasonId = parseInt(searchParams.season, 10);
   }
 
   if (!seasonId) {

@@ -1,6 +1,8 @@
 import { getRecentSeasonByGroup } from "@/utils/get-recent-seasons";
 import Custom404 from "@/components/404";
-
+import { asyncFetch } from "@/utils/fetch";
+import { formatDate } from "@/utils/formatDateTime";
+import SeasonMenu from "@/components/basketball/homePage/SeasonMenu";
 
 export default async function Page({
   params,
@@ -10,23 +12,31 @@ export default async function Page({
   searchParams: { season: string };
 }) {
   // fetch current season
-  let season = await getRecentSeasonByGroup(params.competition);
-
-  let seasonId = season?.id;
-
-  if (searchParams.season) {
-    seasonId = parseInt(searchParams.season, 10);
+  let season: BbSeason | undefined;
+  if (!searchParams.season) {
+    // fetch recent season
+    season = await getRecentSeasonByGroup(params.competition);
+  } else {
+    season = await asyncFetch(`/basketball/season/${searchParams.season}`).then(
+      (res) => res.data
+    );
   }
 
-  if (!seasonId) {
+  if (!season) {
     return <Custom404 />;
   }
+  const recentSeason = await getRecentSeasonByGroup(params.competition);
+
+  const isRecentSeason = season && season?.id === recentSeason?.id;
+
   return (
     <article>
-      <h1>Season Name</h1>
-      <h3>Some Meta</h3>
-      <p>season summary</p>
-      Links
+      <h1 className="text-2xl py-4">{season?.name}</h1>
+      <section>
+        <h3>{formatDate(season.starttime)}</h3>
+        <h4>{isRecentSeason ? "进行中" : "已结束"}</h4>
+      </section>
+      <SeasonMenu season={season} />
     </article>
   );
 }
