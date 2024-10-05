@@ -11,7 +11,7 @@ const TeamCard: React.FC<TeamCardProp> = ({ team }) => {
 
   return (
     <Card key={team.id} className="relative" isPressable>
-      <CardBody className="justify-center items-center h-40 hover:opacity-50">
+      <CardBody className="justify-center items-center h-60 hover:opacity-50 overflow-hidden">
         <TeamImage team={team} />
       </CardBody>
       <CardFooter className="h-10 justify-center bg-slate-100">

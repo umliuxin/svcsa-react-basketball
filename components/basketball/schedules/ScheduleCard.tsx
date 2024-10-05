@@ -2,13 +2,14 @@ import React from "react";
 import { Card } from "@nextui-org/react";
 import TeamImage from "../teams/TeamImage";
 import { formatDateTime } from "@/utils/formatDateTime";
+import { getGroupName } from "@/utils/get-group-name";
 
 interface MatchContentsProps {
   match: BbSeasonMatch;
 }
 
 const ScheduleList: React.FC<MatchContentsProps> = ({ match }) => {
-  const { teama, teamb, court, starttime } = match;
+  const { teama, teamb, court, starttime, groupid } = match;
   return (
     <Card className="shadow-lg mb-4" radius="lg">
       <div className="flex items-center justify-between">
@@ -30,6 +31,7 @@ const ScheduleList: React.FC<MatchContentsProps> = ({ match }) => {
           <h3 color="gray">{formatDateTime(starttime)}</h3>
           {/* Court */}
           <h3 color="gray">{court}</h3>
+          <h3 color="gray">{getGroupName(groupid)}</h3>
         </div>
 
         {/* Team B Section */}

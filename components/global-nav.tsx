@@ -24,69 +24,145 @@ import {
   faPeopleGroup,
   faDatabase,
   faBasketball,
+  faList
 } from '@fortawesome/free-solid-svg-icons';
-import { ALL_COMPETITION_GROUPS } from '@/utils/variables';
-
+import {
+  COMPETITIONID_TO_GROUPNAME,
+  MEN_OPEN,
+  WOMEN_OPEN,
+} from "@/utils/variables";
 import Image from 'next/image';
 
-export default function GlobalNav() {
+interface GlobalNavProps {
+
+  seasons: BbSeason[]
+}
+
+
+const GlobalNav: React.FC<GlobalNavProps> = ({seasons}) => {
   const router = useRouter();
 
   const icons = {
-    score: <BasketballScoreIcon fill="currentColor" size={36} />,
-
-    chevron: <FontAwesomeIcon fixedWidth icon={faChevronDown} size="sm" />,
-    schedule: <FontAwesomeIcon fixedWidth icon={faCalendar} size="xl" />,
-    standing: <FontAwesomeIcon fixedWidth icon={faRankingStar} size="xl" />,
-    player: <FontAwesomeIcon fixedWidth icon={faPeopleGroup} size="xl" />,
-    team: <FontAwesomeIcon fixedWidth icon={faBasketball} size="xl" />,
-    stat: <FontAwesomeIcon fixedWidth icon={faDatabase} size="xl" />,
+    score: (
+      <BasketballScoreIcon fill="currentColor" size={32} />
+    ),
+    chevron: (
+      <FontAwesomeIcon
+        fixedWidth
+        icon={faChevronDown}
+        size="sm"
+      />
+    ),
+    schedule: (
+      <FontAwesomeIcon
+        fixedWidth
+        icon={faCalendar}
+        size="xl"
+      />
+    ),
+    standing: (
+      <FontAwesomeIcon
+        fixedWidth
+        icon={faRankingStar}
+        size="xl"
+      />
+    ),
+    player: (
+      <FontAwesomeIcon
+        fixedWidth
+        icon={faPeopleGroup}
+        size="xl"
+      />
+    ),
+    team: (
+      <FontAwesomeIcon
+        fixedWidth
+        icon={faBasketball}
+        size="xl"
+      />
+    ),
+    stat: (
+      <FontAwesomeIcon
+        fixedWidth
+        icon={faDatabase}
+        size="xl"
+      />
+    ),
+    list: (
+      <FontAwesomeIcon
+        fixedWidth
+        icon={faList}
+        size="xl"
+      />
+    ),
   };
 
-  const globalNavData: any[] = ALL_COMPETITION_GROUPS.map((competition) => {
+  const getCompetitionTitle = (competition: string) => {
+    switch (competition) {
+      case MEN_OPEN:
+        return "Men's league";
+      case WOMEN_OPEN:
+        return "Women's league";
+      default:
+        break;
+    }
+    return '';
+  }
+  const globalNavData: any[] = seasons.map((season) => {
+    const competition = COMPETITIONID_TO_GROUPNAME[season.competitionid];
     return {
-      title: competition,
+      title: getCompetitionTitle(competition),
       subMenu: [
         {
-          icon: icons.schedule,
-          text: 'Schedule',
-          link: `/basketball/${competition}/schedules`,
+          icon: icons.list,
+          text: "Home",
+          link: `/basketball/${competition}/`,
         },
         {
           icon: icons.score,
-          text: 'Results',
+          text: "Results",
           link: `/basketball/${competition}/matches`,
         },
         {
           icon: icons.standing,
-          text: 'Standing',
+          text: "Standing",
           link: `/basketball/${competition}/standing`,
         },
         {
-          icon: icons.player,
-          text: 'Players',
-          link: `/basketball/${competition}/players`,
+          icon: icons.schedule,
+          text: "Schedule",
+          link: `/basketball/${competition}/schedules`,
+        },
+        {
+          icon: icons.team,
+          text: "Teams",
+          link: `/basketball/${competition}/teams`,
         },
         {
           icon: icons.player,
-          text: 'Teams',
-          link: `/basketball/${competition}/teams`,
+          text: "Players",
+          link: `/basketball/${competition}/players`,
         },
       ],
     };
   });
 
   return (
-    <Navbar maxWidth="xl" isBordered>
+    <Navbar maxWidth="xl" isBordered className="h-32 bg-gray-300">
       <NavbarBrand className="max-w-fit">
-        <Image
-          src="/logo2.png"
-          alt="SVCSA Logo"
-          className="dark:invert"
-          width={48}
-          height={48}
-          priority
-        />
+        <Link href="/basketball">
+          <Image
+            src="/logo.png"
+            alt="SVCSA Logo"
+            className="dark:invert"
+            width={80}
+            height={80}
+            priority
+          />
+          <span className="text-gray-800 ms-3 me-4 text-4xl font-bold">
+            SVCSA
+          </span>
+        </Link>
       </NavbarBrand>
       <NavbarContent className="hidden sm:flex gap-4">
         {globalNavData.map((group, index) => {
@@ -96,7 +172,7 @@ export default function GlobalNav() {
                 <DropdownTrigger>
                   <Button
                     disableRipple
-                    className="p-0 bg-transparent data-[hover=true]:bg-transparent text-medium"
+                    className="p-0 bg-transparent data-[hover=true]:bg-transparent text-medium text-gray-800"
                     endContent={icons.chevron}
                     radius="sm"
                     variant="light"
@@ -109,7 +185,7 @@ export default function GlobalNav() {
                 aria-label="Competition submenu"
                 className="w-[340px]"
                 itemClasses={{
-                  base: 'gap-4',
+                  base: "gap-4",
                 }}
                 onAction={(idx) => {
                   router.push(group.subMenu[idx].link);
@@ -131,19 +207,27 @@ export default function GlobalNav() {
           );
         })}
         <NavbarItem>
-          <Link href="svcsa.org/ctfc" className="no-underline text-current">
-            Track Field
+          <Link
+            href="/basketball/history"
+            className="no-underline text-current text-gray-800"
+          >
+            历史赛季
           </Link>
         </NavbarItem>
       </NavbarContent>
 
       <NavbarContent justify="end">
         <NavbarItem>
-          <Button as={Link} color="primary" href="#" variant="flat">
-            Join the league
-          </Button>
+          <Link
+            href="http://svcsa.org/ctfc"
+            className="no-underline text-current text-gray-800"
+          >
+            田径锦标赛
+          </Link>
         </NavbarItem>
       </NavbarContent>
     </Navbar>
   );
 }
+
+export default GlobalNav;

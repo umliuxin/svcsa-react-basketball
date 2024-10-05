@@ -14,16 +14,22 @@ export default async function Page({ params }: any) {
   }
   const decodedPlayerId = decodeURIComponent(params.playerid);
   const playerId = Number(decodedPlayerId);
-  const seasonTeamPlayer = await asyncFetch(
-    `/basketball/seasonteamplayer?seasonid=${season.id}&playerid=${playerId}`
-  );
+
+  const [seasonTeamPlayer, playerseasonaverage] = await Promise.all([
+    asyncFetch(
+      `/basketball/seasonteamplayer?seasonid=${season.id}&playerid=${playerId}`
+    ),
+
+    asyncFetch(
+      `/basketball/playerseasonaverage?seasonid=${season.id}&playerid=${playerId}`
+    ),
+  ]);
   const teamInfo = seasonTeamPlayer.data[0].team;
+
   const seasonTeamPlayers = await asyncFetch(
     `/basketball/seasonteamplayer?seasonid=${season.id}&teamid=${teamInfo.id}&$limit=20`
   );
-  const playerseasonaverage = await asyncFetch(
-    `/basketball/playerseasonaverage?seasonid=${season.id}&playerid=${playerId}`
-  );
+
   return (
     <div className="container">
       <div className="flex flex-wrap">

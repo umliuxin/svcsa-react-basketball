@@ -21,13 +21,11 @@ describe("Home", () => {
       useRouter: jest.fn(),
     }));
     fetchMock.resetMocks();
+    process.env.NEXT_PUBLIC_SITE_URL = "http://localhost:3000";
   });
 
   it("renders the basic page", async () => {
     const seasonMock = {
-      total: 12,
-      limit: 3,
-      skip: 0,
       data: [
         {
           id: 18,
@@ -102,7 +100,7 @@ describe("Home", () => {
       });
     });
 
-    fetchMock.mockIf(/basketball\/season/, (req) => {
+    fetchMock.mockIf(/basketball\/active-season/, (req) => {
 
       return Promise.resolve({
         body: JSON.stringify(seasonMock),
@@ -112,13 +110,16 @@ describe("Home", () => {
     const serverComponent = await Page();
     const { container } = render(serverComponent);
 
-    const heading = screen.getByText("Hello, basketball league page!");
+    const heading = screen.getByText("Explore SVCSA 🏀");
 
     expect(heading).toBeInTheDocument();
 
-    const standingLinks = screen.getAllByTestId("standing-link");
+    const quickLinks = screen.getAllByTestId("quick-links");
 
-    expect(standingLinks.length).toBe(2);
+    expect(quickLinks.length).toBe(1);
+    const competitionLinks = screen.getAllByTestId("competition-links");
+
+    expect(competitionLinks.length).toBe(2);
     expect(container).toMatchSnapshot();
   });
 });
