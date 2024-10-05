@@ -6,7 +6,6 @@ import ATeamRankTable from "@/components/basketball/teams/ATeamRankTable";
 import PlayerSeasonTable from "@/components/basketball/teams/PlayerSeasonTable";
 import PlayerCard from "@/components/basketball/players/PlayerCard";
 import Link from "next/link";
-import { BbTeam } from "@/types/BbTeam";
 
 export default async function Page({ params, searchParams }: any) {
   const { competition, teamid } = params;
