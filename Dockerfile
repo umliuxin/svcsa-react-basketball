@@ -6,11 +6,7 @@ FROM base AS deps
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
-# Set the build environment as an argument
-ARG ENVIRONMENT=development
 
-# Set a default environment variable based on the build argument
-ENV NODE_ENV=${ENVIRONMENT}
 
 # Install dependencies based on the preferred package manager
 COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* ./
@@ -25,8 +21,16 @@ RUN \
 # Rebuild the source code only when needed
 FROM base AS builder
 WORKDIR /app
+
+# Set the build environment as an argument
+ARG TARGET=production
+
+# Set a default environment variable based on the build argument
+ENV NODE_ENV=${TARGET}
+
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
+COPY ./.env.${TARGET} ./.env.production 
 
 # Next.js collects completely anonymous telemetry data about general usage.
 # Learn more here: https://nextjs.org/telemetry
