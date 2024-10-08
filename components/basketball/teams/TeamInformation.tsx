@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Custom404 from "@/components/404";
 import Link from "next/link"; // 引入 Link 组件
+import { Image } from "@nextui-org/react";
 
 interface TeamInformationProps {
   team: BbTeam;
@@ -38,7 +39,7 @@ const TeamInformation: React.FC<TeamInformationProps> = ({
       {/* 显示球队Logo和名字 */}
       <div className="text-center">
         {team.logosrc && (
-          <img
+          <Image
             src={team.logosrc}
             alt={`${team.name} Logo`}
             className="mx-auto mb-4 h-24"
