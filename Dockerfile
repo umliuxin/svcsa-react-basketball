@@ -25,9 +25,6 @@ WORKDIR /app
 # Set the build environment as an argument
 ARG TARGET=production
 
-# Set a default environment variable based on the build argument
-ENV NODE_ENV=${TARGET}
-
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 COPY ./.env.${TARGET} ./.env.production 
