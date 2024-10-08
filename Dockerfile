@@ -6,6 +6,12 @@ FROM base AS deps
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
+# Set the build environment as an argument
+ARG ENVIRONMENT=development
+
+# Set a default environment variable based on the build argument
+ENV NODE_ENV=${ENVIRONMENT}
+
 # Install dependencies based on the preferred package manager
 COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* ./
 RUN \
@@ -38,7 +44,6 @@ RUN \
 FROM base AS runner
 WORKDIR /app
 
-ENV NODE_ENV production
 # Uncomment the following line in case you want to disable telemetry during runtime.
 # ENV NEXT_TELEMETRY_DISABLED 1
 
