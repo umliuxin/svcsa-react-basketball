@@ -36,7 +36,7 @@ To know more about the available APIs, check <http://svcsa-tf-api.westus.azureco
 
 1. Run your local API server and make sure it is accessible through browser.
 2. Create a file called `env.local`
-3. Put `REACT_APP_API_DOMAIN = "{:YOUR_LOCAL_API_URL}"`
+3. Put `NEXT_PUBLIC_REACT_APP_API_DOMAIN = "{:YOUR_LOCAL_API_URL}"`
 4. Restart Server
 
 ## Development

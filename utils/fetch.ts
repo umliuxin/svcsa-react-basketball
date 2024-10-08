@@ -14,7 +14,7 @@ export const asyncFetch = async function (path: string, isInApp = false) {
   } else {
     // TODO: figure out how to manage api url in client codes
     const baseURL =
-      process.env.REACT_APP_API_DOMAIN ??
+      process.env.NEXT_PUBLIC_REACT_APP_API_DOMAIN ??
       "http://beta-svcsa-api.westus.azurecontainer.io:3030";
     res = await fetch(`${baseURL}${path}` as string).catch((e) => {
       throw e;
