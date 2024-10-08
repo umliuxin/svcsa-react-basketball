@@ -28,7 +28,7 @@ jobs:
 
     - name: Build and Push Docker Image
       run: |
-        docker build --build-arg ENVIRONMENT=development -t svcbavideoacr.azurecr.io/svcsa-next:latest .
+        docker build --build-arg TARGET=development -t svcbavideoacr.azurecr.io/svcsa-next:latest .
         docker push svcbavideoacr.azurecr.io/svcsa-next:latest
         
     - name: 'Deploy to Azure Container Instances'
