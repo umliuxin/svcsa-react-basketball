@@ -10,6 +10,7 @@ import TeamRankTable from "@/components/basketball/standing/TeamRankTable";
 const DEFAULT_PAGINATION = 20;
 
 // TODO: add support for team not in recent season
+// TODO: add history season
 export default async function Page({ params }: any) {
   const { competition, teamid } = params;
 
@@ -54,66 +55,48 @@ export default async function Page({ params }: any) {
 
   return (
     <div className="container">
-      <div className="flex flex-wrap">
-        {/* 左侧：返回队伍列表的链接 */}
-        <div className="w-full md:w-3/12">
-          <div className="bg-gray-100 p-4 rounded shadow">
-            <Link
-              href={`/basketball/${competition}/teams`}
-              className="block text-center text-blue-600 font-bold mb-4"
-            >
-              返回该赛季队伍列表
-            </Link>
-
-            {/* 球员列表标题 */}
-            <div className="text-lg font-bold mb-2 text-center border border-gray-400 p-2 rounded-md">
-              {teamInfo.name} 球员列表
-            </div>
-
-            {/* 球员列表 */}
-            <div
-              className="bg-gray-100 p-4 rounded shadow mt-4"
-              style={{ maxHeight: "700px", overflowY: "scroll" }}
-            >
-              <div className="flex flex-col justify-start">
-                {players.map((seasonPlayer: any) => {
-                  if (!seasonPlayer.player) {
-                    return null;
-                  }
-                  return (
-                    <div
-                      key={seasonPlayer.player.id}
-                      className="relative w-full p-2 bg-white shadow-lg rounded-lg m-2"
-                    >
-                      <Link
-                        href={`/basketball/${competition}/players/${seasonPlayer.player.id}`}
-                      >
-                        <PlayerCard
-                          player={seasonPlayer.player}
-                          params={params}
-                        />
-                      </Link>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
+      <div className="flex flex-wrap items-stretch">
+        <div className="w-full md:w-6/12 p-2">
+          <TeamInformation team={teamInfo} playerCount={players.length} />
         </div>
 
         {/* 右侧：展示球队的详细信息 */}
-        <div className="w-full md:w-9/12 pl-4">
-          <TeamInformation
-            team={teamInfo} //
-            seasonName={season.name}
-            showDetails={true}
-          />
+        <div className="w-full md:w-6/12 p-2">
           <TeamRankTable teamRank={teamRank} highlightIndex={rankIndex} />
-          <PlayerSeasonTable
-            playerSeasonAverages={stats}
-            competition={competition}
-          />
         </div>
+      </div>
+
+      <div className="flex flex-wrap">
+        <div className="bg-white mt-4 p-4 rounded-large shadow-small">
+          {/* 球员列表标题 */}
+          <div className="text-lg font-bold mb-2 text-center p-2">
+            {teamInfo.name} 球员列表
+          </div>
+
+          {/* 球员列表 */}
+          <div className="flex flex-wrap">
+            {players.map((seasonPlayer: any) => {
+              if (!seasonPlayer.player) {
+                return null;
+              }
+              return (
+                <div
+                  key={seasonPlayer.player.id}
+                  className="relative w-3/12 lg:w-2/12 p-2"
+                >
+                  <PlayerCard player={seasonPlayer.player} params={params} />
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+
+      <div className="flex flex-wrap">
+        <PlayerSeasonTable
+          playerSeasonAverages={stats}
+          competition={competition}
+        />
       </div>
     </div>
   );
