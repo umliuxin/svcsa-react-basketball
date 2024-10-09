@@ -12,13 +12,11 @@ import {
 import Link from "next/link";
 
 interface PlayerSeasonTableProps {
-  seasonTeamPlayers: any[];
   playerSeasonAverages: any[];
   competition: string;
 }
 
 const PlayerSeasonTable: React.FC<PlayerSeasonTableProps> = ({
-  seasonTeamPlayers = [], // Ensure it's initialized
   playerSeasonAverages = [], // Ensure it's initialized
   competition,
 }) => {
@@ -68,19 +66,17 @@ const PlayerSeasonTable: React.FC<PlayerSeasonTableProps> = ({
             </TableColumn>
           </TableHeader>
           <TableBody>
-            {seasonTeamPlayers.length > 0 ? (
-              seasonTeamPlayers.map((player: any) => {
-                const avg = playerSeasonAverages.find(
-                  (p: any) => p.playerid === player.player.id
-                );
+            {playerSeasonAverages.length > 0 ? (
+              playerSeasonAverages.map((avg: any) => {
+                const player: BbPlayer = avg.player;
                 return (
-                  <TableRow key={player.player.id}>
+                  <TableRow key={player.id}>
                     <TableCell className="text-center">
                       <Link
-                        href={`/basketball/${competition}/players/${player.player.id}`}
+                        href={`/basketball/${competition}/players/${player.id}`}
                         className="text-blue-600"
                       >
-                        {player.player.name}
+                        {player.name}
                       </Link>
                     </TableCell>
                     <TableCell className="text-center">

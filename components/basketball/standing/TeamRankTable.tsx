@@ -13,12 +13,25 @@ import {
 // Define props interface
 interface TeamRankTableProps {
   teamRank: BbTeamrank[];
+  highlightIndex?: number | undefined;
 }
 
 // Define component
-const TeamRankTable: React.FC<TeamRankTableProps> = ({ teamRank }) => {
+const TeamRankTable: React.FC<TeamRankTableProps> = ({
+  teamRank,
+  highlightIndex,
+}) => {
+  const highlightRow = [];
+  if (highlightIndex !== undefined) {
+    highlightRow.push(highlightIndex.toString());
+  }
   return (
-    <Table aria-label="Example static collection table">
+    <Table
+      color="success"
+      selectionMode="single"
+      defaultSelectedKeys={highlightRow}
+      aria-label="Team rank"
+    >
       <TableHeader>
         <TableColumn className="text-white bg-lime-600">排名</TableColumn>
         <TableColumn className="text-white bg-lime-600">球队</TableColumn>

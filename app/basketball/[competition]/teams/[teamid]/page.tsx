@@ -2,15 +2,16 @@ import Custom404 from "@/components/404";
 import { asyncFetch } from "@/utils/fetch";
 import { getRecentSeasonByGroup } from "@/utils/get-recent-seasons";
 import TeamInformation from "@/components/basketball/teams/TeamInformation";
-import ATeamRankTable from "@/components/basketball/teams/ATeamRankTable";
 import PlayerSeasonTable from "@/components/basketball/teams/PlayerSeasonTable";
 import PlayerCard from "@/components/basketball/players/PlayerCard";
 import Link from "next/link";
+import TeamRankTable from "@/components/basketball/standing/TeamRankTable";
 
-export default async function Page({ params, searchParams }: any) {
+const DEFAULT_PAGINATION = 20;
+
+// TODO: add support for team not in recent season
+export default async function Page({ params }: any) {
   const { competition, teamid } = params;
-  const page = parseInt(searchParams?.page || "1", 10);
-  const DEFAULT_PAGINATION = 20;
 
   // 1. 获取当前赛季数据
   const season = await getRecentSeasonByGroup(competition);
@@ -18,64 +19,38 @@ export default async function Page({ params, searchParams }: any) {
     return <Custom404 />;
   }
 
-  // 2. 获取球队详细信息
-  let teamResponse;
-  let teamInfo: BbTeam;
-  try {
-    const teamUrl = `/basketball/seasonteam?seasonid=${season.id}&teamid=${teamid}`;
-    teamResponse = await asyncFetch(teamUrl);
-    if (!teamResponse || !teamResponse.data || teamResponse.data.length === 0) {
-      return <Custom404 />;
-    }
-    teamInfo = teamResponse.data[0].team as BbTeam;
-  } catch (error) {
+  // Requests
+  const teamUrl = `/basketball/seasonteam?seasonid=${season.id}&teamid=${teamid}`;
+  const playersUrl = `/basketball/seasonteamplayer?seasonid=${season.id}&teamid=${teamid}&$limit=${DEFAULT_PAGINATION}`;
+  const statsUrl = `/basketball/playerseasonaverage?seasonid=${season.id}&teamid=${teamid}`;
+  const rankUrl = `/basketball/teamrank?seasonid=${season.id}`;
+
+  const [seasonTeam, players, stats, teamRank] = (await Promise.all([
+    asyncFetch(teamUrl),
+    asyncFetch(playersUrl),
+    asyncFetch(statsUrl),
+    asyncFetch(rankUrl),
+  ]).then(([seasonTeamData, playersData, statsData, teamRankData]) => {
+    const seasonTeam = seasonTeamData.data[0];
+    return [
+      seasonTeam,
+      playersData.data,
+      statsData.data,
+      teamRankData.filter((teamRank: BbTeamrank) => {
+        return teamRank.groupid === seasonTeam.groupid;
+      }),
+    ];
+  })) as [BbSeasonTeam, BbSeasonTeamPlayer[], BbStat[], BbTeamrank[]];
+
+  const teamInfo: BbTeam | undefined = seasonTeam.team;
+
+  if (!teamInfo) {
     return <Custom404 />;
   }
 
-  // 3. 获取球队的球员列表
-  let seasonTeamPlayers;
-  let totalPage;
-  try {
-    const playersUrl = `/basketball/seasonteamplayer?seasonid=${
-      season.id
-    }&teamid=${teamid}&$limit=${DEFAULT_PAGINATION}&$skip=${
-      DEFAULT_PAGINATION * (page - 1)
-    }`;
-
-    const seasonTeamPlayersResponse = await asyncFetch(playersUrl);
-    seasonTeamPlayers = seasonTeamPlayersResponse?.data || [];
-    totalPage = Math.ceil(seasonTeamPlayersResponse.total / DEFAULT_PAGINATION);
-  } catch (error) {
-    return <Custom404 />;
-  }
-
-  // 4. 逐一请求球员的赛季数据
-  const playerSeasonAverages = [];
-  for (const player of seasonTeamPlayers) {
-    try {
-      const playerAverageResponse = await asyncFetch(
-        `/basketball/playerseasonaverage?seasonid=${season.id}&playerid=${player.player.id}`
-      );
-      const playerAverageData = playerAverageResponse?.data?.[0];
-      if (playerAverageData) {
-        playerSeasonAverages.push({
-          playerid: player.player.id,
-          ...playerAverageData,
-        });
-      }
-    } catch (error) {}
-  }
-
-  // 5. 获取所有球队的排名数据并筛选出当前球队
-  let teamRank;
-  try {
-    teamRank = await asyncFetch(`/basketball/teamrank?seasonid=${season.id}`);
-    teamRank = teamRank?.filter(
-      (team: any) => team.teamid === parseInt(teamid)
-    );
-  } catch (error) {
-    return <Custom404 />;
-  }
+  const rankIndex = teamRank.findIndex((team) => {
+    return team.teamid === teamInfo.id;
+  });
 
   return (
     <div className="container">
@@ -101,7 +76,7 @@ export default async function Page({ params, searchParams }: any) {
               style={{ maxHeight: "700px", overflowY: "scroll" }}
             >
               <div className="flex flex-col justify-start">
-                {seasonTeamPlayers.map((seasonPlayer: any) => {
+                {players.map((seasonPlayer: any) => {
                   if (!seasonPlayer.player) {
                     return null;
                   }
@@ -133,10 +108,9 @@ export default async function Page({ params, searchParams }: any) {
             seasonName={season.name}
             showDetails={true}
           />
-          <ATeamRankTable teamRank={teamRank} />
+          <TeamRankTable teamRank={teamRank} highlightIndex={rankIndex} />
           <PlayerSeasonTable
-            seasonTeamPlayers={seasonTeamPlayers}
-            playerSeasonAverages={playerSeasonAverages}
+            playerSeasonAverages={stats}
             competition={competition}
           />
         </div>
