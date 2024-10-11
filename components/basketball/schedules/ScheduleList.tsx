@@ -55,7 +55,7 @@ const ScheduleList: React.FC<MatchContentsProps> = ({ seasonId }) => {
 
   useEffect(() => {
     async function fetchMatches() {
-      let matchFetchUrl = `/basketball/match?seasonid=${seasonId}&$limit=${DEFAULT_PAGINATION}&starttime[$gte]=${endOfTodayISO}&$sort[starttime]=-1`;
+      let matchFetchUrl = `/basketball/match?seasonid=${seasonId}&$limit=${DEFAULT_PAGINATION}&starttime[$gte]=${endOfTodayISO}&$sort[starttime]=1`;
 
       if (page > 1) {
         matchFetchUrl += `&$skip=${DEFAULT_PAGINATION * (page - 1)}`;

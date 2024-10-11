@@ -4,6 +4,8 @@ import TeamRankTable from "@/components/basketball/standing/TeamRankTable";
 import Custom404 from "@/components/404";
 import { getGroupName } from "@/utils/get-group-name";
 
+export const dynamic = "force-dynamic";
+
 export default async function Page({
   params,
   searchParams,

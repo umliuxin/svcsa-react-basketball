@@ -208,10 +208,22 @@ export default async function Page({ params }: any) {
     }
 
     return (
-        <div className='matchStat'>
-            <MatchCard match={match} />
-            <MatchSumTable sections={section} teamAname={teamAname} teamBname={teamBname} teamAscores={teamAscores} teamBscores={teamBscores}></MatchSumTable>
-            <MatchStatContents match={match} teamAdata={teamAdata} teamBdata={teamBdata}></MatchStatContents>
-        </div>
+      <div className="matchStat">
+        <MatchCard match={match} />
+        <MatchSumTable
+          sections={section}
+          teamA={match.teama}
+          teamB={match.teamb}
+          teamAscores={teamAscores}
+          teamBscores={teamBscores}
+          competition={params.competition}
+        ></MatchSumTable>
+        <MatchStatContents
+          match={match}
+          teamAdata={teamAdata}
+          teamBdata={teamBdata}
+          competition={params.competition}
+        ></MatchStatContents>
+      </div>
     );
 }

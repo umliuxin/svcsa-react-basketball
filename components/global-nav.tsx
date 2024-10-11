@@ -117,31 +117,37 @@ const GlobalNav: React.FC<GlobalNavProps> = ({seasons}) => {
           icon: icons.list,
           text: "Home",
           link: `/basketball/${competition}/`,
+          subtitle: "Overview of the competition and latest news",
         },
         {
           icon: icons.score,
           text: "Results",
           link: `/basketball/${competition}/matches`,
+          subtitle: "Recent match scores and results",
         },
         {
           icon: icons.standing,
           text: "Standing",
           link: `/basketball/${competition}/standing`,
+          subtitle: "Current team rankings and positions",
         },
         {
           icon: icons.schedule,
           text: "Schedule",
           link: `/basketball/${competition}/schedules`,
+          subtitle: "Upcoming matches and fixtures",
         },
         {
           icon: icons.team,
           text: "Teams",
           link: `/basketball/${competition}/teams`,
+          subtitle: "Details and statistics for all teams",
         },
         {
           icon: icons.player,
           text: "Players",
           link: `/basketball/${competition}/players`,
+          subtitle: "Player profiles and stats",
         },
       ],
     };
@@ -195,7 +201,7 @@ const GlobalNav: React.FC<GlobalNavProps> = ({seasons}) => {
                   return (
                     <DropdownItem
                       key={idx}
-                      description="Checkout match schedule"
+                      description={sub.subtitle}
                       startContent={sub.icon}
                     >
                       {sub.text}

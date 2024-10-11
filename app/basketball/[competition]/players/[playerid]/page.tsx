@@ -5,6 +5,8 @@ import TeamImage from "@/components/basketball/teams/TeamImage";
 import PlayerSeasonAverage from "@/components/basketball/players/PlayerSeasonAverage";
 import PlayerListOfTeam from "@/components/basketball/players/PlayerListOfTeam";
 import PlayerPage from "@/components/basketball/players/PlayerPage";
+import CustomLink from "@/components/shared/links";
+import type { CompetitionGroup } from "@/utils/variables";
 
 export default async function Page({ params }: any) {
   // fetch current season
@@ -36,14 +38,20 @@ export default async function Page({ params }: any) {
         <div className="w-full md:w-3/12">
           <div className="bg-gray-100 p-4 rounded shadow">
             {/* Content for the 3-column section: team name and player list*/}
-            <div className="flex gap-2 items-center">
-              <TeamImage
-                imageClass="w-16 h-16 bg-slate-100"
-                team={teamInfo}
-                textClass="text-center font-medium text-xl font-thin text-zinc-800"
-              />
-              <div className="text-xl font-bold mb-2">{teamInfo.name}</div>
-            </div>
+            <CustomLink
+              type="teams"
+              id={teamInfo.id}
+              competition={params.competition}
+            >
+              <div className="flex gap-2 items-center">
+                <TeamImage
+                  imageClass="w-16 h-16 bg-slate-100"
+                  team={teamInfo}
+                  textClass="text-center font-medium text-xl font-thin text-zinc-800"
+                />
+                <div className="text-xl font-bold mb-2">{teamInfo.name}</div>
+              </div>
+            </CustomLink>
             <PlayerListOfTeam
               seasonTeamPlayers={seasonTeamPlayers.data}
               params={params}
