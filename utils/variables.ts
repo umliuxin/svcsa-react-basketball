@@ -2,7 +2,10 @@ export const MEN_OPEN = 'men-open';
 export const MEN_SENIOR = 'men-senior';
 export const WOMEN_OPEN = 'women-open';
 
-export const ALL_COMPETITION_GROUPS = [MEN_OPEN, MEN_SENIOR, WOMEN_OPEN];
+export const ALL_COMPETITION_GROUPS = [MEN_OPEN, MEN_SENIOR, WOMEN_OPEN] as const;
+
+export type CompetitionGroup = (typeof ALL_COMPETITION_GROUPS)[number];
+
 
 export const GROUPNAME_TO_COMPETITIONID: Record<string, number> = {
   [MEN_OPEN]: 1,

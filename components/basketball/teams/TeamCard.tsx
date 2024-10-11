@@ -1,16 +1,27 @@
-import { Card, CardBody, CardFooter,  } from '@nextui-org/react';
-import TeamImage from './TeamImage';
+"use client";
+
+import { Card, CardBody, CardFooter } from "@nextui-org/react";
+import TeamImage from "./TeamImage";
+import { COMPETITIONID_TO_GROUPNAME, MEN_OPEN } from "@/utils/variables";
+import { useRouter } from "next/navigation";
 
 interface TeamCardProp {
   team: BbSeasonTeam["team"];
+  season?: BbSeason;
 }
 
-const TeamCard: React.FC<TeamCardProp> = ({ team }) => {
+const TeamCard: React.FC<TeamCardProp> = ({ team, season }) => {
+  const router = useRouter();
+  if (!team) return;
 
-  if(!team) return;
+  const competition = season ? COMPETITIONID_TO_GROUPNAME[season?.competitionid] : MEN_OPEN;
 
+
+  const clickHandler = (): void => {
+    router.push(`/basketball/${competition}/teams/${team.id}`);
+  };
   return (
-    <Card key={team.id} className="relative" isPressable>
+    <Card key={team.id} className="relative" isPressable onPress={clickHandler}>
       <CardBody className="justify-center items-center h-60 hover:opacity-50 overflow-hidden">
         <TeamImage team={team} />
       </CardBody>

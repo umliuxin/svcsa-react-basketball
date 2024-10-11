@@ -9,13 +9,16 @@ import {
   TableColumn,
 } from "@nextui-org/react";
 import React from "react";
+import CustomLink from "@/components/shared/links";
+import type { CompetitionGroup } from "@/utils/variables";
 
 interface MatchSumTableProps {
   sections: number;
-  teamAname: string;
-  teamBname: string;
+  teamA: BbTeam;
+  teamB: BbTeam;
   teamAscores: number[];
   teamBscores: number[];
+  competition: CompetitionGroup;
 }
 
 function formatStatsDataForTable(
@@ -51,21 +54,24 @@ function formatStatsDataForTable(
 
 const MatchSumTable: React.FC<MatchSumTableProps> = ({
   sections,
-  teamAname,
-  teamBname,
+  teamA,
+  teamB,
   teamAscores,
   teamBscores,
+  competition,
 }) => {
   const { columns, dataTeamA, dataTeamB } = formatStatsDataForTable(
     sections,
-    teamAname,
-    teamBname,
+    teamA.name,
+    teamB.name,
     teamAscores,
     teamBscores
   );
   return (
     <div className="py-5 overflow-x-auto">
-      <h2 className="text-2xl font-bold text-gray-800 mb-2">Quarter by quarter</h2>
+      <h2 className="text-2xl font-bold text-gray-800 mb-2">
+        Quarter by quarter
+      </h2>
 
       <Table className="w-full border-collapse">
         <TableHeader>
@@ -85,17 +91,37 @@ const MatchSumTable: React.FC<MatchSumTableProps> = ({
                 key={`teamA_${idx}`}
                 className="p-2 border border-gray-300 text-center"
               >
-                {cell}
+                {idx === 0 ? (
+                  <CustomLink
+                    type="teams"
+                    id={teamA.id}
+                    competition={competition}
+                  >
+                    {teamA.name}
+                  </CustomLink>
+                ) : (
+                  cell
+                )}
               </TableCell>
             ))}
           </TableRow>
           <TableRow>
             {dataTeamB.map((cell, idx) => (
               <TableCell
-                key={`teamA_${idx}`}
+                key={`teamB_${idx}`}
                 className="p-2 border border-gray-300 text-center"
               >
-                {cell}
+                {idx === 0 ? (
+                  <CustomLink
+                    type="teams"
+                    id={teamB.id}
+                    competition={competition}
+                  >
+                    {teamB.name}
+                  </CustomLink>
+                ) : (
+                  cell
+                )}
               </TableCell>
             ))}
           </TableRow>

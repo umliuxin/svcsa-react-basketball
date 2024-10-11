@@ -7,6 +7,8 @@ import { formatDateTime } from "@/utils/formatDateTime";
 import { getGroupName } from "@/utils/get-group-name";
 import { useRouter } from "next/navigation";
 import { COMPETITIONID_TO_GROUPNAME } from "@/utils/variables";
+import CustomLink from "@/components/shared/links";
+import type { CompetitionGroup } from "@/utils/variables";
 
 interface MatchContentsProps {
   match: BbSeasonMatch;
@@ -17,13 +19,13 @@ const ScheduleList: React.FC<MatchContentsProps> = ({ match, withLink }) => {
   const { teama, teamb, court, starttime, groupid } = match;
   const router = useRouter();
 
+  const competitionName = COMPETITIONID_TO_GROUPNAME[
+    match.season.competitionid
+  ] as CompetitionGroup;
+
   const clickHandler = (): void => {
     if (!withLink) return;
-    router.push(
-      `/basketball/${
-        COMPETITIONID_TO_GROUPNAME[match.season.competitionid]
-      }/matches/${match.id}`
-    );
+    router.push(`/basketball/${competitionName}/matches/${match.id}`);
   };
   return (
     <Card
@@ -42,7 +44,15 @@ const ScheduleList: React.FC<MatchContentsProps> = ({ match, withLink }) => {
             textClass="text-center font-medium text-xl font-thin text-zinc-800"
           />
           {/* Team A Name */}
-          <h4>{teama.name}</h4>
+          <h4>
+            <CustomLink
+              type="teams"
+              id={teama.id}
+              competition={competitionName}
+            >
+              {teama.name}
+            </CustomLink>
+          </h4>
         </div>
 
         {/* Match Info Section */}
@@ -64,7 +74,15 @@ const ScheduleList: React.FC<MatchContentsProps> = ({ match, withLink }) => {
         {/* Team B Section */}
         <div className="flex-1 flex items-center justify-end space-x-4">
           {/* Team B Name */}
-          <h4>{teamb.name}</h4>
+          <h4>
+            <CustomLink
+              type="teams"
+              id={teamb.id}
+              competition={competitionName}
+            >
+              {teamb.name}
+            </CustomLink>
+          </h4>
           {/* Team B Logo */}
           <TeamImage
             imageClass="w-24 h-24 bg-slate-100"
