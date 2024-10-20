@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Feature
+    url: http://prod-svcsa-web.westus.azurecontainer.io:3000/
+    about: Feature task
