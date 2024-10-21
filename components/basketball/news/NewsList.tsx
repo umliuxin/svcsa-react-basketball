@@ -1,8 +1,7 @@
-"use clinet"
+"use clinet";
 import { useState } from "react";
-import NewsLogo from "./NewsLogo";
-import Link from "next/link";
 import { Pagination } from "@nextui-org/react";
+import NewsItem from "./NewsItem";
 
 interface NewsListProps {
   newsList: BbNews[];
@@ -22,20 +21,11 @@ const NewsList: React.FC<NewsListProps> = ({ newsList }) => {
   };
   return (
     <div>
-      {currentNewsList.map((news, index) => (
-        <div key={index}>
-          <div className="grid grid-cols-10 gap-4 min-h-16">
-            <NewsLogo news={news} />
-            <div className="col-start-3 col-span-8 cursor-pointer py-3 hover:bg-slate-300">
-              <Link href={news.category == "bb_schedule" ? "/basketball" : "#"}>
-                <p className="font-bold">{news.title}</p>
-                {news.content}{" "}
-              </Link>
-            </div>
-          </div>
-          <hr className="border-gray-300" />
-        </div>
-      ))}
+      {currentNewsList.map((news, index) => {
+        return (
+          <NewsItem news={news} key={index}/>
+        );
+      })}
       <Pagination
         className="grid justify-items-center mt-2"
         isCompact
